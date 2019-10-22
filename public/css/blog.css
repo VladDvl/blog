@@ -100,6 +100,10 @@ h1, h2, h3, h4, h5, h6 {
  */
 .blog-post {
   margin-bottom: 4rem;
+  background-color: #f3faff;
+  border: 1px solid #7fc1ff;
+  border-radius: 20px;
+  padding-left: 4px;
 }
 .blog-post-title {
   margin-bottom: .25rem;
@@ -123,3 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+/*
+#block-heaer {
+  background-image: url("{{asset('public/img/bg-partnership.svg')}}");
+}*/

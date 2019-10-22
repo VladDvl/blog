@@ -8,8 +8,8 @@
 
     <title>Blog Template · Bootstrap</title>
 
-	<link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
-	<link href="{{asset('public/css/style.css')}}" rel="stylesheet">
+	  <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
+	  <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/fonts.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/blog.css')}}" rel="stylesheet">
   </head>
@@ -89,7 +89,6 @@
       </h3>
 
 @yield('content')
-<!-- /.blog-post -->
 
       <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="{{asset('#')}}">Older</a>

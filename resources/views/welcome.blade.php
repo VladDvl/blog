@@ -42,7 +42,7 @@
 @endsection
 
 @section('content')
- <div class="blog-post">
+      <div class="blog-post">
         <h2 class="blog-post-title">Sample blog post</h2>
         <p class="blog-post-meta">January 1, 2014 by <a href="{{asset('#')}}">Mark</a></p>
 
@@ -99,6 +99,6 @@
         </ul>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-      </div>
+      </div><!-- /.blog-post -->
 	  
 @endsection

@@ -12,6 +12,8 @@
 	  <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/fonts.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/blog.css')}}" rel="stylesheet">
+    @section('styles')
+    @show
   </head>
   <body>
     <div class="container">

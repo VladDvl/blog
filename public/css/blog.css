@@ -134,5 +134,5 @@ aside .p-4 {
 }
 /*
 #block-heaer {
-  background-image: url("{{asset('public/img/bg-partnership.svg')}}");
+  background-image: url("../img/bg-partnership.svg") !important;
 }*/

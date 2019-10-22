@@ -45,8 +45,8 @@
 
 @section('content')
       <div class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="{{asset('#')}}">Mark</a></p>
+        <h2 class="blog-post-title"><a href="{{asset('url')}}">Sample blog post</a></h2>
+        <p class="blog-post-meta">January 1, 2014 by <a href="{{asset('user_id')}}">Mark</a></p>
 
         <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
         <hr>
@@ -78,8 +78,8 @@
       </div><!-- /.blog-post -->
 
       <div class="blog-post">
-        <h2 class="blog-post-title">Another blog post</h2>
-        <p class="blog-post-meta">December 23, 2013 by <a href="{{asset('#')}}">Jacob</a></p>
+        <h2 class="blog-post-title"><a href="{{asset('url')}}">Another blog post</a></h2>
+        <p class="blog-post-meta">December 23, 2013 by <a href="{{asset('user_id')}}">Jacob</a></p>
 
         <p>Cum sociis natoque penatibus et magnis <a href="{{asset('#')}}">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
         <blockquote>
@@ -90,8 +90,8 @@
       </div><!-- /.blog-post -->
 
       <div class="blog-post">
-        <h2 class="blog-post-title">New feature</h2>
-        <p class="blog-post-meta">December 14, 2013 by <a href="{{asset('#')}}">Chris</a></p>
+        <h2 class="blog-post-title"><a href="{{asset('url')}}">New feature</a></h2>
+        <p class="blog-post-meta">December 14, 2013 by <a href="{{asset('user_id')}}">Chris</a></p>
 
         <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <ul>

@@ -132,6 +132,26 @@ aside .p-4 {
   background-color:#E9EAE1 !important;
   margin-bottom: 1rem;
 }
+
+#avatarka {
+  border-radius: 50%;
+}
+
+#nav-category {
+  background-color: #EDEEE5;
+  font-weight: 500;
+}
+
+#tuda, #suda {
+  width: 100px;
+  font-weight: 700;
+}
+
+#header {
+  background-image: url("../img/bg-page.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
 /*
 #block-heaer {
   background-image: url("../img/bg-partnership.svg") !important;

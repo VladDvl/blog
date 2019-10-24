@@ -44,7 +44,13 @@
 @endsection
 
 @section('content')
-      <div class="blog-post">
+      <div class="blog-post body-maintext">
+        <h2 class="blog-post-title">{{(isset($one->name)) ? $one->name : ''}}</h2>
+        <p class="blog-post-meta">created_at by <a href="{{asset('user_id')}}">user_name</a></p>
+
+        <p>{!!isset($one->body) ? $one->body : ''!!}</p>
+      </div><!-- /.blog-post -->
+      <!--<div class="blog-post">
         <h2 class="blog-post-title"><a href="{{asset('url')}}">Sample blog post</a></h2>
         <p class="blog-post-meta">January 1, 2014 by <a href="{{asset('user_id')}}">Mark</a></p>
 
@@ -75,9 +81,9 @@
           <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
         </ol>
         <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-      </div><!-- /.blog-post -->
+      </div>--><!-- /.blog-post -->
 
-      <div class="blog-post">
+      <!--<div class="blog-post">
         <h2 class="blog-post-title"><a href="{{asset('url')}}">Another blog post</a></h2>
         <p class="blog-post-meta">December 23, 2013 by <a href="{{asset('user_id')}}">Jacob</a></p>
 
@@ -87,9 +93,9 @@
         </blockquote>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div><!-- /.blog-post -->
+      </div>--><!-- /.blog-post -->
 
-      <div class="blog-post">
+      <!--<div class="blog-post">
         <h2 class="blog-post-title"><a href="{{asset('url')}}">New feature</a></h2>
         <p class="blog-post-meta">December 14, 2013 by <a href="{{asset('user_id')}}">Chris</a></p>
 
@@ -101,6 +107,6 @@
         </ul>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-      </div><!-- /.blog-post -->
+      </div>--><!-- /.blog-post -->
 	  
 @endsection

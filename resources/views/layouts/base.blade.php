@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="It blog">
 
     <title>Blog Template · Bootstrap</title>
 
@@ -83,7 +83,7 @@
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
-      <div class="pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
+      <div class="container pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
         <h3>
           Публикации
         </h3>
@@ -100,6 +100,21 @@
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
+      <div class="p-4">
+        <h4 class="font-italic">Топ теги</h4>
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a>,
+        <a href="{{asset('#')}}">тег</a><br>
+        <a href="{{asset('#')}}">Все теги</a>
+      </div><!--tags-->
+
       <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">Топ пользователи</h4>
         <p> за месяц | за все время</p>
@@ -108,7 +123,7 @@
         <li><a href="{{asset('#')}}">Петя</a></li>
         <li><a href="{{asset('#')}}">Енот</a></li>
         </ol>
-      </div>
+      </div><!--top users-->
 
       <div class="p-4">
         <h4 class="font-italic">Лучшее</h4>
@@ -127,18 +142,18 @@
           <li><a href="{{asset('#')}}">Статья</a></li>
           <li><a href="{{asset('#')}}">Статья</a></li>
         </ol>
-      </div>
+      </div><!--best articles-->
 
       <div class="p-4">
         <h4 class="font-italic">Комментарий дня</h4>
         <a href="{{asset('#')}}">Коммент</a>
-      </div>
+      </div><!--daily comment-->
 
       <div class="p-4">
         <h4 class="font-italic">Посетители</h4>
         <p>Авторизованных: </p>
         <p>Неавторизованных: </p>
-      </div>
+      </div><!--visitiors-->
 
       <div class="p-4">
         <h4 class="font-italic">Информация</h4>
@@ -150,7 +165,7 @@
           <li><a href="{{asset('#')}}">Контакты</a></li>
           <li><a href="{{asset('#')}}">Услуги</a></li>
         </ol>
-      </div>
+      </div><!--info-->
     </aside><!-- /.blog-sidebar -->
 
   </div><!-- /.row -->

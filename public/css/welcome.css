@@ -1,3 +1,22 @@
 #block-header {
     background-image: url("../img/bg-partnership.svg");
   }
+
+.postBody {
+  margin-bottom: 0.1rem !important;
+}
+
+.readWhole {
+  margin-top: -16px;
+  margin-bottom: 6px;
+  color: #666666;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.blog-post-title a {
+  color: #333333 !important;
+  font-family: 'Colibri';
+  font-weight: bolder;
+}

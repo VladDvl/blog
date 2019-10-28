@@ -55,7 +55,8 @@
     <h2 class="blog-post-title"><a href="{{$object -> url}}">{{$object -> name}}</a></h2>
     <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> user_id}}</a></p>
     <hr>
-    <p>{{$object -> short}}</p>
+    <p class="postBody">{{$object -> short}}...</p>
+    <a class="readWhole" href="{{$object -> url}}">Читать полностью</a>
   </div><!-- /.blog-post -->
   @endforeach
 	  

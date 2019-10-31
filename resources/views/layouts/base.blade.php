@@ -181,5 +181,7 @@
     <a href="{{asset('#')}}">Настройки языка</a>
   </p>
 </footer>
+@section('scripts')
+@show
 </body>
 </html>

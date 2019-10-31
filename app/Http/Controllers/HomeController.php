@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
-use App\Post;
+use App\Post;// или App\Libs\Img и \App::make('Img')
 
 class HomeController extends Controller
 {
@@ -32,7 +32,16 @@ class HomeController extends Controller
     {
         /*dd($r->all());*/
         $r['status'] = 'PUBLISHED';
-        $r['slug'] = 'url';
+        $r['slug'] = date('y_m_d_h_i_s');
+
+        $pic = \App::make('\App\Libs\Img')->url($_FILES['picture1']['tmp_name']);
+        //dd($pic);
+        if($pic) {
+            $r['image'] = $pic;
+        } else {
+            $r['image'] = '';
+        }
+
         Post::create($r->all());
         return redirect()->back();
     }

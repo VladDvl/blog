@@ -52,10 +52,10 @@
 
   @foreach($objs as $object)
   <div class="blog-post">
-    <h2 class="blog-post-title"><a href="{{$object -> url}}">{{$object -> name}}</a></h2>
-    <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> user_id}}</a></p>
+    <h2 class="blog-post-title"><a href="{{$object -> url}}">{{$object -> title}}</a></h2>
+    <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> author_id}}</a></p>
     <hr>
-    <p class="postBody">{{$object -> short}}...</p>
+    <p class="postBody">{{mb_substr($object -> body,0,1500)}}...</p>
     <a class="readWhole" href="{{$object -> url}}">Читать полностью</a>
   </div><!-- /.blog-post -->
   @endforeach

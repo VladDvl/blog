@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="row mb-2">
-    <div class="col-md-6">
+    <!--<div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">World</strong>
@@ -23,27 +23,33 @@
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="{{asset('#')}}" class="stretched-link">Continue reading</a>
         </div>
-        <div class="col-auto d-none d-lg-block">
+        <div class="col-auto d-none d-lg-block">-->
           <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="{{asset('http://www.w3.org/2000/svg')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
-          <img widtg="200" height="250" src="{{asset('public/img/World.jpg')}}">
+          <!--<img widtg="200" height="250" src="{{asset('public/img/World.jpg')}}">
         </div>
       </div>
-    </div>
+    </div>-->
+    @foreach($things as $thing)
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="{{asset('#')}}" class="stretched-link">Continue reading</a>
+          <strong class="d-inline-block mb-2 text-success">{{$thing->category_id}}</strong>
+          <h3 class="mb-0">{{mb_substr($thing->title,0,15)}}</h3>
+          <div class="mb-1 text-muted">{{$thing->created_at}}</div>
+          <p class="mb-auto">{{mb_substr($thing->body,0,100)}} ...</p>
+          <a href="{{asset($thing->slug)}}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">
           <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="{{asset('http://www.w3.org/2000/svg')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
-          <img widtg="200" height="250" src="{{asset('public/img/LightBulb.jpg')}}">
+          @if($thing->image)
+            <img widtg="200" height="250" src="{{asset('public/uploads/'.$thing->image)}}"/>
+          @else
+            <img widtg="200" height="250" src="{{asset('public/img/LightBulb.jpg')}}"/>
+          @endif
         </div>
       </div>
     </div>
+    @endforeach
   </div>
 
 @endsection
@@ -52,11 +58,14 @@
 
   @foreach($objs as $object)
   <div class="blog-post">
-    <h2 class="blog-post-title"><a href="{{$object -> url}}">{{$object -> title}}</a></h2>
+    <h2 class="blog-post-title"><a href="{{asset($object -> slug)}}">{{$object -> title}}</a></h2>
     <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> author_id}}</a></p>
     <hr>
-    <p class="postBody">{{mb_substr($object -> body,0,1500)}}...</p>
-    <a class="readWhole" href="{{$object -> url}}">Читать полностью</a>
+    @if($thing->image)
+      <img widtg="200" height="250" src="{{asset('public/uploads/'.$thing->image)}}"/>
+    @endif
+    <p class="postBody">{!!mb_substr($object -> body,0,1500)!!}...</p>
+    <a class="readWhole" href="{{asset($object -> slug)}}">Читать полностью</a>
   </div><!-- /.blog-post -->
   @endforeach
 	  

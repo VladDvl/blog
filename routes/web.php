@@ -11,5 +11,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
+Route::get('post/{slug}', 'MaintextController@getIndex');
 
 Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце

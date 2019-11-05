@@ -8,7 +8,8 @@ class BaseController extends Controller
 {
 	public function getIndex()
     {
-        $objs = Post::orderBy('id','DESC')->limit(5)->get();
-        return view('welcome',compact('objs'));
+        $objs = Post::orderBy('id','DESC')->paginate(5);
+        $things = Post::orderBy('id','DESC')->limit(2)->get();
+        return view('welcome',compact('objs','things'));
     }
 }

@@ -61,18 +61,9 @@
 
   <div id="nav-category" class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="{{asset('#')}}">Гайды</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Обзоры</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Игры</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Музыка</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Дизайн</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Программирование</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Web</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Безопасность</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Наука</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Саморазвитие</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Спорт</a>
-      <a class="p-2 text-muted" href="{{asset('#')}}">Мир</a>
+      @foreach($test as $cat)
+        <a class="p-2 text-muted" href="{{asset($cat->slug)}}">{{$cat->name}}</a>
+      @endforeach
     </nav>
   </div>
 

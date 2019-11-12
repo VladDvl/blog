@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;// или App\Libs\Img и \App::make('Img')
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $objs = Post::where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(10);
+
+        return view('home', compact('objs'));
     }
 
     public function postIndex(PostRequest $r)
@@ -41,6 +44,8 @@ class HomeController extends Controller
         } else {
             $r['image'] = '';
         }
+
+        $r['author_id']=Auth::user()->id;
 
         Post::create($r->all());
         return redirect()->back();

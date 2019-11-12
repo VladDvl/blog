@@ -56,4 +56,9 @@ class Post extends Model
     {
         return $this->belongsTo(Voyager::modelClass('Category'));
     }
+
+    public function userss()
+    {
+        $this->belongsTo(Voyager::modelClass('User'));
+    }
 }

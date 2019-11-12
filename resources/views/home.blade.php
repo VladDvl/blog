@@ -66,5 +66,14 @@
             </div>
         </div>
     </div>
+    <table>
+    @foreach($objs as $one)
+    <tr>
+      <td><a href="{{asset('#')}}">{{isset($one->title) ? $one->title : ''}}</a></td>
+      <td><a href="{{asset('#')}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
+    </tr>
+    @endforeach
+    </table>
+    <div>{!!$objs->links()!!}</div>
 </div>
 @endsection

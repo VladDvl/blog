@@ -14,7 +14,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-14">
             <div class="card">
                 <div class="card-header">Добавить пост</div>
 
@@ -49,8 +49,8 @@
                             <textarea class="form-control" id="editor" name="body"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="Catalogue">Каталог</label>
-                            <input type="text" class="form-control" id="Catalogue" name="category_id" placeholder="Каталог">
+                            <label for="Category">Категория</label>
+                            <input type="text" class="form-control" id="Category" name="category_id" placeholder="Категория">
                         </div>
                         <div class="form-group">
                             <label for="postImage">Изображение</label>
@@ -64,16 +64,35 @@
                     </form>
                 </div>
             </div>
-        </div>
+
+            <table class="home-table">
+            <tr>
+                <th>Название</th>
+                <th>Категория</th>
+                <th>Краткое описание</th>
+                <th>Комментариев</th>
+                <th>Создан</th>
+                <th>Обновлен</th>
+                <th>Действия</th>
+            </tr>
+            @foreach($objs as $one)
+            <tr>
+                <td><a href="{{asset('post/' . $one -> slug)}}">{{isset($one->title) ? $one->title : ''}}</a></td>
+                <td><a href="{{asset($one->category->slug)}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
+                <td>{!!isset($one->body) ? mb_substr($one->body, 0, 95) : ''!!}</td>
+                <td>N комментариев</td>
+                <td>{{isset($one->created_at) ? $one->created_at : ''}}</td>
+                <td>{{isset($one->updated_at) ? $one->updated_at : ''}}</td>
+                <td>
+                    <button>Edit</button><br>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            @endforeach
+            </table>
+            <div>{!!$objs->links()!!}</div>
+
+        </div><!--div col md-12-->
     </div>
-    <table>
-    @foreach($objs as $one)
-    <tr>
-      <td><a href="{{asset('#')}}">{{isset($one->title) ? $one->title : ''}}</a></td>
-      <td><a href="{{asset('#')}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
-    </tr>
-    @endforeach
-    </table>
-    <div>{!!$objs->links()!!}</div>
 </div>
 @endsection

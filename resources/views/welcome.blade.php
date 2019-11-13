@@ -68,5 +68,6 @@
     <a class="readWhole" href="{{asset('post/' . $object -> slug)}}">Читать полностью</a>
   </div><!-- /.blog-post -->
   @endforeach
+  <div>{!!$objs->links()!!}</div>
 	  
 @endsection

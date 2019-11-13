@@ -83,10 +83,10 @@
 
 @yield('content')
 
-      <nav class="blog-pagination">
+      <!--<nav class="blog-pagination">
         <a id="tuda" class="btn btn-outline-primary" href="{{asset('#')}}"><- Сюда</a>
         <a id="suda" class="btn btn-outline-secondary" href="{{asset('#')}}" tabindex="-1" aria-disabled="true">Туда -></a>
-      </nav>
+      </nav>-->
 
     </div><!-- /.blog-main -->
 

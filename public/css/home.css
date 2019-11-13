@@ -8,3 +8,18 @@ form {
     font-size: x-large;
     text-transform: uppercase;
 }
+
+.home-table {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid gray;
+}
+
+.home-table td, .home-table th {
+    border: 1px solid gray;
+    padding-left: 0.15rem;
+}
+
+tr td:nth-child(3), tr th:nth-child(3) {
+    width: 30px;
+}

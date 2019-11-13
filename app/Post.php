@@ -16,7 +16,7 @@ class Post extends Model
 
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'slug', 'meta_description', 'meta_keywords'];
 
-    protected $fillable = ['author_id', 'category_id', 'title', 'seo_title', 'excerpt', 'body', 'image', 'slug', 'meta_description', 'meta_keywords', 'status', 'featured'];
+    protected $fillable = ['author_id', 'category_id', 'title', 'seo_title', 'except', 'body', 'image', 'slug', 'meta_description', 'meta_keywords', 'status', 'featured'];
 
     const PUBLISHED = 'PUBLISHED';
 

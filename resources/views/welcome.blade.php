@@ -39,12 +39,12 @@
           <p class="mb-auto">{{mb_substr($thing->body,0,100)}} ...</p>
           <a href="{{asset('post/' . $thing->slug)}}" class="stretched-link">Continue reading</a>
         </div>
-        <div class="col-auto d-none d-lg-block">
+        <div class="col-auto d-none d-lg-block header-img">
           <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="{{asset('http://www.w3.org/2000/svg')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
           @if($thing->image)
-            <img widtg="200" height="250" src="{{asset('public/uploads/'.$thing->image)}}"/>
+            <img src="{{asset('public/uploads/'.$thing->image)}}"/>
           @else
-            <img widtg="200" height="250" src="{{asset('public/img/LightBulb.jpg')}}"/>
+            <img src="{{asset('public/img/LightBulb.jpg')}}"/>
           @endif
         </div>
       </div>
@@ -62,7 +62,7 @@
     <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> author_id}}</a></p>
     <hr>
     @if($thing->image)
-      <img widtg="200" height="250" src="{{asset('public/uploads/'.$thing->image)}}"/>
+      <img widtg="200" height="250" src="{{asset('public/uploads/'.$object->image)}}"/>
     @endif
     <p class="postBody">{!!mb_substr($object -> body,0,1500)!!}...</p>
     <a class="readWhole" href="{{asset('post/' . $object -> slug)}}">Читать полностью</a>

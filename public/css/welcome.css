@@ -20,3 +20,8 @@
   font-family: 'Colibri';
   font-weight: bolder;
 }
+
+.header-img img {
+  max-width: 200px;
+  max-height: 250px;
+}

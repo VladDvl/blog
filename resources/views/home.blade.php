@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label for="shortDescription">Короткое описание</label>
-                            <textarea class="form-control" id="shortDescription" name="except"></textarea>
+                            <textarea class="form-control" id="shortDescription" name="excerpt"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="editor">Описание</label>

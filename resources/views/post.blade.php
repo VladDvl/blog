@@ -21,10 +21,12 @@
       <div class="blog-post body-maintext">
         <h2 class="blog-post-title">{{(isset($one->title)) ? $one->title : ''}}</h2>
         <div class="row justify-content-between pb-4 mb-4 border-bottom container">
-        <p class="blog-post-meta">Автор: <a href="{{(isset($one->author_id)) ? $one->author_id : ''}}">user_name</a></p>
-        <p class="blog-post-meta">Опубликовано: {{(isset($one->creted_at)) ? $one->craated_at : ''}}</p>
+          <p class="blog-post-meta">Автор: <a href="{{(isset($one->author_id)) ? $one->author_id : ''}}">user_name</a></p>
+          <p class="blog-post-meta">Опубликовано: {{(isset($one->creted_at)) ? $one->craated_at : ''}}</p>
         </div>
-
+        @if($one->image)
+          <img src="{{asset('public/uploads/'.$one->image)}}"/>
+        @endif
         <p>{!!isset($one->body) ? $one->body : ''!!}</p>
       </div><!-- /.blog-post -->
 	  

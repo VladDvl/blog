@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $objs = Post::where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(6);
+        $objs = Post::with('category')->where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(6);
 
         return view('home', compact('objs'));
     }

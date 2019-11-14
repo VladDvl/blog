@@ -8,7 +8,7 @@ class PostController extends Controller
 {
     public function getIndex($slug = null)
     {
-        $one = Post::where('slug',$slug)->first();
+        $one = Post::with('userss','category')->where('slug',$slug)->first();
         return view('post',compact('one'));
     }
 }

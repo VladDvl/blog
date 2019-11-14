@@ -56,16 +56,16 @@
 
 @section('content')
 
-  @foreach($objs as $object)
+  @foreach($objs as $one)
   <div class="blog-post">
-    <h2 class="blog-post-title"><a href="{{asset('post/' . $object -> slug)}}">{{$object -> title}}</a></h2>
-    <p class="blog-post-meta">{{$object -> created_at}} by <a href="{{$object -> user_id}}">{{$object -> author_id}}</a></p>
+    <h2 class="blog-post-title"><a href="{{asset('post/' . $one -> slug)}}">{{$one -> title}}</a></h2>
+    @include('templates.links')
     <hr>
-    @if($thing->image)
-      <img widtg="200" height="250" src="{{asset('public/uploads/'.$object->image)}}"/>
+    @if($one->image)
+      <img widtg="200" height="250" src="{{asset('public/uploads/'.$one->image)}}"/>
     @endif
-    <p class="postBody">{!!mb_substr($object -> body,0,1500)!!}...</p>
-    <a class="readWhole" href="{{asset('post/' . $object -> slug)}}">Читать полностью</a>
+    <p class="postBody">{!!mb_substr($one -> body,0,1500)!!}...</p>
+    <a class="readWhole" href="{{asset('post/' . $one -> slug)}}">Читать полностью</a>
   </div><!-- /.blog-post -->
   @endforeach
   <div>{!!$objs->links()!!}</div>

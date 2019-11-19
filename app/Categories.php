@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Facades\Voyager;
 
 class Categories extends Model
 {
@@ -10,6 +11,6 @@ class Categories extends Model
 
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Voyager::modelClass('Post'), 'category_id');
     }
 }

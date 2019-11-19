@@ -41,7 +41,7 @@
           @endif
           @else
             <a class="text-muted" href="{{asset('home')}}">
-              <img id="avatarka" src="public/img/raccoon.svg" width="30" height="30" alt="avatar">
+              <img id="avatarka" src="{{asset('public/img/raccoon.svg')}}" width="30" height="30" alt="avatar">
             </a><!--avatarka-->
             <a class="nav-link dropdown-toggle" href="{{asset('home')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }}
@@ -62,7 +62,7 @@
   <div id="nav-category" class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
       @foreach($test as $cat)
-        <a class="p-2 text-muted" href="{{asset($cat->slug)}}">{{$cat->name}}</a>
+        <a class="p-2 text-muted" href="{{asset('cat/' . $cat->slug)}}">{{$cat->name}}</a>
       @endforeach
     </nav>
   </div>

@@ -78,7 +78,7 @@
             @foreach($objs as $one)
             <tr>
                 <td><a href="{{asset('post/' . $one -> slug)}}">{{isset($one->title) ? $one->title : ''}}</a></td>
-                <td><a href="{{asset($one->category->slug)}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
+                <td><a href="{{asset('cat/' . $one->category->slug)}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
                 <td>{!!isset($one->body) ? mb_substr($one->body, 0, 95) : ''!!}</td>
                 <td>N комментариев</td>
                 <td>{{isset($one->created_at) ? $one->created_at : ''}}</td>

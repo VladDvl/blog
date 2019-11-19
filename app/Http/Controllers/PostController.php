@@ -9,7 +9,7 @@ class PostController extends Controller
     protected function postLoads($id)
     {
         $obj = Post::find($id);
-        $obj->loads = $obj->loads+1;
+        $obj->loads = $obj->loads + 1;
         $obj->save();
     }
 
@@ -19,7 +19,7 @@ class PostController extends Controller
 
         $id = $one->id;
         $postLoads = $this->postLoads($id);
-        
+
         return view('post',compact('one'));
     }
 }

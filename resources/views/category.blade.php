@@ -1,8 +1,14 @@
 @extends('layouts.base')
 
+@section('scripts')
+  @parent
+  <script src="{{asset('public/js/modal.js')}}"></script>
+@endsection
+
 @section('styles')
   @parent
   <link href="{{asset('public/css/category.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('header')
@@ -20,7 +26,7 @@
           <h2 class="blog-post-title col-md-7">{{(isset($one->title)) ? $one->title : ''}}</h2>
           <div class="post-actions col-md-5">
             <a class="p-2 text-muted" href="{{asset('post/' . $one->slug)}}">Открыть</a>
-            <a class="p-2 text-muted" href="{{asset('#')}}">Просмотреть</a>
+            <a class="p-2 text-muted my-link" data-id="{{$one->id}}" href="{{asset('#')}}">Просмотреть</a>
           </div>
         </div>
         @include('templates.links')

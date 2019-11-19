@@ -173,6 +173,7 @@
   </p>
 </footer>
 @section('scripts')
+  <script src="{{asset('public/src/jquery-3.4.1.min.js')}}"></script>
 @show
 </body>
 </html>

@@ -34,9 +34,9 @@
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">{{$thing->category->name}}</strong>
-          <h3 class="mb-0">{{mb_substr($thing->title,0,15)}}</h3>
+          <h3 class="mb-0">{{mb_substr($thing->title,0,15)}}..</h3>
           <div class="mb-1 text-muted">{{$thing->created_at}}</div>
-          <p class="mb-auto">{{mb_substr($thing->body,0,100)}} ...</p>
+          <p class="mb-auto">{!!mb_substr($thing->body,0,100)!!} ...</p>
           <a href="{{asset('post/' . $thing->slug)}}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block header-img">
@@ -57,10 +57,9 @@
 @section('content')
 
   @foreach($objs as $one)
-  <div class="blog-post">
+  <div class="blog-post container">
     <h2 class="blog-post-title"><a href="{{asset('post/' . $one -> slug)}}">{{$one -> title}}</a></h2>
     @include('templates.links')
-    <hr>
     @if($one->image)
       <img widtg="200" height="250" src="{{asset('public/uploads/'.$one->image)}}"/>
     @endif

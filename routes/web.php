@@ -14,4 +14,6 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('post/{slug}', 'PostController@getIndex');
 Route::get('cat/{slug}', 'CategoryController@getIndex');
 
+Route::post('/ajax/modal', 'Ajax\ModalController@postIndex');
+
 Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце

@@ -168,9 +168,9 @@
   <p>
     <a href="{{asset('#')}}">Back to top</a>
   </p>
-  <p>
+  <!--<p>
     <a href="{{asset('#')}}">Настройки языка</a>
-  </p>
+  </p>-->
 </footer>
 @section('scripts')
   <script src="{{asset('public/src/jquery-3.4.1.min.js')}}"></script>

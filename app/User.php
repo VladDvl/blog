@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use TCG\Voyager\Facades\Voyager;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -36,4 +37,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_posts()
+    {
+        return $this->hasMany(Voyager::modelClass('Post'), 'author_id');
+    }
 }

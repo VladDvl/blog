@@ -1,5 +1,5 @@
 .modal-window {
-    position: fixed; /*или fixed - фикс скролл, absolute, для вывода окна поверх основного окна*/
+    position: absolute; /*или fixed - фикс скролл, absolute, для вывода окна поверх основного окна*/
     top: 150px;
     left: 50%;
     margin-left: -300px; /*чтобы поцентру: - половина ширины*/
@@ -19,4 +19,22 @@
     top: 0;
     left: 0;
     opacity: 0.7;
+}
+
+.modal-window-close {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: red;
+    font-size: 16px;
+}
+
+.modal-window-close:before {
+    position: relative;
+    top: -1px;
+    font-size: 14px;
+    content: "Закрыть";
 }

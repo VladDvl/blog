@@ -11,10 +11,12 @@ class CategoryController extends Controller
     public function getIndex($slug = null)
     {
         $cat = Categories::with('posts')->where('slug', $slug)->first();
-
         $objs = $cat->posts()->orderBy('id','DESC')->paginate(15);
 
-        //dd($objs);
-        return view('category',compact('cat','objs'));
+        if( count($objs) != 0 ) {
+            return view('category',compact('cat','objs'));
+        } else {
+            return view('no-category',compact('cat'));
+        }
     }
 }

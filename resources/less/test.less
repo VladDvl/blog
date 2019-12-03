@@ -1,0 +1,31 @@
+@body-background: #eeeeee;
+@body-font-size: 25px;
+@cc: 3;
+
+.bordered(@_color: #333333) {
+    border: solid 1px @_color;
+}
+
+.calc(@a: 1, @b: 2, @c: @cc) {
+    @d: @a + @b + @c;
+    @string: "content %s = %a + %b + %c";
+    content: %(@string, @d, @a, @b, @c);
+}
+
+body {
+    background-color: @body-background;
+    font-size: @body-font-size;
+}
+
+div {
+    .bordered();
+}
+
+h1:before {
+    .calc();
+}
+
+h1 {
+    color: red;
+    /*можно вложенные правила, но добавляется пробел перед :before*/
+}

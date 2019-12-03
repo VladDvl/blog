@@ -1,0 +1,14 @@
+body {
+  background-color: #eeeeee;
+  font-size: 25px;
+}
+div {
+  border: solid 1px #333333;
+}
+h1:before {
+  content: "content 6 = 1 + %b + %c";
+}
+h1 {
+  color: red;
+  /*можно вложенные правила, но добавляется пробел перед :before*/
+}

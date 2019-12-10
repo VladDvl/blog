@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Facades\Voyager;
+use App\Comments;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -41,5 +42,10 @@ class User extends \TCG\Voyager\Models\User
     public function user_posts()
     {
         return $this->hasMany(Voyager::modelClass('Post'), 'author_id');
+    }
+
+    public function commss()
+    {
+        return $this->hasMany('App\Comments', 'author_id');
     }
 }

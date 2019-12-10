@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
+use App\Comments;
 
 class Categories extends Model
 {

@@ -12,6 +12,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 Route::get('post/{slug}', 'PostController@getIndex');
+Route::post('post/{slug}', 'PostController@postIndex');
+
 Route::get('cat/{slug}', 'CategoryController@getIndex');
 
 Route::post('/ajax/modal', 'Ajax\ModalController@postIndex');

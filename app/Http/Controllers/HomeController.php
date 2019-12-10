@@ -26,7 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $objs = Post::with('category')->where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(6);
+        $objs = Post::with('category','comms')->where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(6);
+
+        foreach($objs as $one)
+        {
+            $howmany = count( $one->comms );
+            $comments = 'comments';
+            $one->$comments = $howmany;
+        }
 
         return view('home', compact('objs'));
     }

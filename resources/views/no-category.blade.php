@@ -2,7 +2,7 @@
 
 @section('styles')
   @parent
-  <link href="{{asset('public/css/test.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/category.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('header')

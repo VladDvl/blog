@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Resizable;
 use TCG\Voyager\Traits\Translatable;
+use App\Comments;
 
 class Post extends Model
 {
@@ -60,5 +61,10 @@ class Post extends Model
     public function userss()
     {
         return $this->belongsTo(Voyager::modelClass('User'),'author_id');
+    }
+
+    public function comms()
+    {
+        return $this->hasMany('App\Comments');
     }
 }

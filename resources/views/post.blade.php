@@ -33,14 +33,18 @@
         <p>{!!isset($one->body) ? $one->body : ''!!}</p>
       </div><!-- /.blog-post -->
 
+      <h3 class="text-muted">Комментарии</h3>
+
       @foreach($objs as $obj)
-      <div class="blog-post body-maintext">
+      <div id="comment" class="blog-post body-maintext">
+        <div class="row">
         @include('templates.coms')
-        <div class="row justify-content-between container">
+        <div class="col justify-content-between container">
           @if($obj->image)
             <img src="{{asset('public/uploads/'.$obj->image)}}"/>
           @endif
           <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
+        </div>
         </div>
         <p class="blog-post-meta">Опубликовано: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
       </div><!-- post-comment -->

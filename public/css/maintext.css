@@ -2,3 +2,23 @@ img {
     max-width: 42em;
     max-height: 42em;
 }
+
+#template-post-meta-com {
+    border-bottom: 1px solid #c0c4c7 !important;
+    /*padding-left: 0rem !important;*/
+    padding-right: 0rem !important;
+    padding-bottom: 0.2rem !important;
+    /*margin-left: 0.1rem !important;*/
+    margin-bottom: 0.2rem !important;
+  }
+
+.comment-post {
+    /*border: none !important;*/
+    border-right: 1px solid #bbbbbb !important;
+    margin-left: 0.8rem !important;
+    padding-left: 0.4rem !important;
+}
+
+#comment {
+    border-color: #A9A9A9;
+}

@@ -22,3 +22,9 @@ img {
 #comment {
     border-color: #A9A9A9;
 }
+
+#comment-image {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 35rem !important;
+}

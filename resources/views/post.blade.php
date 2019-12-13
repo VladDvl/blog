@@ -12,7 +12,7 @@
 @endsection
 
 @section('header')
-  <div id="block-header" class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+  <div id="block-header" class="{{$one->category->slug}} jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="">
       <h1 class="col-md-6 font-italic">{{isset($one->category->name) ? $one->category->name : ''}}</h1>
       <p class="col-md-6 font-italic"><a href="{{asset('cat/' . $one->category->slug)}}">К другим постам в категории</a></p>
@@ -41,7 +41,7 @@
         @include('templates.coms')
         <div class="col justify-content-between container">
           @if($obj->image)
-            <img src="{{asset('public/uploads/'.$obj->image)}}"/>
+            <img id="comment-image" src="{{asset('public/uploads/'.$obj->image)}}"/>
           @endif
           <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
         </div>

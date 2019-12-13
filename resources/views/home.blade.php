@@ -41,24 +41,18 @@
                             <input type="text" class="form-control" id="postName" name="title" placeholder="Введите название">
                         </div>
                         <div class="form-group">
-                            <label for="shortDescription">Короткое описание</label>
-                            <textarea class="form-control" id="shortDescription" name="excerpt"></textarea>
-                        </div>
-                        <div class="form-group">
                             <label for="editor">Описание</label>
                             <textarea class="form-control" id="editor" name="body"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="Category">Категория</label>
-                            <input type="text" class="form-control" id="Category" name="category_id" placeholder="Категория">
-                        </div>
+                        <label for="Category">Категория</label>
+                        <select class="form-group" id="Category" name="category_id">
+                            @foreach($cats as $cat)
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
                         <div class="form-group">
                             <label for="postImage">Изображение</label>
                             <input type="file" class="form-control" id="postImage" name="picture1" placeholder="Изображение">
-                        </div>
-                        <div class="form-group">
-                            <label for="Status">Статус</label>
-                            <input type="text" class="form-control" id="Status" name="status" placeholder="Статус">
                         </div>
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                     </form>

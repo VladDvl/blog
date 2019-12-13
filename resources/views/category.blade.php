@@ -12,7 +12,7 @@
 @endsection
 
 @section('header')
-  <div id="block-header" class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+  <div id="block-header" class="{{$cat->slug}} jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="">
       <h1 class="col-md-6 font-italic">{{isset($cat->name) ? $cat->name : ''}}</h1>
     </div>

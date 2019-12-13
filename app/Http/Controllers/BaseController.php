@@ -17,7 +17,7 @@ class BaseController extends Controller
             $one->$comments = $howmany;
         }
 
-        $things = Post::orderBy('id','DESC')->limit(2)->get();
+        $things = Post::inRandomOrder()->limit(2)->get();
         return view('welcome',compact('objs','things'));
     }
 }

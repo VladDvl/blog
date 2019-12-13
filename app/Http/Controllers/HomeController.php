@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;// или App\Libs\Img и \App::make('Img')
+use App\Categories;
 use Auth;
 
 class HomeController extends Controller
@@ -26,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $cats = Categories::orderBy('id','DESC')->get();
+
         $objs = Post::with('category','comms')->where('author_id', Auth::user()->id)->orderBy('id','DESC')->paginate(6);
 
         foreach($objs as $one)
@@ -35,7 +38,7 @@ class HomeController extends Controller
             $one->$comments = $howmany;
         }
 
-        return view('home', compact('objs'));
+        return view('home', compact('objs','cats'));
     }
 
     public function postIndex(PostRequest $r)

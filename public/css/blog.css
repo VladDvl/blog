@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   height: 2.75rem;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .nav-scroller .nav {
@@ -136,6 +137,7 @@ aside .p-4 {
 
 #avatarka {
   border-radius: 50%;
+  border: 1px solid gray;
 }
 
 #nav-category {
@@ -161,4 +163,125 @@ aside .p-4 {
   padding-bottom: 0.2rem !important;
   margin-left: 0.1rem !important;
   margin-bottom: 0.2rem !important;
+}
+
+a.btn {
+  margin-right: 0.8rem;
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.logout {
+  margin-right: 0.8rem;
+}
+
+.user {
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+#block-article-head {
+  padding-left: 0px;
+  margin-left: 0.05rem;
+  border-color: gray;
+  padding-bottom: 0.05rem !important;
+}
+
+/*header back*/
+.design {
+  background: bottom url("../img/categories/design.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: #343a40 !important;
+  text-shadow: white 1px 1px 0;
+}
+
+.games {
+  background: bottom url("../img/categories/games.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+}
+
+.music {
+  background: bottom url("../img/categories/music.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: rgb(16, 16, 114) !important;
+  text-shadow: palevioletred 1px 1px 0;
+}
+
+.programming {
+  background: bottom url("../img/categories/programming.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: rgb(7, 7, 43) !important;
+  text-shadow: rgb(146, 214, 180) 2px 2px 0;
+}
+
+.web {
+  background: right url("../img/categories/web.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: rgb(7, 7, 43) !important;
+  text-shadow: rgb(231, 231, 231) 2px 2px 0;
+}
+
+.security {
+  background: bottom url("../img/categories/security.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: white !important;
+  text-shadow: rgb(20, 94, 63) 1px 1px 0;
+}
+
+.science {
+  background: right url("../img/categories/science.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+}
+
+.sport {
+  background: right url("../img/categories/sport.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: #343a40 !important;
+  text-shadow: rgb(213, 245, 99) 2px 2px 0;
+}
+
+.world {
+  background: right 50% url("../img/categories/world.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: yellow !important;
+  text-shadow: rgb(58, 52, 52) 2px 2px 0;
+}
+
+.self {
+  background: right url("../img/categories/self.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: white !important;
+  text-shadow: black 3px 1px 0;
+}
+
+.reviews {
+  background: right url("../img/categories/reviews.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+}
+
+.guides {
+  background: bottom url("../img/categories/guides.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white !important;
+  text-shadow: black 2px 1px 0;
 }

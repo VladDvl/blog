@@ -42,7 +42,7 @@
         <div class="col-auto d-none d-lg-block header-img">
           <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="{{asset('http://www.w3.org/2000/svg')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
           @if($thing->image)
-            <img src="{{asset('public/uploads/'.$thing->image)}}"/>
+            <img src="{{asset('public/uploads/posts/'.$thing->image)}}"/>
           @else
             <img src="{{asset('public/img/LightBulb.jpg')}}"/>
           @endif
@@ -61,7 +61,7 @@
     <h2 class="blog-post-title"><a href="{{asset('post/' . $one -> slug)}}">{{$one -> title}}</a></h2>
     @include('templates.links')
     @if($one->image)
-      <img widtg="200" height="250" src="{{asset('public/uploads/'.$one->image)}}"/>
+      <img widtg="200" height="250" src="{{asset('public/uploads/posts/'.$one->image)}}"/>
     @endif
     <p class="postBody">{!!mb_substr($one -> body,0,1500)!!}...</p>
     <a class="readWhole" href="{{asset('post/' . $one -> slug)}}">Читать полностью</a>

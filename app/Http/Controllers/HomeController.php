@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\AvatarRequest;
 use App\Post;// или App\Libs\Img и \App::make('Img')
 use App\Categories;
+use App\User;
 use Auth;
 
 class HomeController extends Controller
@@ -47,7 +49,7 @@ class HomeController extends Controller
         $r['status'] = 'PUBLISHED';
         $r['slug'] = date('y_m_d_h_i_s');
 
-        $pic = \App::make('\App\Libs\Img')->url($_FILES['picture1']['tmp_name']);
+        $pic = \App::make('\App\Libs\Img')->url('post',$_FILES['picture1']['tmp_name']);
         //dd($pic);
         if($pic) {
             $r['image'] = $pic;
@@ -59,5 +61,34 @@ class HomeController extends Controller
 
         Post::create($r->all());
         return redirect()->back();
+    }
+
+    public function avatarChange(AvatarRequest $r)
+    {
+        if( $r->input('action') == 'change' ) {
+            
+            $pic = \App::make('\App\Libs\Img')->url('avatar',$_FILES['avatar1']['tmp_name']);
+
+            if($pic) {
+                $r['avatar'] = $pic;
+            } else {
+                $r['avatar'] = '';
+            }
+
+            $userr = User::find(Auth::user()->id);
+            $userr->update($r->all());
+            return redirect()->back();
+
+        } elseif ( $r->input('action') == 'delete' ) {
+
+            $r['avatar'] = '';
+
+            $userr = User::find(Auth::user()->id);
+            $userr->update($r->all());
+            return redirect()->back();
+
+        }
+
+        
     }
 }

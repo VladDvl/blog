@@ -37,7 +37,7 @@
           @endif
           @else
             <a class="text-muted" href="{{asset('home')}}">
-            @if( Auth::user()->avatar != 'users/default.png' )
+            @if( Auth::user()->avatar != 'users/default.png' and Auth::user()->avatar != '' )
               <img id="avatarka" src="{{asset('public/uploads/avatars/' . Auth::user()->avatar)}}" width="36" height="36" alt="avatar">
             @else
               <img id="avatarka" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">

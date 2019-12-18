@@ -7,7 +7,7 @@ class Img
 {
     public function __construct(){}
     
-    public function url($path, $directory = null, $name = null)
+    public function url($content, $path, $directory = null, $name = null)
     {
         if($path != null) {
             if($directory != null) {
@@ -16,7 +16,17 @@ class Img
                     mkdir($dir, 0777, true);
                 }
             } else {
-                $dir = public_path().'/uploads';
+
+                if($content == 'post') {
+                    $dir = public_path().'/uploads/posts';
+                } elseif($content == 'comment') {
+                    $dir = public_path().'/uploads/comments';
+                } elseif($content == 'avatar') {
+                    $dir = public_path().'/uploads/avatars';
+                } else {
+                    $dir = public_path().'/uploads';
+                }
+                
             }
             if($name != null) {
                 $filename = $name;

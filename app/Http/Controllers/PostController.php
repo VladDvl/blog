@@ -46,7 +46,7 @@ class PostController extends Controller
         $r['slug'] = $slug;
         $r['post_id']= $one->id;
         
-        $pic = \App::make('\App\Libs\Img')->url($_FILES['picture1']['tmp_name']);
+        $pic = \App::make('\App\Libs\Img')->url('comment',$_FILES['picture1']['tmp_name']);
         if($pic) {
             $r['image'] = $pic;
         } else {

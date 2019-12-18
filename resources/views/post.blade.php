@@ -28,7 +28,7 @@
         <h2 class="blog-post-title">{{(isset($one->title)) ? $one->title : ''}}</h2>
         @include('templates.links')
         @if($one->image)
-          <img src="{{asset('public/uploads/'.$one->image)}}"/>
+          <img src="{{asset('public/uploads/posts/'.$one->image)}}"/>
         @endif
         <p>{!!isset($one->body) ? $one->body : ''!!}</p>
       </div><!-- /.blog-post -->
@@ -41,7 +41,7 @@
         @include('templates.coms')
         <div class="col justify-content-between container">
           @if($obj->image)
-            <img id="comment-image" src="{{asset('public/uploads/'.$obj->image)}}"/>
+            <img id="comment-image" src="{{asset('public/uploads/comments/'.$obj->image)}}">
           @endif
           <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
         </div>

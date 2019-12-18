@@ -2,6 +2,33 @@ form {
     font-weight: 700;
 }
 
+.card {
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    margin-left: 0.1rem;
+}
+
+#input-avatar-div {
+    margin-left: 0.05rem;
+}
+
+#input-avatar-div button {
+    margin-right: 0.5rem;
+}
+
+#input-avatar-div input {
+    margin-right: 0.8rem;
+}
+
+.card-body img {
+    width: 100px;
+    height: 100px;
+    padding: 2px;
+    border: 1px solid black;
+}
+
 .card-header {
     font-weight: 700;
     font-style: italic;

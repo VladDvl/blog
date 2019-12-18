@@ -9,12 +9,43 @@
   @parent
   <script src="{{asset('public/src/ckeditor5-build-classic/ckeditor.js')}}"></script>
   <script src="{{asset('public/js/ckcreate.js')}}"></script>
+  <script src="{{asset('public/js/home.js')}}"></script>
 @endsection
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-14">
+
+            <div class="card">
+                <div class="card-header">Аватар пользователя</div>
+                <div class="card-body justify-content-start row">
+                    @if( Auth::user()->avatar != 'users/default.png' and Auth::user()->avatar != '' )
+                        <img src="{{asset('public/uploads/avatars/' . Auth::user()->avatar)}}" alt="avatar">
+                    @else
+                        <img src="{{asset('public/img/default-avatar.png')}}" alt="avatar">
+                    @endif
+
+                    <form class="col" method="post" action="{{asset('home/avatar')}}" enctype="multipart/form-data">
+                        {!!csrf_field()!!}
+                        @if(count($errors)>0)
+                            @foreach($errors->all() as $ers)
+                                <div class="red">
+                                    {{$ers}}
+                                </div>
+                            @endforeach
+                        @endif
+                        <div id="input-avatar-div" class="form-group row">
+                            <button id="input-avatar-button" type="submit" class="btn btn-primary" name="action" value="change">Изменить</button>
+                            <input id="input-avatar-img" type="file" class="col form-control" id="avatarImage" name="avatar1" placeholder="Изображение">
+                        </div>
+                        <div id="delete-avatar-div" class="form-group">
+                            <button id="delete-avatar-button" type="submit" class="btn btn-primary" name="action" value="delete">Удалить</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!--avatar-->
+
             <div class="card">
                 <div class="card-header">Добавить пост</div>
 

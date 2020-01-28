@@ -14,8 +14,13 @@
 @section('header')
   <div id="block-header" class="{{$one->category->slug}} jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="">
-      <h1 class="col-md-6 font-italic">{{isset($one->category->name) ? $one->category->name : ''}}</h1>
-      <p class="col-md-6 font-italic"><a href="{{asset('cat/' . $one->category->slug)}}">К другим постам в категории</a></p>
+      @if( App::getLocale() == 'en')
+        <h1 class="col-md-6 font-italic">{{isset($one->category->name) ? ucfirst($one->category->slug) : ''}}</h1>
+        <p class="col-md-6 font-italic"><a href="{{asset('cat/' . $one->category->slug)}}">Return to other articles in category</a></p>
+      @else
+        <h1 class="col-md-6 font-italic">{{isset($one->category->name) ? $one->category->name : ''}}</h1>
+        <p class="col-md-6 font-italic"><a href="{{asset('cat/' . $one->category->slug)}}">К другим постам в категории</a></p>
+      @endif
       <!--<p class="lead my-3">Это блог со статьями на различные тематики. Здесь пишут о программировании, играх и др. Статьи обсуждают в комментариях под ними. Для комментирования нужно зарегистрироваться.</p>-->
       <!--<p class="lead mb-0"><a href="{{asset('#')}}" class="text-white font-weight-bold">Continue reading...</a></p>-->
     </div>
@@ -33,7 +38,7 @@
         <p>{!!isset($one->body) ? $one->body : ''!!}</p>
       </div><!-- /.blog-post -->
 
-      <h3 class="text-muted">Комментарии</h3>
+      <h3 class="text-muted">{{__('menu.Comms')}}</h3>
 
       @foreach($objs as $obj)
       <div id="comment" class="blog-post body-maintext">
@@ -46,12 +51,12 @@
           <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
         </div>
         </div>
-        <p class="blog-post-meta">Опубликовано: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
+        <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
       </div><!-- post-comment -->
       @endforeach
 
       <div class="card">
-        <div class="card-header">Добавить Комментарий</div>
+        <div class="card-header">{{__('menu.AddComment')}}</div>
         <div class="card-body">
         @guest
           @if (Route::has('register'))
@@ -68,14 +73,14 @@
               @endforeach
             @endif
             <div class="form-group">
-              <label for="editor">Описание</label>
+              <label for="editor">{{__('menu.Description')}}</label>
               <textarea class="form-control" id="editor" name="body"></textarea>
             </div>
             <div class="form-group">
-              <label for="postImage">Изображение</label>
+              <label for="postImage">{{__('menu.Image')}}</label>
               <input type="file" class="form-control" id="postImage" name="picture1" placeholder="Изображение">
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary">{{__('menu.Send')}}</button>
           </form>
         @endguest
         </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="It blog">
 
-    <title>Blog</title>
+    <title>{{__('menu.Blog')}}</title>
 
     <link href="{{asset('public/img/favicon.png')}}" rel="shortcut icon" type="image/png">
 	  <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -19,21 +19,30 @@
     <div class="container">
   <header id="header" class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <p class="text-muted">
+
+      <div class="col-4 pt-1 text-muted">
+        <!--<p class="text-muted">
           <?php
-            echo date('l, F jS Y');
+            //echo date('l, F jS Y');
           ?>
-        </p>
+        </p>-->
+        <p>
+          {{__('menu.Language')}}:
+          <ul class="list-unstyled">
+            <a href="{{asset('/?lang=en')}}">{{__('menu.English')}}</a>
+            <a href="{{asset('/?lang=ru')}}">{{__('menu.Russian')}}</a>
+          </ul>
+        </p><!--lang-->
       </div>
+
       <div id="site-logo" class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="{{asset('/')}}">Blog</a>
+        <a class="blog-header-logo text-dark" href="{{asset('/')}}">{{__('menu.Blog')}}</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
 		    @guest
-          <a class="btn btn-sm btn-outline-secondary" href="{{asset('login')}}">Sign in</a>
+          <a class="btn btn-sm btn-outline-secondary" href="{{asset('login')}}">{{__('menu.Sign')}}</a>
           @if (Route::has('register'))
-            <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}">{{ __('menu.Register') }}</a>
           @endif
           @else
             <a class="text-muted" href="{{asset('home')}}">
@@ -49,7 +58,7 @@
             <a class="btn-outline-secondary logout" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
-              {{ __('Logout') }}
+              {{ __('menu.Logout') }}
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
@@ -62,7 +71,11 @@
   <div id="nav-category" class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
       @foreach($test as $cat)
+        @if( App::getLocale() == 'en')
+          <a class="p-2 text-muted" href="{{asset('cat/' . $cat->slug)}}">{{ucfirst($cat->slug)}}</a>
+        @else
         <a class="p-2 text-muted" href="{{asset('cat/' . $cat->slug)}}">{{$cat->name}}</a>
+        @endif
       @endforeach
     </nav>
   </div>
@@ -74,12 +87,6 @@
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
-      <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
-        <h3>
-          Публикации
-        </h3>
-        <!--<b><a id="artdate" href="{{asset('#')}}">Выбрать дату</a></b>-->
-      </div>
 
 @yield('content')
 
@@ -93,7 +100,7 @@
     <aside class="col-md-4 blog-sidebar">
 
       <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="font-italic">Новые пользователи</h4>
+        <h4 class="font-italic">{{__('menu.NewUsers')}}</h4>
         <ol class="list-unstyled mb-0">
         @foreach($usrs as $user)
           <li><a href="{{(isset($user->id)) ? $user->id : ''}}">{{$user->name}}</a></li>
@@ -102,7 +109,7 @@
       </div><!--top users-->
 
       <div class="p-4">
-        <h4 class="font-italic">Самое просматриваемое</h4>
+        <h4 class="font-italic">{{__('menu.Viewed')}}</h4>
         <ol class="mb-0">
         @foreach($posts as $post)
           <li><a href="{{asset('post/' . $post->slug)}}">{{mb_substr($post->title, 0, 50)}}..</a></li>
@@ -111,15 +118,15 @@
       </div><!--best articles-->
 
       <div class="p-4">
-        <h4 class="font-italic">Последний комментарий</h4>
+        <h4 class="font-italic">{{__('menu.LastComment')}}</h4>
         <a href="{{asset('post/' . $comment->postss->slug)}}">{!!mb_substr($comment->body, 0, 95)!!}</a>
       </div><!--daily comment-->
 
       <div class="p-4">
-        <h4 class="font-italic">Информация</h4>
-        <p>Пользователей: {{$all_userss}}</p>
-        <p>Статей: {{$all_postss}}</p>
-        <p>Комментариев: {{$all_commentss}}</p>
+        <h4 class="font-italic">{{__('menu.Information')}}</h4>
+        <p>{{__('menu.AllUsers')}}: {{$all_userss}}</p>
+        <p>{{__('menu.AllArticles')}}: {{$all_postss}}</p>
+        <p>{{__('menu.AllComments')}}: {{$all_commentss}}</p>
       </div><!--visitiors-->
 
     </aside><!-- /.blog-sidebar -->
@@ -129,13 +136,11 @@
 </main><!-- /.container -->
 
 <footer class="blog-footer">
-  <p>Blog built by <a href="{{asset('https://github.com/VladDvl')}}">VladDvl</a>.</p>
+  <p>{{__('menu.Built')}} <a href="{{asset('https://github.com/VladDvl')}}">VladDvl</a>.</p>
   <p>
-    <a href="{{asset('#')}}">Back to top</a>
+    <a href="{{asset('#')}}">{{__('menu.Back')}}</a>
   </p>
-  <!--<p>
-    <a href="{{asset('#')}}">Настройки языка</a>
-  </p>-->
+
 </footer>
 @section('scripts')
   <script src="{{asset('public/src/jquery-3.4.1.min.js')}}"></script>

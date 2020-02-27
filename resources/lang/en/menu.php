@@ -52,4 +52,6 @@ return [
     'Forgot' => 'Forgot Your Password?',
     'Name' => 'Name',
     'Confirm' => 'Confirm Password',
+    'Loads' => 'Loads',
+    'Registered' => 'Registered',
 ];

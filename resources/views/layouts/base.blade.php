@@ -103,7 +103,7 @@
         <h4 class="font-italic">{{__('menu.NewUsers')}}</h4>
         <ol class="list-unstyled mb-0">
         @foreach($usrs as $user)
-          <li><a href="{{(isset($user->id)) ? $user->id : ''}}">{{$user->name}}</a></li>
+          <li><a href="{{asset('user/' . $user->id)}}">{{$user->name}}</a></li>
         @endforeach
         </ol>
       </div><!--top users-->

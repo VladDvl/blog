@@ -18,5 +18,6 @@ route::group(['middleware' => ['lang']], function(){
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('post/{slug}', 'PostController@getIndex');
     Route::get('cat/{slug}', 'CategoryController@getIndex');
+    Route::get('user/{slug}', 'ProfileController@getIndex');
     Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце
 });

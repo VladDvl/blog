@@ -54,4 +54,5 @@ return [
     'Confirm' => 'Confirm Password',
     'Loads' => 'Loads',
     'Registered' => 'Registered',
+    'User_no_posts' => 'This user has no posts',
 ];

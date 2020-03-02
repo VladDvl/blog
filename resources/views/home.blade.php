@@ -117,8 +117,8 @@
                 <td>{{isset($one->created_at) ? $one->created_at : ''}}</td>
                 <td>{{isset($one->updated_at) ? $one->updated_at : ''}}</td>
                 <td>
-                    <button>{{__('menu.Edit')}}</button><br>
-                    <button>{{__('menu.Delete')}}</button>
+                    <button id="edit-post-button">{{__('menu.Edit')}}</button><br>
+                    <button id="delete-post-button">{{__('menu.Delete')}}</button>
                 </td>
             </tr>
             @endforeach

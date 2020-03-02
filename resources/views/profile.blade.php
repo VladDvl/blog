@@ -53,7 +53,7 @@
     </div><!-- /.blog-post -->
 @endforeach
 @else
-<p>У этого пользователя нету постов.</p>
+<p>{{__('menu.User_no_posts')}}.</p>
 @endif
 
 <div>{!!$objs->links()!!}</div>

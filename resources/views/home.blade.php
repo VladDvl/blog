@@ -94,6 +94,17 @@
                 </div>
             </div>
 
+
+            <form id="table-form" method="post" action="{{asset('home/table')}}" enctype="multipart/form-data">
+                {!!csrf_field()!!}
+                @if(count($errors)>0)
+                    @foreach($errors->all() as $ers)
+                        <div class="red">
+                            {{$ers}}
+                        </div>
+                    @endforeach
+                @endif
+
             <table class="home-table">
             <tr>
                 <th>{{__('menu.Title')}}</th>
@@ -117,13 +128,16 @@
                 <td>{{isset($one->created_at) ? $one->created_at : ''}}</td>
                 <td>{{isset($one->updated_at) ? $one->updated_at : ''}}</td>
                 <td>
-                    <button id="edit-post-button">{{__('menu.Edit')}}</button><br>
-                    <button id="delete-post-button">{{__('menu.Delete')}}</button>
+                    <button class="edit-post-button" type="sybmit" name="edit" value="{{$one->id}}">{{__('menu.Edit')}}</button><br>
+                    <button class="delete-post-button" type="sybmit" name="delete" value="{{$one->id}}">{{__('menu.Delete')}}</button>
                 </td>
             </tr>
             @endforeach
             </table>
             <div>{!!$objs->links()!!}</div>
+
+
+            </form>
 
         </div><!--div col md-12-->
     </div>

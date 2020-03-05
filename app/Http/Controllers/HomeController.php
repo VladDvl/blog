@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\AvatarRequest;
+use App\Http\Requests\HomeTableRequest;
 use App\Post;// или App\Libs\Img и \App::make('Img')
 use App\Categories;
 use App\User;
@@ -61,6 +62,29 @@ class HomeController extends Controller
 
         Post::create($r->all());
         return redirect()->back();
+    }
+
+    public function homeTable(HomeTableRequest $req)
+    {
+        if( $req->input('delete') ) {
+
+            $input = $req->input();
+            $post_id = $input['delete'];
+            //dd($post_id);
+            $query = Post::where('id', $post_id)->delete();
+
+            return redirect()->back();
+
+        } else if ( $req->input('edit') ) {
+
+            $input = $req->input();
+            $post_id = $input['edit'];
+            dd($post_id);
+            //$query = Post::where('id', $post_id)->select();
+
+            return redirect()->back();
+
+        }
     }
 
     public function avatarChange(AvatarRequest $r)

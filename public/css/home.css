@@ -51,3 +51,7 @@ form {
 tr td:nth-child(3), tr th:nth-child(3) {
     width: 30px;
 }
+
+#table-form {
+    font-weight: 400;
+}

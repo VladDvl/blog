@@ -23,8 +23,8 @@ ava2.onclick = function() {
     }
 }
 
-var edit_actions = document.querySelectorAll('#edit-post-button');
-console.log(edit_actions.length);
+var edit_actions = document.querySelectorAll('.edit-post-button');
+//console.log(edit_actions.length);
 edit_actions.forEach(function(edit_item) {
 edit_item.onclick = function() {
     if(confirm('Редактировать пост?')) {
@@ -35,8 +35,8 @@ edit_item.onclick = function() {
 }
 });
 
-var del_actions = document.querySelectorAll('#delete-post-button');
-console.log(del_actions.length);
+var del_actions = document.querySelectorAll('.delete-post-button');
+//console.log(del_actions.length);
 del_actions.forEach(function(del_item) {
 del_item.onclick = function() {
     if(confirm('Удалить пост?')) {

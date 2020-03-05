@@ -4,6 +4,7 @@ Auth::routes();
 
 Route::post('home','HomeController@postIndex');
 Route::post('home/avatar','HomeController@avatarChange');
+Route::post('home/table','HomeController@homeTable');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

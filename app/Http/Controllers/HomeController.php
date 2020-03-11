@@ -28,7 +28,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    protected function getPostId($req = null)
+    {
+        $post_id = null;
+        if ( $req != null ) {
+
+            $input = $req->input();
+            if( (array_key_exists('delete', $input) == true) ) {
+                $post_id = $input['delete'];
+            } else if(array_key_exists('edit', $input) == true) {
+                $post_id = $input['edit'];
+            } else {
+                $post_id = null;
+            }
+        }
+        return $post_id;
+    }
+
+    protected function homeObjs()
     {
         $cats = Categories::orderBy('id','DESC')->get();
 
@@ -41,50 +58,101 @@ class HomeController extends Controller
             $one->$comments = $howmany;
         }
 
+        $objects = compact('objs','cats');
+        return $objects;
+    }
+
+    public function index()
+    {
+        $objects = $this->homeObjs();
+        $objs = $objects['objs'];
+        $cats = $objects['cats'];
+
         return view('home', compact('objs','cats'));
     }
 
     public function postIndex(PostRequest $r)
     {
-        /*dd($r->all());*/
-        $r['status'] = 'PUBLISHED';
-        $r['slug'] = date('y_m_d_h_i_s');
+        $input = $r->input();
 
-        $pic = \App::make('\App\Libs\Img')->url('post',$_FILES['picture1']['tmp_name']);
-        //dd($pic);
-        if($pic) {
-            $r['image'] = $pic;
-        } else {
-            $r['image'] = '';
+        if( (array_key_exists('create', $input) == true) ) {
+
+            /*dd($r->all());*/
+            $r['status'] = 'PUBLISHED';
+            $r['slug'] = date('y_m_d_h_i_s');
+
+            $pic = \App::make('\App\Libs\Img')->url('post',$_FILES['picture1']['tmp_name']);
+            //dd($pic);
+            if($pic) {
+                $r['image'] = $pic;
+            } else {
+                $r['image'] = '';
+            }
+
+            $r['author_id']=Auth::user()->id;
+
+            Post::create($r->all());
+
+        } else if( (array_key_exists('update', $input) == true) ) {
+
+            //dd($r->all());
+            $post_id = $input['update'];
+
+            $pic = \App::make('\App\Libs\Img')->url('post',$_FILES['picture1']['tmp_name']);
+            //dd($pic);
+            if($pic) {
+                $r['image'] = $pic;
+            } else {
+                $r['image'] = '';
+            }
+            
+            $title = $r['title'];
+            $body = $r['body'];
+            $category_id = $r['category_id'];
+            $image = $r['image'];
+            $update_objs = compact('title','body','category_id','image');
+
+            Post::where('id', $post_id)->update($update_objs);
+
         }
 
-        $r['author_id']=Auth::user()->id;
-
-        Post::create($r->all());
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function homeTable(HomeTableRequest $req)
     {
         if( $req->input('delete') ) {
 
-            $input = $req->input();
-            $post_id = $input['delete'];
-            //dd($post_id);
+            $post_id = $this->getPostId($req);
             $query = Post::where('id', $post_id)->delete();
 
             return redirect()->back();
 
         } else if ( $req->input('edit') ) {
 
-            $input = $req->input();
-            $post_id = $input['edit'];
-            dd($post_id);
-            //$query = Post::where('id', $post_id)->select();
+            $post_id = $this->getPostId($req);
+            $query = Post::where('id', $post_id)->first();
+            $slug = $query->slug;
+
+            return redirect()->route('edit_post', ['slug' => $slug]);
+
+        } else {
 
             return redirect()->back();
 
         }
+    }
+
+    public function editPost($slug = null)
+    {
+        $objects = $this->homeObjs();
+        $objs = $objects['objs'];
+        $cats = $objects['cats'];
+
+        $edit_post = Post::where('slug', $slug)->first();
+        $post_id = $edit_post->id;
+
+        return view('home', compact('objs','cats','post_id','edit_post'));
     }
 
     public function avatarChange(AvatarRequest $r)

@@ -69,14 +69,30 @@
                         @endif
                         <div class="form-group">
                             <label for="postName">{{__('menu.Title')}}</label>
-                            <input type="text" class="form-control" id="postName" name="title" placeholder="{{__('menu.WriteTitle')}}">
+                            @if( !empty($post_id) )
+                              <input type="text" class="form-control" id="postName" name="title" value="{{$edit_post->title}}">
+                            @else
+                              <input type="text" class="form-control" id="postName" name="title" placeholder="{{__('menu.WriteTitle')}}">
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="editor">{{__('menu.Description')}}</label>
-                            <textarea class="form-control" id="editor" name="body"></textarea>
+                            @if( !empty($post_id) )
+                              <textarea class="form-control" id="editor" name="body">{!!$edit_post->body!!}</textarea>
+                            @else
+                              <textarea class="form-control" id="editor" name="body"></textarea>
+                            @endif
                         </div>
                         <label for="Category">{{__('menu.Category')}}</label>
                         <select class="form-group" id="Category" name="category_id">
+                            @if( !empty($post_id) )
+
+                              @if( App::getLocale() == 'en')
+                                <option selected value="{{$edit_post->category->id}}">{{ucfirst($edit_post->category->slug)}}</option>
+                              @else
+                                <option selected value="{{$edit_post->category->id}}">{{ucfirst($edit_post->category->name)}}</option>
+                              @endif
+
                             @foreach($cats as $cat)
                               @if( App::getLocale() == 'en')
                                 <option value="{{$cat->id}}">{{ucfirst($cat->slug)}}</option>
@@ -84,12 +100,28 @@
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
                               @endif
                             @endforeach
+
+                            @else
+
+                            @foreach($cats as $cat)
+                              @if( App::getLocale() == 'en')
+                                <option value="{{$cat->id}}">{{ucfirst($cat->slug)}}</option>
+                              @else
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                              @endif
+                            @endforeach
+
+                            @endif
                         </select>
                         <div class="form-group">
                             <label for="postImage">{{__('menu.Image')}}</label>
                             <input type="file" class="form-control" id="postImage" name="picture1" placeholder="Изображение">
                         </div>
-                        <button type="submit" class="btn btn-primary">{{__('menu.Save')}}</button>
+                        @if( !empty($post_id) )
+                          <button type="submit" class="btn btn-primary" name="update" value="{{$edit_post->id}}">{{__('menu.Save')}}</button>
+                        @else
+                          <button type="submit" class="btn btn-primary" name="create">{{__('menu.Save')}}</button>
+                        @endif
                     </form>
                 </div>
             </div>

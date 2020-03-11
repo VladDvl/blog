@@ -17,6 +17,7 @@ Route::post('/ajax/modal', 'Ajax\ModalController@postIndex');
 route::group(['middleware' => ['lang']], function(){
     Route::get('/','BaseController@getIndex');
     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('home/{slug}', 'HomeController@editPost')->name('edit_post');
     Route::get('post/{slug}', 'PostController@getIndex');
     Route::get('cat/{slug}', 'CategoryController@getIndex');
     Route::get('user/{slug}', 'ProfileController@getIndex');

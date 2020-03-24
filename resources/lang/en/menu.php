@@ -55,4 +55,6 @@ return [
     'Loads' => 'Loads',
     'Registered' => 'Registered',
     'User_no_posts' => 'This user has no posts',
+    'Search' => 'Search',
+    'Find' => 'Find',
 ];

@@ -37,7 +37,14 @@
 
       <div id="site-logo" class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="{{asset('/')}}">{{__('menu.Blog')}}</a>
+
+        <form id="site_search_form" class="row" method="GET" action="{{asset('#')}}">
+          <input id="search_input" name="search" type="text" placeholder="&#128269;{{__('menu.Search')}}">
+          <button id="search_button" name="submit" type="submit">{{__('menu.Find')}}</button>
+        </form>
+
       </div>
+
       <div class="col-4 d-flex justify-content-end align-items-center">
 		    @guest
           <a class="btn btn-sm btn-outline-secondary" href="{{asset('login')}}">{{__('menu.Sign')}}</a>

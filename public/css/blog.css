@@ -189,6 +189,30 @@ a.btn {
   padding-bottom: 0.05rem !important;
 }
 
+#site_search_form {
+  margin-top: 0.5rem;
+}
+
+#search_input {
+  width: 80%;
+  text-align: center;
+  border: 1px solid rgb(80, 79, 79);
+  border-radius: 5px;
+  font-size: 16px;
+  color: rgb(77, 75, 75);
+}
+
+#search_button {
+  width: 16%;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  border: 1px solid rgb(80, 79, 79);
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+  color: rgb(43, 42, 42);
+}
+
 /*header back*/
 .design {
   background: bottom url("../img/categories/design.jpg");

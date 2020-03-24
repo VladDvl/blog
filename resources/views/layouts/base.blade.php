@@ -38,7 +38,7 @@
       <div id="site-logo" class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="{{asset('/')}}">{{__('menu.Blog')}}</a>
 
-        <form id="site_search_form" class="row" method="GET" action="{{asset('#')}}">
+        <form id="site_search_form" class="row" method="GET" action="{{asset('search')}}">
           <input id="search_input" name="search" type="text" placeholder="&#128269;{{__('menu.Search')}}">
           <button id="search_button" name="submit" type="submit">{{__('menu.Find')}}</button>
         </form>

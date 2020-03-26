@@ -37,6 +37,7 @@ return [
     'Title' => 'Title',
     'WriteTitle' => 'Write a title',
     'Category' => 'Category',
+    'Categories' => 'Categories',
     'Save' => 'Save',
     'Short' => 'Short description',
     'Created' => 'Created',
@@ -45,6 +46,7 @@ return [
     'Edit' => 'Edit',
     'Sign' => 'Sign in',
     'Register' => 'Register',
+    'Registered' => 'Registered',
     'Login' => 'Login',
     'Address' => 'Address',
     'Password' => 'Password',
@@ -57,4 +59,7 @@ return [
     'User_no_posts' => 'This user has no posts',
     'Search' => 'Search',
     'Find' => 'Find',
+    'Users' => 'Users',
+    'EnterAtLeast' => 'Enter at least 3 characters',
+    'NothingFind' => 'Nothing find',
 ];

@@ -151,7 +151,7 @@
             <tr>
                 <td><a href="{{asset('post/' . $one -> slug)}}">{{isset($one->title) ? $one->title : ''}}</a></td>
                 @if( App::getLocale() == 'en')
-                  <td><a href="{{asset('cat/' . $one->category->slug)}}">{{isset($one->category->name) ? ucfirst($one->category->slug) : ''}}</a></td>
+                  <td><a href="{{asset('cat/' . $one->category->slug)}}">{{isset($one->category->slug) ? ucfirst($one->category->slug) : ''}}</a></td>
                 @else
                   <td><a href="{{asset('cat/' . $one->category->slug)}}">{{isset($one->category->name) ? $one->category->name : ''}}</a></td>
                 @endif

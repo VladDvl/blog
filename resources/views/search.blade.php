@@ -7,7 +7,7 @@
 
 @section('styles')
   @parent
-  <link href="{{asset('public/css/category.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/search.css')}}" rel="stylesheet"/>
   <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 

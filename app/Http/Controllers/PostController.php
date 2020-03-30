@@ -31,7 +31,8 @@ class PostController extends Controller
         $comments = 'comments';
         $one->$comments = $howmany;
 
-        $objs = Comments::with('postss','usersss')->where('slug',$slug)->orderBy('id','DESC')->paginate(20);
+        $status = 'PUBLISHED';
+        $objs = Comments::with('postss','usersss')->where('slug',$slug)->where('status', $status)->orderBy('id','DESC')->paginate(20);
 
         $id = $one->id;
         $postLoads = $this->postLoads($id);
@@ -44,6 +45,7 @@ class PostController extends Controller
         $one = $this->showPost($slug);
 
         $r['slug'] = $slug;
+        $r['status'] = 'PUBLISHED';
         $r['post_id']= $one->id;
         
         $pic = \App::make('\App\Libs\Img')->url('comment',$_FILES['picture1']['tmp_name']);
@@ -55,6 +57,7 @@ class PostController extends Controller
 
         $r['author_id']=Auth::user()->id;
 
+        //dd($r->all());
         Comments::create($r->all());
         return redirect()->back();
     }

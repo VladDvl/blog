@@ -23,7 +23,8 @@ class BaseComposer
         
         $posts = Post::orderBy('loads','DESC')->limit(10)->get();
         
-        $comment = Comments::with('postss')->orderBy('id','DESC')->first();
+        $status = 'PUBLISHED';
+        $comment = Comments::with('postss')->where('status', $status)->orderBy('id','DESC')->first();
 
         $all_users = User::get();
         $all_userss = count( $all_users );

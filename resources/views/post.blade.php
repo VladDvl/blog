@@ -41,6 +41,7 @@
       <h3 class="text-muted">{{__('menu.Comms')}}</h3>
 
       @foreach($objs as $obj)
+      @if($obj['status'] == 'PUBLISHED')
       <div id="comment" class="blog-post body-maintext">
         <div class="row">
         @include('templates.coms')
@@ -53,6 +54,7 @@
         </div>
         <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
       </div><!-- post-comment -->
+      @endif
       @endforeach
 
       <div class="card">
@@ -60,7 +62,11 @@
         <div class="card-body">
         @guest
           @if (Route::has('register'))
-            <a href="{{asset('home')}}">Только авторизированные пользователи могут оставлять комментарии.</a>
+            @if( App::getLocale() == 'en')
+              <a href="{{asset('home')}}">Only authorized users cat leave comments.</a>
+            @else
+              <a href="{{asset('home')}}">Только авторизированные пользователи могут оставлять комментарии.</a>
+            @endif
           @endif
           @else
           <form method="post" action="{{asset('post/' . $one->slug)}}" enctype="multipart/form-data">

@@ -9,7 +9,7 @@ use TCG\Voyager\Facades\Voyager;
 
 class Comments extends Model
 {
-    protected $fillable = ['author_id', 'post_id', 'body', 'image', 'slug'];
+    protected $fillable = ['author_id', 'post_id', 'body', 'image', 'slug', 'status'];
     
     public function postss()
     {

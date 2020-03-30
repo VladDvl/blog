@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Requests\HomeTableRequest;
 use App\Post;// или App\Libs\Img и \App::make('Img')
+use App\Comments;
 use App\Categories;
 use App\User;
 use Auth;
@@ -125,6 +126,7 @@ class HomeController extends Controller
 
             $post_id = $this->getPostId($req);
             $query = Post::where('id', $post_id)->delete();
+            $query2 = Comments::where('post_id', $post_id)->delete();
 
             return redirect()->back();
 

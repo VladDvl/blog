@@ -126,7 +126,9 @@
 
       <div class="p-4">
         <h4 class="font-italic">{{__('menu.LastComment')}}</h4>
-        <a href="{{asset('post/' . $comment->postss->slug)}}">{!!mb_substr($comment->body, 0, 95)!!}</a>
+        @if(isset($comment->postss))
+          <a href="{{asset('post/' . $comment->postss->slug)}}">{!!mb_substr($comment->body, 0, 95)!!}</a>
+        @endif
       </div><!--daily comment-->
 
       <div class="p-4">

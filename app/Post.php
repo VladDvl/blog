@@ -66,6 +66,7 @@ class Post extends Model
 
     public function comms()
     {
-        return $this->hasMany('App\Comments');
+        $status = 'PUBLISHED';
+        return $this->hasMany('App\Comments')->where('status', $status);
     }
 }

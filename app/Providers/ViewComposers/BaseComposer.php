@@ -32,7 +32,7 @@ class BaseComposer
         $all_posts = Post::get();
         $all_postss = count( $all_posts );
 
-        $all_comments = Comments::get();
+        $all_comments = Comments::where('status', $status)->get();
         $all_commentss = count( $all_comments );
 
         /*foreach($top_users as $one) {

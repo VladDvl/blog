@@ -46,6 +46,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function commss()
     {
-        return $this->hasMany('App\Comments', 'author_id');
+        $status = 'PUBLISHED';
+        return $this->hasMany('App\Comments', 'author_id')->where('status', $status);
     }
 }

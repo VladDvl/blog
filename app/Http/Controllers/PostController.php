@@ -33,7 +33,7 @@ class PostController extends Controller
 
         $status1 = 'PUBLISHED';
         $status2 = 'PENDING';
-        $objs = Comments::with('postss','usersss')->where('slug',$slug)->where('status', $status1)->orWhere('status', $status2)->orderBy('id','DESC')->paginate(20);
+        $objs = Comments::with('postss','usersss')->where('slug',$slug)->whereIn('status', [$status1,$status2])->orderBy('id','DESC')->paginate(20);
 
         $id = $one->id;
         $postLoads = $this->postLoads($id);

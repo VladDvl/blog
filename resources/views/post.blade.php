@@ -9,6 +9,7 @@
   @parent
   <script src="{{asset('public/src/ckeditor5-build-classic/ckeditor.js')}}"></script>
   <script src="{{asset('public/js/ckcreate.js')}}"></script>
+  <script src="{{asset('public/js/post.js')}}"></script>
 @endsection
 
 @section('header')

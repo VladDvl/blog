@@ -43,16 +43,26 @@
       @foreach($objs as $obj)
       @if($obj['status'] == 'PUBLISHED')
       <div id="comment" class="blog-post body-maintext">
+
         <div class="row">
-        @include('templates.coms')
-        <div class="col justify-content-between container">
-          @if($obj->image)
-            <img id="comment-image" src="{{asset('public/uploads/comments/'.$obj->image)}}">
+          @include('templates.coms')
+          <div class="col justify-content-between container">
+            @if($obj->image)
+              <img id="comment-image" src="{{asset('public/uploads/comments/'.$obj->image)}}">
+            @endif
+            <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
+          </div>
+        </div>
+
+        <div class="row justify-content-between container">
+          <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
+          @if( Route::has('register') and isset(Auth::user()->id) == true and isset($obj->author_id) )
+            @if( Auth::user()->id == $obj->author_id )
+              <a class="text-muted hide-action" href="{{asset('#')}}">{{__('menu.Hide')}}</a>
+            @endif
           @endif
-          <div>{!!isset($obj->body) ? $obj->body : ''!!}</div>
         </div>
-        </div>
-        <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
+
       </div><!-- post-comment -->
       @endif
       @endforeach

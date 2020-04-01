@@ -62,4 +62,5 @@ return [
     'Users' => 'Users',
     'EnterAtLeast' => 'Enter at least 3 characters',
     'NothingFind' => 'Nothing find',
+    'Hide' => 'Hide',
 ];

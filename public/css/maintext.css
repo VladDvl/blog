@@ -28,3 +28,8 @@ img {
     margin-bottom: 1rem;
     max-width: 35rem !important;
 }
+
+.hide-action:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}

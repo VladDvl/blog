@@ -29,6 +29,10 @@ img {
     max-width: 35rem !important;
 }
 
+.hide-action {
+    margin-left: 0.5rem;
+}
+
 .hide-action:hover {
     text-decoration: underline !important;
     cursor: pointer;

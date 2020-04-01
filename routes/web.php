@@ -22,5 +22,6 @@ route::group(['middleware' => ['lang']], function(){
     Route::get('cat/{slug}', 'CategoryController@getIndex');
     Route::get('user/{slug}', 'ProfileController@getIndex');
     Route::get('search', 'SearchController@getIndex')->name('search');
+    Route::get('hide-comment', 'HideController@hideComment');
     Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце
 });

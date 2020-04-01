@@ -58,16 +58,23 @@
         <div class="row justify-content-between container">
           <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
           @if( Route::has('register') and isset(Auth::user()->id) == true and isset($obj->author_id) == true )
+            <form class="hide_comment_form" method="get" action="{{asset('hide-comment')}}">
+
             @if( Auth::user()->id == $obj->author_id and Auth::user()->role_id != 1 )
-              <a class="text-muted hide-action" href="{{asset('#')}}">{{__('menu.Hide')}}</a>
+              <input type="hidden" name="comment-id" value="{{$obj->id}}">
+              <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</button>
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id != $obj->author_id )
-              <a class="text-muted hide-action" href="{{asset('#')}}">{{__('menu.Hide')}}(admin)</a>
+              <input type="hidden" name="comment-id" value="{{$obj->id}}">
+              <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</button>
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id == $obj->author_id )
               <div>
-                <a class="text-muted hide-action" href="{{asset('#')}}">{{__('menu.Hide')}}</a><br>
-                <a class="text-muted hide-action" href="{{asset('#')}}">{{__('menu.Hide')}}(admin)</a>
+                <input type="hidden" name="comment-id" value="{{$obj->id}}">
+                <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</a><br>
+                <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</a>
               </div>
             @endif
+            
+            </form>
           @endif
         </div>
 

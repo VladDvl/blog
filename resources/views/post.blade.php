@@ -42,8 +42,8 @@
       <h3 class="text-muted">{{__('menu.Comms')}}</h3>
 
       @foreach($objs as $obj)
-      @if($obj['status'] == 'PUBLISHED' or $obj['status'] == 'PENDING')
-      <div id="comment" class="blog-post body-maintext">
+      @if($obj['status'] == 'PUBLISHED')
+      <div class="blog-post body-maintext comments">
 
         <div class="row">
           @include('templates.coms')
@@ -60,30 +60,15 @@
           @if( Route::has('register') and isset(Auth::user()->id) == true and isset($obj->author_id) == true )
             <form class="hide_comment_form" method="get" action="{{asset('hide-comment')}}">
 
+              <input type="hidden" name="comment-id" value="{{$obj->id}}">
             @if( Auth::user()->id == $obj->author_id and Auth::user()->role_id != 1 )
-              <input type="hidden" name="comment-id" value="{{$obj->id}}">
-              @if( $obj->status == 'PUBLISHED' )
-                <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</button>
-              @elseif( $obj->status == 'PENDING')
-                <button class="text-muted hide-action" name="submit" value="show" type="submit">{{__('menu.Display')}}</button>
-              @endif
+              <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</button>
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id != $obj->author_id )
-              <input type="hidden" name="comment-id" value="{{$obj->id}}">
-              @if( $obj->status == 'PUBLISHED' )
-                <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</button>
-              @elseif( $obj->status == 'DRAFT')
-                <button class="text-muted hide-action" name="submit" value="show-admin" type="submit">{{__('menu.Display')}}(admin)</button>
-              @endif
+               <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</button>
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id == $obj->author_id )
               <div>
-                <input type="hidden" name="comment-id" value="{{$obj->id}}">
-                @if( $obj->status == 'PUBLISHED' )
-                  <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</a><br>
-                  <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</a>
-                @elseif( $obj->status == 'PENDING' or $obj->status == 'DRAFT')
-                  <button class="text-muted hide-action" name="submit" value="show" type="submit">{{__('menu.Display')}}</a><br>
-                  <button class="text-muted hide-action" name="submit" value="show-admin" type="submit">{{__('menu.Display')}}(admin)</a>
-                @endif
+                <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</a><br>
+                <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</a>
               </div>
             @endif
             
@@ -92,6 +77,26 @@
         </div>
 
       </div><!-- post-comment -->
+      @elseif($obj['status'] == 'PENDING' and Route::has('register') and isset(Auth::user()->id) == true and isset($obj->author_id) == true)
+        @if(Auth::user()->id == $obj->author_id)
+        <div class="blog-post body-maintext comments hidden-comment">
+          <div class="row">
+            <div id="template-post-meta-com" class="comment-post col-md-2 justify-content-between pb-4 mb-4 border-bottom container">
+              <p class="blog-post-meta">{{__('menu.Author')}}: <a href="{{asset('user/' . $obj->author_id)}}">{{isset($obj->usersss->name) ? $obj->usersss->name : ''}}</a></p>
+            </div>
+            <div class="col justify-content-between container">
+              {{__('menu.HiddenComment')}}.
+            </div>
+          </div>
+          <div class="row justify-content-between container">
+            <p class="blog-post-meta">{{__('menu.Published')}}: {{(isset($obj->created_at)) ? $obj->created_at : ''}}</p>
+            <form class="hide_comment_form" method="get" action="{{asset('hide-comment')}}">
+              <input type="hidden" name="comment-id" value="{{$obj->id}}">
+              <button class="text-muted show-action" name="submit" value="show" type="submit">{{__('menu.Display')}}</button>
+            </form>
+          </div>
+        </div><!-- post-comment -->
+        @endif
       @endif
       @endforeach
 

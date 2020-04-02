@@ -64,4 +64,5 @@ return [
     'NothingFind' => 'Nothing find',
     'Hide' => 'Hide',
     'Display' => 'Display',
+    'HiddenComment' => 'Hidden comment',
 ];

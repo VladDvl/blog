@@ -64,4 +64,5 @@ return [
     'NothingFind' => 'Ничего не найдено',
     'Hide' => 'Скрыть',
     'Display' => 'Показать',
+    'HiddenComment' => 'Скрытый комментарий',
 ];

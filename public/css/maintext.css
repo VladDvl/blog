@@ -19,7 +19,7 @@ img {
     padding-left: 0.4rem !important;
 }
 
-#comment {
+.comments {
     border-color: #A9A9A9;
 }
 
@@ -29,11 +29,15 @@ img {
     max-width: 35rem !important;
 }
 
-.hide-action {
+.hide-action, .show-action {
     margin-left: 0.5rem;
 }
 
-.hide-action:hover {
+.hide-action:hover, .show-action:hover {
     text-decoration: underline !important;
     cursor: pointer;
+}
+
+.hidden-comment {
+    background-color: #F7F7F7;
 }

@@ -9,3 +9,15 @@ hide_item.onclick = function() {
     }
 }
 });
+
+var show_actions = document.querySelectorAll('.show-action');
+//console.log(hide_actions.length);
+show_actions.forEach(function(show_item) {
+show_item.onclick = function() {
+    if(confirm('Показать комментарий?')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+});

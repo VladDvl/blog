@@ -21,6 +21,10 @@ class HideController extends Controller
 
             $query = Comments::where('id', $comment_id)->update(['status' => 'PENDING']);
 
+        } elseif( $type_of_action == 'show' or $type_of_action == 'show-admin' ) {
+
+            $query = Comments::where('id', $comment_id)->update(['status' => 'PUBLISHED']);
+
         }
         
         return redirect()->back();

@@ -63,4 +63,5 @@ return [
     'EnterAtLeast' => 'Enter at least 3 characters',
     'NothingFind' => 'Nothing find',
     'Hide' => 'Hide',
+    'Display' => 'Display',
 ];

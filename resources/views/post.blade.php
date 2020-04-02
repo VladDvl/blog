@@ -62,15 +62,28 @@
 
             @if( Auth::user()->id == $obj->author_id and Auth::user()->role_id != 1 )
               <input type="hidden" name="comment-id" value="{{$obj->id}}">
-              <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</button>
+              @if( $obj->status == 'PUBLISHED' )
+                <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</button>
+              @elseif( $obj->status == 'PENDING')
+                <button class="text-muted hide-action" name="submit" value="show" type="submit">{{__('menu.Display')}}</button>
+              @endif
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id != $obj->author_id )
               <input type="hidden" name="comment-id" value="{{$obj->id}}">
-              <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</button>
+              @if( $obj->status == 'PUBLISHED' )
+                <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</button>
+              @elseif( $obj->status == 'DRAFT')
+                <button class="text-muted hide-action" name="submit" value="show-admin" type="submit">{{__('menu.Display')}}(admin)</button>
+              @endif
             @elseif( Auth::user()->role_id == 1 and Auth::user()->id == $obj->author_id )
               <div>
                 <input type="hidden" name="comment-id" value="{{$obj->id}}">
-                <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</a><br>
-                <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</a>
+                @if( $obj->status == 'PUBLISHED' )
+                  <button class="text-muted hide-action" name="submit" value="hide" type="submit">{{__('menu.Hide')}}</a><br>
+                  <button class="text-muted hide-action" name="submit" value="hide-admin" type="submit">{{__('menu.Hide')}}(admin)</a>
+                @elseif( $obj->status == 'PENDING' or $obj->status == 'DRAFT')
+                  <button class="text-muted hide-action" name="submit" value="show" type="submit">{{__('menu.Display')}}</a><br>
+                  <button class="text-muted hide-action" name="submit" value="show-admin" type="submit">{{__('menu.Display')}}(admin)</a>
+                @endif
               </div>
             @endif
             

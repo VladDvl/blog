@@ -21,11 +21,6 @@
     <div class="row flex-nowrap justify-content-between align-items-center">
 
       <div class="col-4 pt-1 text-muted">
-        <!--<p class="text-muted">
-          <?php
-            //echo date('l, F jS Y');
-          ?>
-        </p>-->
         <p>
           {{__('menu.Language')}}:
           <ul class="list-unstyled">
@@ -97,14 +92,33 @@
 
 @yield('content')
 
-      <!--<nav class="blog-pagination">
-        <a id="tuda" class="btn btn-outline-primary" href="{{asset('#')}}"><- Сюда</a>
-        <a id="suda" class="btn btn-outline-secondary" href="{{asset('#')}}" tabindex="-1" aria-disabled="true">Туда -></a>
-      </nav>-->
-
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
+
+      <div class="p-4 mb-3 bg-light rounded chat-block">
+        <h4 class="font-italic border-bottom">{{__('menu.Chat')}}</h4>
+        <div class="chat-field">
+
+          <div class="chat-message">
+            <p><span class="red">Name:</span> Example</p>
+          </div>
+
+          <div class="chat-message">
+            <p><span class="blue">Name:</span> Example</p>
+          </div>
+
+        </div>
+        <div class="chat-form-block border">
+          <form class="chat-form">
+            <div>
+              <textarea></textarea>
+              <input type="hidden" value="{{Auth::user()->id}}">
+              <button type="submit" name="submit">{{__('menu.Send')}}</button>
+            </div>
+          </form>
+        </div>
+      </div><!--chat-->
 
       <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">{{__('menu.NewUsers')}}</h4>

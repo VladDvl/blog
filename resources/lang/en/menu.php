@@ -65,4 +65,5 @@ return [
     'Hide' => 'Hide',
     'Display' => 'Display',
     'HiddenComment' => 'Hidden comment',
+    'Chat' => 'Chat',
 ];

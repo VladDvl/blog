@@ -12,3 +12,65 @@
     font-size: 3.5rem;
   }
 }
+
+.chat-block {
+  height: 30rem !important;
+}
+
+.chat-block h4 {
+  border-bottom: 1px solid #c0c4c7 !important;
+}
+
+.chat-field {
+  height: 18rem !important;
+  background-color: white !important;
+  border: 1px solid #c0c4c7 !important;
+  overflow: scroll;
+  padding: 2px;
+}
+
+.chat-message {
+  margin-bottom: 2px;
+}
+
+.chat-message p span {
+  font-weight: bold;
+}
+
+.chat-message p span.red {
+  color: red;
+}
+
+.chat-message p span.blue {
+  color: blue;
+}
+
+.chat-form-block {
+  padding: 2px;
+  margin-top: 0.7rem;
+  height: 6.7rem !important;
+  border: 1px solid #c0c4c7 !important;
+}
+
+.chat-form div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.chat-form textarea {
+  height: 5rem;
+  width: 100%;
+  overflow-y: auto;
+  resize: none;
+}
+
+.chat-form button {
+  width: 5rem;
+  margin-top: 0.1rem;
+  line-height: 0.8rem;
+  padding: 1px !important;
+  font-size: small !important;
+}

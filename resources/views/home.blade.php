@@ -21,7 +21,7 @@
                 <div class="card-header">{{__('menu.Messages')}}</div>
                 <div class="card-body justify-content-start col">
                     <div>
-                        <a href="{{asset('#')}}">Example</a>
+                        <a href="{{asset('chat/' . Auth::user()->name)}}">Example</a>
                     </div>
                     <div>
                         {{__('menu.NoMessages')}}.

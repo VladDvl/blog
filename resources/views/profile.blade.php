@@ -16,6 +16,18 @@
 
 <div class="col-md-14">
 
+    <div class="card-header">
+    @guest
+        @if(Route::has('register'))
+            <a class="text-muted" href="{{asset('login')}}">{{__('menu.ToWriteLogIn')}}.</a>
+        @endif
+        @else
+            @if(Auth::user()->id != $thing->id)
+                <a class="text-muted" href="{{asset('#')}}">{{__('menu.WriteMessage')}}.</a>
+            @endif
+    @endguest
+    </div>
+
 <div class="card">
     <div class="card-header">{{(isset($thing->name)) ? $thing->name : ''}}</div>
     <div class="card-body justify-content-start row">

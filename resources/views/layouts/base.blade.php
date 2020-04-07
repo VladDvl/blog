@@ -113,7 +113,7 @@
           <form class="chat-form">
             <div>
               <textarea></textarea>
-              <input type="hidden" value="{{Auth::user()->id}}">
+                <input type="hidden" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
               <button type="submit" name="submit">{{__('menu.Send')}}</button>
             </div>
           </form>

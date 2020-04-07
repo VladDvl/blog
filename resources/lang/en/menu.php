@@ -66,4 +66,8 @@ return [
     'Display' => 'Display',
     'HiddenComment' => 'Hidden comment',
     'Chat' => 'Chat',
+    'Messages' => 'Messages',
+    'WriteMessage' => 'Write a message',
+    'ToWriteLogIn' => 'LogIn to write a message',
+    'NoMessages' => 'No messages',
 ];

@@ -18,6 +18,18 @@
         <div class="col-md-14">
 
             <div class="card">
+                <div class="card-header">{{__('menu.Messages')}}</div>
+                <div class="card-body justify-content-start col">
+                    <div>
+                        <a href="{{asset('#')}}">Example</a>
+                    </div>
+                    <div>
+                        {{__('menu.NoMessages')}}.
+                    </div>
+                </div>
+            </div><!--chats-->
+
+            <div class="card">
                 <div class="card-header">{{__('menu.Avatar')}}</div>
                 <div class="card-body justify-content-start row">
                     @if( Auth::user()->avatar != 'users/default.png' and Auth::user()->avatar != '' )

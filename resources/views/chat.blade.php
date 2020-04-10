@@ -14,7 +14,7 @@
     <div class="card-header">{{__('menu.Messages')}}</div>
 
     <div class="card-body justify-content-start col chat-field">
-      @if($objs)
+      @if(count($objs) > 0)
         @foreach($objs as $one)
           <div class="chat-message border rounded">
             <div class="justify-content-between">

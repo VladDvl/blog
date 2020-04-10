@@ -99,15 +99,17 @@
       <div class="p-4 mb-3 bg-light rounded chat-block">
         <h4 class="font-italic border-bottom">{{__('menu.Chat')}}</h4>
         <div class="chat-field">
-
-          <div class="chat-message">
-            <p><span class="red">Name:</span> Example</p>
-          </div>
-
-          <div class="chat-message">
-            <p><span class="blue">Name:</span> Example</p>
-          </div>
-
+          @if(count($common_msgs) > 0)
+            @foreach($common_msgs as $common_msg)
+              <div class="chat-message">
+                <p><span class="red">{{$common_msg->sender->name}}:</span> {{$common_msg->body}}</p>
+              </div>
+            @endforeach
+          @else
+            <div class="chat-message">
+              <p>{{__('menu.NoMessages')}}.</p>
+            </div>
+          @endif
         </div>
         <div class="chat-form-block border">
           <form class="chat-form">

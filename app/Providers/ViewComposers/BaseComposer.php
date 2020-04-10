@@ -7,6 +7,7 @@ use App\Categories;
 use App\User;
 use App\Post;
 use App\Comments;
+use App\Messages;
 
 class BaseComposer
 {
@@ -35,6 +36,11 @@ class BaseComposer
         $all_comments = Comments::where('status', $status)->get();
         $all_commentss = count( $all_comments );
 
+        $common_msgs = Messages::with('sender')->where([
+            ['resiver_id', '=', null],
+            ['group_id', '=', null],
+        ])->get();
+        
         /*foreach($top_users as $one) {
             $one->user_posts->
         }*/
@@ -42,6 +48,6 @@ class BaseComposer
         //dd($top_users->name);
 
         $test = Categories::orderBy('id')->limit(12)->get();
-        $view->with('test',$test)->with('usrs',$usrs)->with('posts',$posts)->with('comment',$comment)->with('all_userss',$all_userss)->with('all_postss',$all_postss)->with('all_commentss',$all_commentss);
+        $view->with('test',$test)->with('usrs',$usrs)->with('posts',$posts)->with('comment',$comment)->with('all_userss',$all_userss)->with('all_postss',$all_postss)->with('all_commentss',$all_commentss)->with('common_msgs', $common_msgs);
     }
 }

@@ -23,7 +23,7 @@
         @endif
         @else
             @if(Auth::user()->id != $thing->id)
-                <a class="text-muted" href="{{asset('chat/' . $thing->name)}}">{{__('menu.WriteMessage')}}.</a>
+                <a class="text-muted" href="{{asset('chat/' . $thing->id)}}">{{__('menu.WriteMessage')}}.</a>
             @endif
     @endguest
     </div>

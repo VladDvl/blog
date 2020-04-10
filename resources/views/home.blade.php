@@ -20,12 +20,17 @@
             <div class="card">
                 <div class="card-header">{{__('menu.Messages')}}</div>
                 <div class="card-body justify-content-start col">
-                    <div>
-                        <a href="{{asset('chat/' . Auth::user()->name)}}">Example</a>
-                    </div>
-                    <div>
-                        {{__('menu.NoMessages')}}.
-                    </div>
+                    @if(count($msgs) != 0)
+                        @foreach($msgs as $msg)
+                        <div>
+                            <a href="{{asset('chat/' . $msg->resiver_id)}}">Example</a>
+                        </div>
+                        @endforeach
+                    @else
+                        <div>
+                            {{__('menu.NoMessages')}}.
+                        </div>
+                    @endif
                 </div>
             </div><!--chats-->
 

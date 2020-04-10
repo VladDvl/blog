@@ -10,6 +10,7 @@ use App\Post;// или App\Libs\Img и \App::make('Img')
 use App\Comments;
 use App\Categories;
 use App\User;
+use App\Messages;
 use Auth;
 
 class HomeController extends Controller
@@ -59,7 +60,9 @@ class HomeController extends Controller
             $one->$comments = $howmany;
         }
 
-        $objects = compact('objs','cats');
+        $msgs = Messages::with('sender')->where('sender_id', Auth::user()->id)->orWhere('resiver_id', Auth::user()->id)->orderBy('id', 'ASC')->get();
+
+        $objects = compact('objs','cats','msgs');
         return $objects;
     }
 
@@ -68,8 +71,9 @@ class HomeController extends Controller
         $objects = $this->homeObjs();
         $objs = $objects['objs'];
         $cats = $objects['cats'];
+        $msgs = $objects['msgs'];
 
-        return view('home', compact('objs','cats'));
+        return view('home', compact('objs','cats','msgs'));
     }
 
     public function postIndex(PostRequest $r)

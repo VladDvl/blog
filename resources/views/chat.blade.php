@@ -6,7 +6,7 @@
 
 @section('styles')
   @parent
-  <link href="{{asset('public/css/home.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/chat.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -14,13 +14,22 @@
     <div class="card-header">{{__('menu.Messages')}}</div>
 
     <div class="card-body justify-content-start col chat-field">
-      <div>
-        hello {{$slug}}
-      </div>
-      <div>
-        {{__('menu.NoMessages')}}.
-      </div>
-    </div>
+      @if($objs)
+        @foreach($objs as $one)
+          <div class="chat-message border rounded">
+            <div class="justify-content-between">
+              <div class="chat-message-author">{{$one->sender->name}}:</div>
+              <div class="text-muted">{{$one->created_at}}</div>
+            </div>
+            <p>{{$one->body}}</p>
+          </div>
+        @endforeach
+      @else
+        <div>
+          {{__('menu.NoMessages')}}.
+        </div>
+      @endif
+    </div><!--chat-->
 
     <div class="chat-form-block border">
       <form class="chat-form">
@@ -30,7 +39,7 @@
           <button type="submit" name="submit">{{__('menu.Send')}}</button>
         </div>
       </form>
-    </div>
+    </div><!--chat-form-->
 
-  </div>
+  </div><!--chat-block-->
 @endsection

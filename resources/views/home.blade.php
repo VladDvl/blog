@@ -23,7 +23,7 @@
                     @if(count($msgs) != 0)
                         @foreach($msgs as $msg)
                         <div>
-                            <a href="{{asset('chat/' . $msg->resiver_id)}}">Example</a>
+                            <a href="{{asset('chat/' . $msg->sender->id)}}">Example</a>
                         </div>
                         @endforeach
                     @else

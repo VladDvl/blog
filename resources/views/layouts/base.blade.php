@@ -112,10 +112,17 @@
           @endif
         </div>
         <div class="chat-form-block border">
-          <form class="chat-form">
+          <form class="chat-form" method="post" action="{{asset('chat/send')}}" enctype="multipart/form-data">
+            {!!csrf_field()!!}
+            @if(count($errors)>0)
+              @foreach($errors->all() as $ers)
+                <div class="red">
+                  {$ers}}
+                </div>
+              @endforeach
+            @endif
             <div>
-              <textarea></textarea>
-                <input type="hidden" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
+              <textarea name="body"></textarea>
               <button type="submit" name="submit">{{__('menu.Send')}}</button>
             </div>
           </form>

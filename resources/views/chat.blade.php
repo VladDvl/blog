@@ -1,12 +1,13 @@
 @extends('layouts.base')
 
-@section('scripts')
-  @parent
-@endsection
-
 @section('styles')
   @parent
   <link href="{{asset('public/css/chat.css')}}" rel="stylesheet"/>
+@endsection
+
+@section('scripts')
+  @parent
+  <script src="{{asset('public/js/chat.js')}}"></script>
 @endsection
 
 @section('content')
@@ -32,10 +33,18 @@
     </div><!--chat-->
 
     <div class="chat-form-block border">
-      <form class="chat-form">
+      <form class="chat-form" method="post" action="{{asset('chat/send')}}" enctype="multipart/form-data">
+        {!!csrf_field()!!}
+        @if(count($errors)>0)
+          @foreach($errors->all() as $ers)
+            <div class="red">
+              {{$ers}}
+            </div>
+          @endforeach
+        @endif
         <div>
-          <textarea></textarea>
-          <input type="hidden" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
+          <textarea name="body"></textarea>
+          <input type="hidden" name="resiver_id" value="{{(isset($slug)) ? $slug : ''}}">
           <button type="submit" name="submit">{{__('menu.Send')}}</button>
         </div>
       </form>

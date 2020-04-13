@@ -60,7 +60,7 @@ class HomeController extends Controller
             $one->$comments = $howmany;
         }
 
-        $msgs = Messages::with('sender')->where('sender_id', Auth::user()->id)->orWhere('resiver_id', Auth::user()->id)->orderBy('id', 'ASC')->get();
+        $msgs = Messages::with('sender')->where('sender_id', Auth::user()->id)->orWhere('resiver_id', Auth::user()->id)->get();
 
         $objects = compact('objs','cats','msgs');
         return $objects;
@@ -186,7 +186,5 @@ class HomeController extends Controller
             return redirect()->back();
 
         }
-
-        
     }
 }

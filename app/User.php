@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Facades\Voyager;
 use App\Comments;
+use App\Messages;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -48,5 +49,10 @@ class User extends \TCG\Voyager\Models\User
     {
         $status = 'PUBLISHED';
         return $this->hasMany('App\Comments', 'author_id')->where('status', $status);
+    }
+
+    public function messagess()
+    {
+        return $this->hasMany('App\Messages');
     }
 }

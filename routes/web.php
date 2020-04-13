@@ -5,6 +5,7 @@ Auth::routes();
 Route::post('home','HomeController@postIndex');
 Route::post('home/avatar','HomeController@avatarChange');
 Route::post('home/table','HomeController@homeTable');
+Route::post('chat/send', 'ChatController@postIndex')->middleware('auth');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -23,6 +24,6 @@ route::group(['middleware' => ['lang']], function(){
     Route::get('user/{slug}', 'ProfileController@getIndex');
     Route::get('search', 'SearchController@getIndex')->name('search');
     Route::get('hide-comment', 'HideController@hideComment');
-    Route::get('chat/{slug}', 'ChatController@getIndex');
+    Route::get('chat/{slug}', 'ChatController@getIndex')->middleware('auth');
     Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце
 });

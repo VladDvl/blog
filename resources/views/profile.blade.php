@@ -16,17 +16,19 @@
 
 <div class="col-md-14">
 
-    <div class="card-header">
     @guest
         @if(Route::has('register'))
-            <a class="text-muted" href="{{asset('login')}}">{{__('menu.ToWriteLogIn')}}.</a>
+            <div class="card-header">
+                <a class="text-muted" href="{{asset('login')}}">{{__('menu.ToWriteLogIn')}}.</a>
+            </div>
         @endif
         @else
             @if(Auth::user()->id != $thing->id)
-                <a class="text-muted" href="{{asset('chat/' . $thing->id)}}">{{__('menu.WriteMessage')}}.</a>
+                <div class="card-header">
+                    <a class="text-muted" href="{{asset('chat/' . $thing->id)}}">{{__('menu.WriteMessage')}}.</a>
+                </div>
             @endif
     @endguest
-    </div>
 
 <div class="card">
     <div class="card-header">{{(isset($thing->name)) ? $thing->name : ''}}</div>

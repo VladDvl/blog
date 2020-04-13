@@ -20,10 +20,10 @@
             <div class="card">
                 <div class="card-header">{{__('menu.Messages')}}</div>
                 <div class="card-body justify-content-start col">
-                    @if(count($msgs) != 0)
-                        @foreach($msgs as $msg)
+                    @if(count($friends) != 0)
+                        @foreach($friends as $friend)
                         <div>
-                            <a href="{{asset('chat/' . $msg->sender->id)}}">Example</a>
+                            <a href="{{asset('chat/' . $friend->id)}}">{{$friend->name}}</a>
                         </div>
                         @endforeach
                     @else

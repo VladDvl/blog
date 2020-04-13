@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Requests\HomeTableRequest;
@@ -60,9 +61,26 @@ class HomeController extends Controller
             $one->$comments = $howmany;
         }
 
-        $msgs = Messages::with('sender')->where('sender_id', Auth::user()->id)->orWhere('resiver_id', Auth::user()->id)->get();
+        $msgs = Messages::with('sender')->where([
+            ['sender_id', '=', Auth::user()->id],
+            ['resiver_id', '<>', null],
+            ['status', '=', 'PUBLISHED'],
+        ])->orWhere([
+            ['resiver_id', '=', Auth::user()->id],
+            ['status', '=', 'PUBLISHED'],
+        ])->orderBy('id', 'ASC')->get();
 
-        $objects = compact('objs','cats','msgs');
+        $messagess_array = $msgs->all();
+        $userss = Arr::pluck( $messagess_array, 'sender.id' );
+        $friends_id = array_filter( $userss, function($one) {
+            return $one != Auth::user()->id;
+        } );
+        $friends_id_unique = array_unique( $friends_id );
+
+        $friends = User::with('messagess')->whereIn('id', $friends_id_unique)->get();
+        //dd($friends);
+
+        $objects = compact('objs','cats','msgs','friends');
         return $objects;
     }
 
@@ -72,8 +90,9 @@ class HomeController extends Controller
         $objs = $objects['objs'];
         $cats = $objects['cats'];
         $msgs = $objects['msgs'];
+        $friends = $objects['friends'];
 
-        return view('home', compact('objs','cats','msgs'));
+        return view('home', compact('objs','cats','msgs','friends'));
     }
 
     public function postIndex(PostRequest $r)

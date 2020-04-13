@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Facades\Voyager;
 use App\Comments;
 use App\Messages;
+use Auth;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -53,6 +54,6 @@ class User extends \TCG\Voyager\Models\User
 
     public function messagess()
     {
-        return $this->hasMany('App\Messages');
+        return $this->hasMany('App\Messages', 'sender_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id);
     }
 }

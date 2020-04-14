@@ -54,6 +54,16 @@ class User extends \TCG\Voyager\Models\User
 
     public function messagess()
     {
-        return $this->hasMany('App\Messages', 'sender_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id);
+        return $this->hasMany('App\Messages', 'sender_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id)->orWhere('sender_id', '=', Auth::user()->id);
+    }
+
+    public function last_message_sender()
+    {
+        return $this->hasOne('App\Messages', 'sender_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id)->orWhere('sender_id', '=', Auth::user()->id)->latest();
+    }
+
+    public function last_message_resiver()
+    {
+        return $this->hasOne('App\Messages', 'resiver_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id)->orWhere('sender_id', '=', Auth::user()->id)->latest();
     }
 }

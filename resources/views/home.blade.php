@@ -19,12 +19,62 @@
 
             <div class="card">
                 <div class="card-header">{{__('menu.Messages')}}</div>
-                <div class="card-body justify-content-start col">
+                <div class="card-body justify-content-start col friend-list">
                     @if(count($friends) != 0)
                         @foreach($friends as $friend)
-                        <div>
-                            <a href="{{asset('chat/' . $friend->id)}}">{{$friend->name}}</a>
-                        </div>
+                            <a class="friend-link" href="{{asset('chat/' . $friend->id)}}">
+                            <div class="msg-friend row">
+
+                                @if( $friend->avatar != 'users/default.png' and $friend->avatar != '' )
+                                    <img class="friend-avatar" src="{{asset('public/uploads/avatars/' . $friend->avatar)}}" width="36" height="36" alt="avatar">
+                                @else
+                                    <img class="friend-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+                                @endif
+
+                                <div class="col msg-items">
+                                <p class="friend-name">{{$friend->name}}</p>
+
+                                <div class="msg row justify-content-between">
+                                @if( isset($friend->last_message_sender) == true and isset($friend->last_message_resiver) == true )
+                                    @if( $friend->last_message_sender->created_at > $friend->last_message_resiver->created_at )
+                                        <div class="row msg-user">
+                                            <p class="msg-body">{{$friend->last_message_sender->body}}</p>
+                                        </div>
+                                        <p class="msg-date">{{$friend->last_message_sender->created_at}}</p>
+                                    @else
+                                        <div class="row msg-user">
+                                            @if( Auth::user()->avatar != 'users/default.png' and Auth::user()->avatar != '' )
+                                                <img class="small-avatar" src="{{asset('public/uploads/avatars/' . Auth::user()->avatar)}}" width="24" height="24">
+                                            @else
+                                                <img class="small-avatar" src="{{asset('public/img/default-avatar.png')}}" width="24" height="24">
+                                            @endif
+                                            <p class="msg-body">{{$friend->last_message_resiver->body}}</p>
+                                        </div>
+                                        <p class="msg-date">{{$friend->last_message_resiver->created_at}}</p>
+                                    @endif
+                                @endif
+                                @if( isset($friend->last_message_sender) == true and isset($friend->last_message_resiver) != true )
+                                    <div class="row msg-user">
+                                        <p class="msg-body">{{$friend->last_message_sender->body}}</p>
+                                    </div>
+                                    <p class="msg-date">{{$friend->last_message_sender->created_at}}</p>
+                                @endif
+                                @if( isset($friend->last_message_sender) != true and isset($friend->last_message_resiver) == true )
+                                    <div class="row msg-user">
+                                        @if( Auth::user()->avatar != 'users/default.png' and Auth::user()->avatar != '' )
+                                            <img class="small-avatar" src="{{asset('public/uploads/avatars/' . Auth::user()->avatar)}}" width="24" height="24">
+                                        @else
+                                            <img class="small-avatar" src="{{asset('public/img/default-avatar.png')}}" width="24" height="24">
+                                        @endif
+                                        <p class="msg-body">{{$friend->last_message_resiver->body}}</p>
+                                    </div>
+                                    <p class="msg-date">{{$friend->last_message_resiver->created_at}}</p>
+                                @endif
+                                </div>
+                                </div>
+
+                            </div>
+                            </a>
                         @endforeach
                     @else
                         <div>

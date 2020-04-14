@@ -68,16 +68,19 @@ class HomeController extends Controller
         ])->orWhere([
             ['resiver_id', '=', Auth::user()->id],
             ['status', '=', 'PUBLISHED'],
-        ])->orderBy('id', 'ASC')->get();
+        ])->orderBy('id', 'DESC')->get();
 
         $messagess_array = $msgs->all();
-        $userss = Arr::pluck( $messagess_array, 'sender.id' );
+        $userss1 = collect( Arr::pluck( $messagess_array, 'sender_id' ) );
+        $userss2 = collect( Arr::pluck( $messagess_array, 'resiver_id' ) );
+        $userss = $userss1->merge($userss2)->all();
         $friends_id = array_filter( $userss, function($one) {
             return $one != Auth::user()->id;
         } );
         $friends_id_unique = array_unique( $friends_id );
+        $friends_id_string = "'" . implode("','", $friends_id_unique) . "'";
 
-        $friends = User::with('messagess')->whereIn('id', $friends_id_unique)->get();
+        $friends = User::with('last_message_sender')->with('last_message_resiver')->whereIn('id', $friends_id_unique)->orderByRaw( "FIELD(id, $friends_id_string)" )->get();
         //dd($friends);
 
         $objects = compact('objs','cats','msgs','friends');

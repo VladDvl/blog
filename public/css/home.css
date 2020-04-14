@@ -55,3 +55,82 @@ tr td:nth-child(3), tr th:nth-child(3) {
 #table-form {
     font-weight: 400;
 }
+
+.friend-list {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    overflow-y: scroll;
+    max-height: 40rem !important;
+}
+
+.msg-friend {
+    margin-top: 0px !important;
+}
+
+.msg-friend p {
+    margin-bottom: 0px !important;
+}
+
+.msg-friend:hover {
+    background-color: #f3faff !important;
+}
+
+.friend-link {
+    display: block !important;
+    border-bottom: 1px solid #c0c4c7;
+}
+
+.friend-link {
+    text-decoration: none !important;
+}
+
+.friend-link:last-child {
+    border-bottom: none !important;
+}
+
+.friend-avatar {
+    border-radius: 50%;
+    border: 1px solid gray !important;
+    width: 56px !important;
+    height: 56px !important;
+    padding: 1px !important;
+    margin: 4px !important;
+}
+
+.msg-items {
+    padding-left: 5px !important;
+    padding-right: 0px !important;
+}
+
+.friend-name {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #63696e !important;
+}
+
+.msg {
+    margin: 0px !important;
+    padding: 0px !important;
+    padding-top: 5px !important;
+}
+
+.small-avatar {
+    border-radius: 50%;
+    width: 26px !important;
+    height: 26px !important;
+    border: 1px solid gray !important;
+    margin-right: 3px;
+}
+
+.msg-user {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.msg-body {
+    color: #63696e !important;
+}
+
+.msg-date {
+    color: #63696e !important;
+}

@@ -3,6 +3,7 @@
 namespace App\Providers\ViewComposers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Arr;
 use App\Categories;
 use App\User;
 use App\Post;
@@ -39,7 +40,24 @@ class BaseComposer
         $common_msgs = Messages::with('sender')->where([
             ['resiver_id', '=', null],
             ['group_id', '=', null],
-        ])->get();
+        ])->orderBy('id', 'ASC')->get();
+
+        $msg_array = $common_msgs->all();
+        $senders = array_unique( Arr::pluck($msg_array, 'sender_id') );
+        $color = 'color';
+        $arr_colors = ['red','blue','yellow','green','pink','aqua','blueviolet','chartreuse','chocolate','crimson','darkcyan','darkred','darkslategray','goldenrod','limegreen','navy','yellowgreen'];
+        foreach($senders as $sender)
+        {
+            $rand_color = array_rand($arr_colors);
+            foreach($common_msgs as $msg)
+            {
+                if($msg->sender_id == $sender) {
+
+                    $msg->$color = $arr_colors[$rand_color];
+
+                }
+            }
+        }
         
         /*foreach($top_users as $one) {
             $one->user_posts->

@@ -38,7 +38,7 @@
                                 @if( isset($friend->last_message_sender) == true and isset($friend->last_message_resiver) == true )
                                     @if( $friend->last_message_sender->created_at > $friend->last_message_resiver->created_at )
                                         <div class="row msg-user">
-                                            <p class="msg-body">{{$friend->last_message_sender->body}}</p>
+                                            <p class="msg-body">{{mb_substr($friend->last_message_sender->body, 0, 55)}}..</p>
                                         </div>
                                         <p class="msg-date">{{$friend->last_message_sender->created_at}}</p>
                                     @else
@@ -48,14 +48,14 @@
                                             @else
                                                 <img class="small-avatar" src="{{asset('public/img/default-avatar.png')}}" width="24" height="24">
                                             @endif
-                                            <p class="msg-body">{{$friend->last_message_resiver->body}}</p>
+                                            <p class="msg-body">{{mb_substr($friend->last_message_resiver->body, 0, 55)}}..</p>
                                         </div>
                                         <p class="msg-date">{{$friend->last_message_resiver->created_at}}</p>
                                     @endif
                                 @endif
                                 @if( isset($friend->last_message_sender) == true and isset($friend->last_message_resiver) != true )
                                     <div class="row msg-user">
-                                        <p class="msg-body">{{$friend->last_message_sender->body}}</p>
+                                        <p class="msg-body">{{mb_substr($friend->last_message_sender->body, 0, 55)}}..</p>
                                     </div>
                                     <p class="msg-date">{{$friend->last_message_sender->created_at}}</p>
                                 @endif
@@ -66,7 +66,7 @@
                                         @else
                                             <img class="small-avatar" src="{{asset('public/img/default-avatar.png')}}" width="24" height="24">
                                         @endif
-                                        <p class="msg-body">{{$friend->last_message_resiver->body}}</p>
+                                        <p class="msg-body">{{mb_substr($friend->last_message_resiver->body, 0, 55)}}..</p>
                                     </div>
                                     <p class="msg-date">{{$friend->last_message_resiver->created_at}}</p>
                                 @endif

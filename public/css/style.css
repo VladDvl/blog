@@ -30,11 +30,41 @@
 }
 
 .chat-message {
-  margin-bottom: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.chat-message:hover {
+  background-color: #dce8f1;
+}
+
+.chat-message p {
+  margin-bottom: 0px;
+}
+
+.msg-info {
+  margin-bottom: 2px !important;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .chat-message p span {
   font-weight: bold;
+}
+
+.chat-message p span.name {
+  font-size: initial;
+  color: #63696e;
+}
+
+.chat-message p span.time {
+  margin-top: 2px;
+  font-size: small !important;
+  font-weight: normal;
+  font-size: initial;
+  color: #63696e;
 }
 
 .chat-message p span.red {

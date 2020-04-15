@@ -102,7 +102,8 @@
           @if(count($common_msgs) > 0)
             @foreach($common_msgs as $common_msg)
               <div class="chat-message">
-                <p><span class="red">{{$common_msg->sender->name}}:</span> {{$common_msg->body}}</p>
+                <p class="text-muted msg-info"><a href="{{asset('user/' . $common_msg->sender->id)}}"><span class="name" style="color: {{isset($common_msg->color) ? $common_msg->color : 'black'}};">{{$common_msg->sender->name}}:</span></a> <span class="time">{{$common_msg->created_at->format('H:i')}}</span></p>
+                <p class="message-body">{{$common_msg->body}}</p>
               </div>
             @endforeach
           @else
@@ -122,7 +123,7 @@
               @endforeach
             @endif
             <div>
-              <textarea name="body"></textarea>
+              <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
               <button type="submit" name="submit">{{__('menu.Send')}}</button>
             </div>
           </form>
@@ -176,6 +177,7 @@
 </footer>
 @section('scripts')
   <script src="{{asset('public/src/jquery-3.4.1.min.js')}}"></script>
+  <script src="{{asset('public/js/aside-chat.js')}}"></script>
 @show
 </body>
 </html>

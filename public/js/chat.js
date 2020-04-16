@@ -1,5 +1,5 @@
-var container = $('.chat-field');
-    element = $('.chat-message:last-child');
+var container = $('.messages-field');
+    element = $('.message:last-child');
     scrolled = false;
     position = element.offset().top - container.offset().top;
 
@@ -13,7 +13,7 @@ function scrollToBottom() {
 
 var scrollInterval = setInterval( scrollToBottom, 1000 );
 
-$('.chat-field').on('scroll', function() {
+$('.messages-field').on('scroll', function() {
     scrolled = true;
     clearInterval( scrollInterval );
 });

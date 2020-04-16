@@ -11,19 +11,32 @@
 @endsection
 
 @section('content')
-  <div class="card bg-light rounded chat-block">
+  <div class="card bg-light rounded messages-block">
     <div class="card-header">{{__('menu.Messages')}}</div>
 
-    <div class="card-body justify-content-start col chat-field">
+    <div class="card-body justify-content-start col messages-field">
       @if(count($objs) > 0)
         @foreach($objs as $one)
-          <div class="chat-message border rounded">
-            <div class="justify-content-between">
-              <div class="chat-message-author">{{$one->sender->name}}:</div>
-              <div class="text-muted">{{$one->created_at}}</div>
+          <div class="message">
+
+            @if( $one->sender->avatar != 'users/default.png' and $one->sender->avatar != '' )
+              <img class="message-avatar" scr="{{asset('#')}}" src="{{asset('public/uploads/avatars/' . $one->sender->avatar)}}" width="36" height="36" alt="avatar">
+            @else
+              <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+            @endif
+
+            <div class="mssg">
+              
+            <div class="justify-content-between message-info">
+              <div class="message-author"><a href="{{asset('user/' . $one->sender->id)}}">{{$one->sender->name}}:</a></div>
+              <div class="text-muted message-time">{{$one->created_at}}</div>
             </div>
-            <p>{{$one->body}}</p>
-          </div>
+
+            <p class="message-body">{{$one->body}}</p>
+
+            </div>
+
+          </div><!--message-->
         @endforeach
       @else
         <div>
@@ -32,8 +45,8 @@
       @endif
     </div><!--chat-->
 
-    <div class="chat-form-block border">
-      <form class="chat-form" method="post" action="{{asset('chat/send')}}" enctype="multipart/form-data">
+    <div class="messages-form-block border">
+      <form class="messages-form" method="post" action="{{asset('chat/send')}}" enctype="multipart/form-data">
         {!!csrf_field()!!}
         @if(count($errors)>0)
           @foreach($errors->all() as $ers)
@@ -43,7 +56,7 @@
           @endforeach
         @endif
         <div>
-          <textarea name="body"></textarea>
+          <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
           <input type="hidden" name="resiver_id" value="{{(isset($slug)) ? $slug : ''}}">
           <button type="submit" name="submit">{{__('menu.Send')}}</button>
         </div>

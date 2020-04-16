@@ -10,25 +10,6 @@ form {
     margin-left: 0.1rem;
 }
 
-#input-avatar-div {
-    margin-left: 0.05rem;
-}
-
-#input-avatar-div button {
-    margin-right: 0.5rem;
-}
-
-#input-avatar-div input {
-    margin-right: 0.8rem;
-}
-
-.card-body img {
-    width: 100px;
-    height: 100px;
-    padding: 2px;
-    border: 1px solid black;
-}
-
 .card-header {
     font-weight: 700;
     font-style: italic;
@@ -36,22 +17,95 @@ form {
     text-transform: uppercase;
 }
 
-.home-table {
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid gray;
+.messages-block {
+    height: 35rem !important;
 }
 
-.home-table td, .home-table th {
-    border: 1px solid gray;
-    padding-left: 0.15rem;
+.messages-field {
+    background-color: white !important;
+    border: 1px solid #c0c4c7 !important;
+    overflow-y: scroll;
+    padding: 2px;
 }
 
-tr td:nth-child(3), tr th:nth-child(3) {
-    width: 30px;
+.message {
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+    line-height: 1;
+    display: flex;
+    flex-direction: row;
+    width: inherit;
 }
 
-#table-form {
-    font-weight: 400;
+.message:hover {
+    background-color: #dce8f1;
+}
+
+.message p {
+    margin-bottom: 0px;
+    width: 40rem;
+}
+
+.message-avatar {
+    border-radius: 50%;
+    border: 1px solid gray !important;
+    width: 52px !important;
+    height: 52px !important;
+    padding: 1px !important;
+    margin: 2px !important;
+}
+
+.message-info {
+    margin-bottom: 2px !important;
+    width: 40rem;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+.message-info .message-author {
+    font-size: initial;
+}
+
+.message-author a {
+    color: #4c5257 !important;
+}
+  
+.message-info .message-time {
+    margin-top: 2px;
+    font-size: small !important;
+    font-weight: normal;
+    font-size: initial;
+    color: #63696e;
+}
+
+.messages-form-block {
+    padding: 2px;
+    margin-top: 0.7rem;
+    height: 6.9rem !important;
+    border: 1px solid #c0c4c7 !important;
+}
+
+.messages-form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.messages-form textarea {
+    height: 5rem;
+    width: 100%;
+    overflow-y: auto;
+    resize: none;
+}
+
+.messages-form button {
+    width: 5rem;
+    margin-top: 0.1rem;
+    line-height: 1rem;
+    padding: 1px !important;
+    font-size: small !important;
 }

@@ -98,7 +98,7 @@
 
       <div class="p-4 mb-3 bg-light rounded chat-block">
         <h4 class="font-italic border-bottom">{{__('menu.Chat')}}</h4>
-        <div class="chat-field">
+        <div id="display" class="chat-field">
           @if(count($common_msgs) > 0)
             @foreach($common_msgs as $common_msg)
               <div class="chat-message">
@@ -178,6 +178,9 @@
 @section('scripts')
   <script src="{{asset('public/src/jquery-3.4.1.min.js')}}"></script>
   <script src="{{asset('public/js/aside-chat.js')}}"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="{{asset('public/js/socket.io.js')}}"></script>
+  <script src="{{asset('public/js/common-chat.js')}}"></script>
 @show
 </body>
 </html>

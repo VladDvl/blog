@@ -8,19 +8,20 @@
 @section('scripts')
   @parent
   <script src="{{asset('public/js/chat.js')}}"></script>
+  <script src="{{asset('public/js/private-chat.js')}}"></script>
 @endsection
 
 @section('content')
   <div class="card bg-light rounded messages-block">
     <div class="card-header">{{__('menu.Messages')}}</div>
 
-    <div class="card-body justify-content-start col messages-field">
+    <div id="display-private" class="card-body justify-content-start col messages-field">
       @if(count($objs) > 0)
         @foreach($objs as $one)
           <div class="message">
 
             @if( $one->sender->avatar != 'users/default.png' and $one->sender->avatar != '' )
-              <img class="message-avatar" scr="{{asset('#')}}" src="{{asset('public/uploads/avatars/' . $one->sender->avatar)}}" width="36" height="36" alt="avatar">
+              <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $one->sender->avatar)}}" width="36" height="36" alt="avatar">
             @else
               <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
             @endif
@@ -57,7 +58,8 @@
         @endif
         <div>
           <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
-          <input type="hidden" name="resiver_id" value="{{(isset($slug)) ? $slug : ''}}">
+          <input id="sender" type="hidden" name="sender_id" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
+          <input id="resiver" type="hidden" name="resiver_id" value="{{(isset($slug)) ? $slug : ''}}">
           <button type="submit" name="submit">{{__('menu.Send')}}</button>
         </div>
       </form>

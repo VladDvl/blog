@@ -13,7 +13,13 @@ class profileController extends Controller
     public function getIndex($slug = null)
     {
         $thing = User::with('user_posts', 'commss')->where('id',$slug)->first();
-        $objs = $thing->user_posts()->paginate(5);
+
+        if( $thing != null ) {
+            $objs = $thing->user_posts()->paginate(5);
+        } else {
+            return view('maintext');
+        }
+        
         //dd($objs);
         return view('profile',compact('thing','objs'));
     }

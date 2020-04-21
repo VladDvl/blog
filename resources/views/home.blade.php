@@ -18,6 +18,38 @@
         <div class="col-md-14">
 
             <div class="card">
+                <div class="card-header">{{__('menu.Groups')}}</div>
+                <div class="card-body create-group justify-content-start col">
+                    <form method="post" action="{{asset('group/create')}}" enctype="multipart/form-data">
+                        {!!csrf_field()!!}
+                        @if(count($errors)>0)
+                            @foreach($errors->all() as $ers)
+                                <div class="red">
+                                    {{$ers}}
+                                </div>
+                            @endforeach
+                        @endif
+                        <div class="form-group">
+                            <label for="groupName">{{__('menu.CreateGroup')}}</label>
+                            <div class="row row-form">
+                                <input type="text" class="form-control col-form" id="groupName" name="name" placeholder="{{__('menu.GroupName')}}">
+                                <button type="submit" class="btn btn-primary col col-form" name="submit">{{__('menu.Create')}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body groups-list justify-content-start col">
+                    @foreach($groups as $group)
+                        <div class="row">
+                            <p class="col"><a href="{{asset('#')}}">{{$group->name}}</a></p>
+                            <p class="col text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
+                            <p class="col text-muted">{{$group->created_at}}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div><!--Groups-->
+
+            <div class="card">
                 <div class="card-header">{{__('menu.Messages')}}</div>
                 <div class="card-body justify-content-start col friend-list">
                     @if(count($friends) != 0)
@@ -234,11 +266,9 @@
             @endforeach
             </table>
             <div>{!!$objs->links()!!}</div>
-
-
             </form>
 
-        </div><!--div col md-12-->
+        </div><!--div col md-14-->
     </div>
 </div>
 @endsection

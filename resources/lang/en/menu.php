@@ -70,4 +70,8 @@ return [
     'WriteMessage' => 'Write a message',
     'ToWriteLogIn' => 'LogIn to write a message',
     'NoMessages' => 'No messages',
+    'Create' => 'Create',
+    'Groups' => 'Groups',
+    'CreateGroup' => 'Create a group',
+    'GroupName' => 'Group name',
 ];

@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Facades\Voyager;
 use App\Comments;
 use App\Messages;
+use App\groups;
 use Auth;
 
 class User extends \TCG\Voyager\Models\User
@@ -55,6 +56,11 @@ class User extends \TCG\Voyager\Models\User
     public function messagess()
     {
         return $this->hasMany('App\Messages', 'sender_id')->where('status', 'PUBLISHED')->where('resiver_id', '=', Auth::user()->id)->orWhere('sender_id', '=', Auth::user()->id);
+    }
+
+    public function groupss()
+    {
+        return $this->hasMany('App\groups', 'user_id');
     }
 
     public function last_message_sender()

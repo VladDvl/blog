@@ -134,3 +134,25 @@ tr td:nth-child(3), tr th:nth-child(3) {
 .msg-date {
     color: #63696e !important;
 }
+
+.row-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.col-form {
+    margin-right: 0.5rem;
+}
+
+.col-form:last-child {
+    margin-right: 0.15rem;
+}
+
+.create-group {
+    padding-bottom: 0px;
+}
+
+.groups-list {
+    padding-top: 0px;
+}

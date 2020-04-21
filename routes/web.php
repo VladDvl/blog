@@ -6,6 +6,7 @@ Route::post('home','HomeController@postIndex');
 Route::post('home/avatar','HomeController@avatarChange');
 Route::post('home/table','HomeController@homeTable');
 Route::post('chat/send', 'ChatController@postIndex')->middleware('auth');
+Route::post('group/create', 'GroupController@createGroup');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

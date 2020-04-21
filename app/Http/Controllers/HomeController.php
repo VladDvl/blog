@@ -12,6 +12,7 @@ use App\Comments;
 use App\Categories;
 use App\User;
 use App\Messages;
+use App\groups;
 use Auth;
 
 class HomeController extends Controller
@@ -83,7 +84,10 @@ class HomeController extends Controller
         $friends = User::with('last_message_sender')->with('last_message_resiver')->whereIn('id', $friends_id_unique)->orderByRaw( "FIELD(id, $friends_id_string)" )->get();
         //dd($friends);
 
-        $objects = compact('objs','cats','msgs','friends');
+        $groups = groups::with('group_creator')->where('user_id', Auth::user()->id)->where('status', 'PUBLISHED')->get();
+        //dd($groups);
+
+        $objects = compact('objs','cats','msgs','friends','groups');
         return $objects;
     }
 
@@ -94,8 +98,9 @@ class HomeController extends Controller
         $cats = $objects['cats'];
         $msgs = $objects['msgs'];
         $friends = $objects['friends'];
+        $groups = $objects['groups'];
 
-        return view('home', compact('objs','cats','msgs','friends'));
+        return view('home', compact('objs','cats','msgs','friends','groups'));
     }
 
     public function postIndex(PostRequest $r)
@@ -176,11 +181,14 @@ class HomeController extends Controller
         $objects = $this->homeObjs();
         $objs = $objects['objs'];
         $cats = $objects['cats'];
+        $msgs = $objects['msgs'];
+        $friends = $objects['friends'];
+        $groups = $objects['groups'];
 
         $edit_post = Post::where('slug', $slug)->first();
         $post_id = $edit_post->id;
 
-        return view('home', compact('objs','cats','post_id','edit_post'));
+        return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post'));
     }
 
     public function avatarChange(AvatarRequest $r)

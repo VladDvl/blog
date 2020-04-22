@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
 use App\User;
+use App\groups;
 
 class Messages extends Model
 {
@@ -13,5 +14,10 @@ class Messages extends Model
     public function sender()
     {
         return $this->belongsTo(Voyager::modelClass('User'));
+    }
+
+    public function grouppp()
+    {
+        return $this->belongsTo('App\groups', 'group_id');
     }
 }

@@ -9,6 +9,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Comments;
 use App\Messages;
 use App\groups;
+use App\partitipants;
 use Auth;
 
 class User extends \TCG\Voyager\Models\User
@@ -61,6 +62,11 @@ class User extends \TCG\Voyager\Models\User
     public function groupss()
     {
         return $this->hasMany('App\groups', 'user_id');
+    }
+
+    public function partitipantsss()
+    {
+        return $this->hasMany('App\partitipants', 'user_id');
     }
 
     public function last_message_sender()

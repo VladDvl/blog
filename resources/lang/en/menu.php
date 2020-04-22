@@ -72,6 +72,7 @@ return [
     'NoMessages' => 'No messages',
     'Create' => 'Create',
     'Groups' => 'Groups',
+    'Group' => 'Group',
     'CreateGroup' => 'Create a group',
     'GroupName' => 'Group name',
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\AvatarRequest;
@@ -84,7 +85,9 @@ class HomeController extends Controller
         $friends = User::with('last_message_sender')->with('last_message_resiver')->whereIn('id', $friends_id_unique)->orderByRaw( "FIELD(id, $friends_id_string)" )->get();
         //dd($friends);
 
-        $groups = groups::with('group_creator')->where('user_id', Auth::user()->id)->where('status', 'PUBLISHED')->get();
+        $groups = groups::with('group_creator')->with('partitipantss')->with('messagee')->whereHas('partitipantss', function (Builder $query) {
+            $query->where('user_id', '=', Auth::user()->id);
+        })->where('status', 'PUBLISHED')->get();
         //dd($groups);
 
         $objects = compact('objs','cats','msgs','friends','groups');

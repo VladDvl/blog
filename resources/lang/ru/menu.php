@@ -72,6 +72,7 @@ return [
     'NoMessages' => 'Сообщений нет',
     'Create' => 'Создать',
     'Groups' => 'Группы',
+    'Group' => 'Группа',
     'CreateGroup' => 'Создать группу',
     'GroupName' => 'Имя группы',
 ];

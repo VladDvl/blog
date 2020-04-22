@@ -1,0 +1,69 @@
+@extends('layouts.base')
+
+@section('styles')
+  @parent
+  <link href="{{asset('public/css/chat.css')}}" rel="stylesheet"/>
+@endsection
+
+@section('scripts')
+  @parent
+  <script src="{{asset('public/js/chat.js')}}"></script>
+  <!--<script src="{{asset('public/js/private-chat.js')}}"></script>-->
+@endsection
+
+@section('content')
+  <div class="card bg-light rounded messages-block">
+    <div class="card-header"><span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}</div>
+
+    <div id="display-private" class="card-body justify-content-start col messages-field">
+      @if( count($messages) > 0 )
+        @foreach($messages as $msg)
+          <div class="message">
+            
+            @if( $msg->sender->avatar != 'users/default.png' and $msg->sender->avatar != '' )
+              <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $msg->sender->avatar)}}" width="36" height="36" alt="avatar">
+            @else
+              <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+            @endif
+
+            <div class="mssg">
+
+            <div class="justify-content-between message-info">
+              <div class="message-author"><a href="{{asset('user/' . $msg->sender->id)}}">{{$msg->sender->name}}:</a></div>
+              <div class="text-muted message-time">{{$msg->created_at}}</div>
+            </div>
+
+            <p class="message-body">{{$msg->body}}</p>
+
+            </div>
+
+          </div><!--message-->
+        @endforeach
+      @else
+        <div>
+          {{__('menu.NoMessages')}}.
+        </div>
+      @endif
+    </div><!--chat-->
+
+    <div class="messages-form-block border">
+      <form class="messages-form" method="post" action="{{asset('group/send')}}" enctype="multipart/form-data">
+        {!!csrf_field()!!}
+        @if(count($errors)>0)
+          @foreach($errors->all() as $ers)
+            <div class="red">
+              {{$ers}}
+            </div>
+          @endforeach
+        @endif
+        <div>
+          <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
+          <input id="sender" type="hidden" name="sender_id" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
+          <input id="group" type="hidden" name="group_id" value="{{(isset($slug)) ? $slug : ''}}">
+          <button type="submit" name="submit">{{__('menu.Send')}}</button>
+        </div>
+      </form>
+    </div><!--chat-form-->
+
+  </div><!--chat-block-->
+@endsection

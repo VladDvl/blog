@@ -19,6 +19,7 @@
 
             <div class="card">
                 <div class="card-header">{{__('menu.Groups')}}</div>
+
                 <div class="card-body create-group justify-content-start col">
                     <form method="post" action="{{asset('group/create')}}" enctype="multipart/form-data">
                         {!!csrf_field()!!}
@@ -38,15 +39,21 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="card-body groups-list justify-content-start col">
                     @foreach($groups as $group)
-                        <div class="row">
-                            <p class="col"><a href="{{asset('#')}}">{{$group->name}}</a></p>
-                            <p class="col text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
-                            <p class="col text-muted">{{$group->created_at}}</p>
-                        </div>
+                        <a href="{{asset('group/' . $group->id)}}">
+                            <div class="row">
+                                <p class="col">{{$group->name}}</p>
+                                <p class="col text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
+                                <p class="col text-muted">Участников: {{count($group->partitipantss)}}</p>
+                                <p class="col text-muted">Сообщений: {{count($group->messagee)}}</p>
+                                <p class="col text-muted">{{$group->created_at}}</p>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
+                
             </div><!--Groups-->
 
             <div class="card">

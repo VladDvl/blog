@@ -12,6 +12,40 @@
 @endsection
 
 @section('content')
+
+  @if( $obj->user_id == Auth::user()->id )
+    <div class="card bg-light rounded">
+      <div class="card-header text-muted">Добавить участников</div>
+
+      <div class="border-bottom">
+        <form method="post" action="{{asset('group/add')}}" enctype="multipart/form-data">
+          {!!csrf_field()!!}
+          @if(count($errors)>0)
+            @foreach($errors->all() as $ers)
+              <div class="red">
+                {{$ers}}
+              </div>
+            @endforeach
+          @endif
+
+          <select class="form-group" name="user_id">
+            @foreach($users as $user)
+              <option class="form-control" value="{{$user->id}}">{{$user->name}}</option>
+            @endforeach
+          </select>
+
+          <input type="hidden" name="group_id" value="{{$slug}}">
+          <button type="submit" name="submit">{{__('menu.Add')}}</button>
+        </form>
+      </div>
+
+      <div class="card-body justify-content-start col">
+        <p class="text-muted">Заявки на добавление:</p>
+
+      </div>
+    </div>
+  @endif
+
   <div class="card bg-light rounded messages-block">
     <div class="card-header"><span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}</div>
 

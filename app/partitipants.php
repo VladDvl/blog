@@ -9,6 +9,8 @@ use App\User;
 
 class partitipants extends Model
 {
+    protected $fillable = ['group_id','user_id','status'];
+
     public function groupp()
     {
         return $this->belongsTo('App\groups', 'group_id');

@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use App\Http\Requests\PartitipantRequest;
+use App\User;
 use App\Messages;
 use App\groups;
 use App\partitipants;
@@ -29,7 +30,9 @@ class GroupController extends Controller
 
             $messages = Messages::with('sender')->where('status', 'PUBLISHED')->where('resiver_id', null)->where('group_id', $slug)->whereIn('sender_id', $arr_partitipants)->get();
 
-            return view('group', compact('obj','messages','slug'));
+            $users = User::where('id', '<>', Auth::user()->id)->get();
+
+            return view('group', compact('obj','messages','slug','users'));
 
         } else {
 
@@ -80,6 +83,9 @@ class GroupController extends Controller
 
     public function addPartitipant(PartitipantRequest $r)
     {
+        //dd($r);
+        partitipants::create($r->all());
+
         return redirect()->back();
     }
 }

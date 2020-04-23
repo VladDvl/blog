@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header">{{__('menu.Groups')}}</div>
 
-                <div class="card-body create-group justify-content-start col">
+                <div class="card-body create-group justify-content-start col border-bottom">
                     <form method="post" action="{{asset('group/create')}}" enctype="multipart/form-data">
                         {!!csrf_field()!!}
                         @if(count($errors)>0)
@@ -36,6 +36,10 @@
                                 <input type="text" class="form-control col-form" id="groupName" name="name" placeholder="{{__('menu.GroupName')}}">
                                 <button type="submit" class="btn btn-primary col col-form" name="submit">{{__('menu.Create')}}</button>
                             </div>
+                            <label for="pubcic">Public</label>
+                            <input type="radio" checked id="public" name="type" value="public">
+                            <label for="private">Private</label>
+                            <input type="radio" id="private" name="type" value="private">
                         </div>
                     </form>
                 </div>

@@ -68,6 +68,7 @@ return [
     'HiddenComment' => 'Скрытый комментарий',
     'Chat' => 'Чат',
     'Messages' => 'Сообщения',
+    'Messagess' => 'Сообщений',
     'WriteMessage' => 'Написать сообщение',
     'ToWriteLogIn' => 'Чтобы написать сообщение, авторизируйтесь',
     'NoMessages' => 'Сообщений нет',

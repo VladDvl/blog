@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="group-info2">
                                         <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
-                                        <p class="text-muted">{{__('menu.Messages')}}: {{count($group->messagee)}}</p>
+                                        <p class="text-muted">{{__('menu.Messagess')}}: {{count($group->messagee)}}</p>
                                     </div>
                                 </div>
                             </div>

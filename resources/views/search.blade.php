@@ -112,6 +112,33 @@
   @endif
 </div><!--comments-->
 
+
+<div>
+  @if(count($objs['objs_groups'])>0)
+    <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic align-items-center col">
+      <h3>
+        {{__('menu.Groups')}}: {{count($objs['objs_groups'])}}.
+      </h3>
+      @foreach($objs['objs_groups'] as $group)
+        <div class="blog-post body-maintext col">
+          <div class="row justify-content-between container">
+            <a href="{{asset('group/' . $group->id)}}">{!!mb_substr($group->name, 0, 95)!!}</a>
+            <p class="blog-post-meta">
+              {{__('menu.Author')}}: <a href="{{asset('user/' . $group->user_id)}}">{{(isset($group->group_creator->name)) ? $group->group_creator->name : ''}}</a>
+              {{__('menu.Type')}}: {{$group->type}}
+              {{__('menu.Created')}}: {{$group->created_at}}
+            </p>
+          </div>
+          <p class="blog-post-meta row justify-content-end container">
+              {{__('menu.Partitipants')}}: {{count($group->partitipantss)}}
+              {{__('menu.Messagess')}}: {{count($group->messagee)}}
+          </p>
+        </div>
+      @endforeach
+    </div>
+  @endif
+</div><!--groups-->
+
   @if(count($objs['objs_posts'])==0 and count($objs['objs_users'])==0 and count($objs['objs_comments'])==0 and count($objs['objs_categories'])==0)
   <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic align-items-center col">
     <p>

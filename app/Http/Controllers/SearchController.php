@@ -7,6 +7,7 @@ use App\Post;
 use App\User;
 use App\Comments;
 use App\Categories;
+use App\groups;
 
 class SearchController extends Controller
 {
@@ -29,8 +30,9 @@ class SearchController extends Controller
             $objs_users = User::where('name', 'LIKE', '%'.$_GET['search'].'%')->paginate(10);
             $objs_comments = Comments::where('body', 'LIKE', '%'.$_GET['search'].'%')->paginate(10);
             $objs_categories = Categories::where('name', 'LIKE', '%'.$_GET['search'].'%')->orWhere('slug', 'LIKE', '%'.$_GET['search'].'%')->paginate(10);
+            $objs_groups = groups::with('group_creator')->with('partitipantss')->with('messagee')->where('status', 'PUBLISHED')->where('type', 'public')->where('name', 'LIKE', '%'.$_GET['search'].'%')->paginate(10);
 
-            $objs = compact('objs_posts','objs_users','objs_comments','objs_categories');
+            $objs = compact('objs_posts','objs_users','objs_comments','objs_categories','objs_groups');
             //dd($objs);
             
         }

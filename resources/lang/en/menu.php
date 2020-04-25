@@ -68,6 +68,7 @@ return [
     'HiddenComment' => 'Hidden comment',
     'Chat' => 'Chat',
     'Messages' => 'Messages',
+    'Messagess' => 'Messages',
     'WriteMessage' => 'Write a message',
     'ToWriteLogIn' => 'LogIn to write a message',
     'NoMessages' => 'No messages',

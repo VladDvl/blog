@@ -10,7 +10,7 @@ use App\partitipants;
 
 class groups extends Model
 {
-    protected $fillable = ['user_id','name','status','type'];
+    protected $fillable = ['user_id','name','avatar','status','type'];
 
     public function group_creator()
     {

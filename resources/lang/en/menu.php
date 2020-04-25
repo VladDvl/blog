@@ -32,6 +32,7 @@ return [
     'Send' => 'Send',
     'Close' => 'Close',
     'Avatar' => 'User\'s avatar',
+    'GroupAvatar' => 'Group\'s avatar',
     'Change' => 'Change',
     'Delete' => 'Delete',
     'Title' => 'Title',

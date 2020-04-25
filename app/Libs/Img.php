@@ -23,6 +23,8 @@ class Img
                     $dir = public_path().'/uploads/comments';
                 } elseif($content == 'avatar') {
                     $dir = public_path().'/uploads/avatars';
+                } elseif($content == 'group-avatar') {
+                    $dir = public_path().'/uploads/group-avatars';
                 } else {
                     $dir = public_path().'/uploads';
                 }

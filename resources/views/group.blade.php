@@ -3,11 +3,13 @@
 @section('styles')
   @parent
   <link href="{{asset('public/css/chat.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/group.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('scripts')
   @parent
   <script src="{{asset('public/js/chat.js')}}"></script>
+  <script src="{{asset('public/js/group.js')}}"></script>
   <!--<script src="{{asset('public/js/private-chat.js')}}"></script>-->
 @endsection
 
@@ -43,7 +45,37 @@
         <p class="text-muted">Заявки на добавление:</p>
 
       </div>
-    </div>
+    </div><!--partitipants-->
+
+    <div class="card">
+      <div class="card-header text-muted">{{__('menu.GroupAvatar')}}</div>
+      <div class="card-body justify-content-start row">
+        @if( $obj->avatar != '' )
+          <img src="{{asset('public/uploads/group-avatars/' . $obj->avatar)}}" width="100" height="100" alt="avatar">
+        @else
+          <img src="{{asset('public/img/default-group.png')}}" width="100" height="100" alt="avatar">
+        @endif
+
+        <form class="col" method="post" action="{{asset('group/group-avatar')}}" enctype="multipart/form-data">
+          {!!csrf_field()!!}
+          @if(count($errors)>0)
+            @foreach($errors->all() as $ers)
+              <div class="red">
+                {{$ers}}
+              </div>
+            @endforeach
+          @endif
+          <input type="hidden" name="group_id" value="{{$slug}}">
+          <div id="input-avatar-div" class="form-group row">
+            <button id="input-avatar-button" type="submit" class="btn btn-primary" name="action" value="change">{{__('menu.Change')}}</button>
+            <input id="input-avatar-img" type="file" class="col form-control" id="avatarImage" name="avatar1" placeholder="Изображение">
+          </div>
+          <div id="delete-avatar-div" class="form-group">
+            <button id="delete-avatar-button" type="submit" class="btn btn-primary" name="action" value="delete">{{__('menu.Delete')}}</button>
+          </div>
+        </form>
+      </div>
+    </div><!--avatar-->
   @endif
 
   <div class="card bg-light rounded messages-block">

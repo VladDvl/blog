@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use App\Http\Requests\PartitipantRequest;
+use App\Http\Requests\AvatarRequest;
 use App\User;
 use App\Messages;
 use App\groups;
@@ -87,5 +88,34 @@ class GroupController extends Controller
         partitipants::create($r->all());
 
         return redirect()->back();
+    }
+
+    public function avatarChange(AvatarRequest $r)
+    {
+        $input = $r->input();
+        $group_id = $input['group_id'];
+        //dd($r);
+
+        if( $r->input('action') == 'change' ) {
+
+            $pic = \App::make('\App\Libs\Img')->url('group-avatar',$_FILES['avatar1']['tmp_name']);
+
+            if($pic) {
+                $r['avatar'] = $pic;
+            } else {
+                $r['avatar'] = '';
+            }
+
+            $groupp = groups::where('id', $group_id)->update(['avatar' => $r['avatar']]);
+            return redirect()->back();
+
+        } elseif ( $r->input('action') == 'delete' ) {
+
+            $r['avatar'] = '';
+
+            $groupp = groups::where('id', $group_id)->update(['avatar' => null]);
+            return redirect()->back();
+
+        }
     }
 }

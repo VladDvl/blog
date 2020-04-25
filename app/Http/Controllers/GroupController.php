@@ -19,11 +19,19 @@ class GroupController extends Controller
 {
     public function getIndex($slug = null)
     {
-        $obj = groups::with('messagee')->with('group_creator')->with('partitipantss')->whereHas('partitipantss', function (Builder $query) {
-            $query->where('user_id', '=', Auth::user()->id);
-        })->where('status', 'PUBLISHED')->where('id', $slug)->first();
+        $obj = groups::with('messagee')->with('group_creator')->with('partitipantss')
+            ->where('id', $slug)->where('status', 'PUBLISHED')
+            ->where(function($query) {
+                $query->where('type', 'public')
+                    ->orWhere(function($query) {
+                        $query->where('type', 'private')
+                            ->whereHas('partitipantss', function (Builder $query) {
+                                $query->where('user_id', '=', Auth::user()->id);
+                            });
+                    });
+            })->first();
         //dd($obj);
-
+        
         if(isset($obj)) {
 
             $arr_partitipants = Arr::pluck( $obj->partitipantss->all(), 'user_id' );
@@ -47,6 +55,13 @@ class GroupController extends Controller
         $r['status'] = 'PUBLISHED';
         $r['sender_id'] = Auth::user()->id;
         $r['resiver_id'] = null;
+
+        $partitipants = partitipants::where('group_id', $r->input('group_id'))->get();
+        $arr_users = Arr::pluck( $partitipants->all(), 'user_id' );
+
+        if( !in_array(Auth::user()->id, $arr_users)  ) {
+            return redirect()->back();
+        }
 
         if( array_key_exists('group_id', $r->input()) and intval($r->input('group_id')) != 0 ) {
             $r['group_id'] = intval($r->input('group_id'));

@@ -75,4 +75,6 @@ return [
     'Group' => 'Группа',
     'CreateGroup' => 'Создать группу',
     'GroupName' => 'Имя группы',
+    'Type' => 'Тип',
+    'Partitipants' => 'Участников',
 ];

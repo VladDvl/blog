@@ -109,3 +109,17 @@ form {
     padding: 1px !important;
     font-size: small !important;
 }
+
+.group-header {
+    padding-left: 2px;
+}
+
+.group-avatar {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 1px;
+    margin: 4px;
+    border: 1px solid rgb(224, 222, 222);
+    width: 56px;
+    height: 56px;
+}

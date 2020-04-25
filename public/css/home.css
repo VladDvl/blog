@@ -154,5 +154,75 @@ tr td:nth-child(3), tr th:nth-child(3) {
 }
 
 .groups-list {
+    padding-left: 6px;
+    padding-right: 6px;
     padding-top: 0px;
+    padding-bottom: 0px;
+    overflow-y: scroll;
+    max-height: 24rem;
+}
+
+.groups-list a:hover {
+    text-decoration: none;
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.group-link div.group {
+    border-bottom: 1px solid #c0c4c7;
+}
+
+.group-link:last-child div.group {
+    border-bottom: none;
+}
+
+
+.group:hover {
+    background-color: #f3faff;
+}
+
+div.group .group-small-avatar {
+    padding: 1px;
+    margin: 4px;
+    border: 1px solid rgb(182, 177, 177);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+.group-info {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.group-info1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.group-info2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.group-info1 p.group-name {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #63696e;
+}
+
+.group-info1 p, .group-info2 p {
+    margin-bottom: 0px;
+    margin-left: 1rem !important;
+}
+
+.group-info1 p:first-child, .group-info2 p:first-child {
+    margin-left: 0px !important;
 }

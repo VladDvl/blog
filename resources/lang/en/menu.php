@@ -75,4 +75,6 @@ return [
     'Group' => 'Group',
     'CreateGroup' => 'Create a group',
     'GroupName' => 'Group name',
+    'Type' => 'Type',
+    'Partitipants' => 'Partitipants',
 ];

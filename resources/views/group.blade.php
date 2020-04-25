@@ -47,7 +47,15 @@
   @endif
 
   <div class="card bg-light rounded messages-block">
-    <div class="card-header"><span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}</div>
+
+    <div class="card-header group-header">
+      @if($obj->avatar != '')
+        <img class="group-avatar" src="{{asset('public/uploads/group-avatars/' . $obj->avatar)}}" width="52" height="52" alt="avatar">
+      @else
+        <img class="group-avatar" src="{{asset('public/img/default-group.png')}}" width="52" height="52" alt="avatar">
+      @endif
+      <span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}
+    </div>
 
     <div id="display-private" class="card-body justify-content-start col messages-field">
       @if( count($messages) > 0 )

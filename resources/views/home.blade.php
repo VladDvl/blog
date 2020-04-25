@@ -42,23 +42,37 @@
                             <input type="radio" id="private" name="type" value="private">
                         </div>
                     </form>
-                </div>
+                </div><!--create group form-->
 
                 <div class="card-body groups-list justify-content-start col">
                     @foreach($groups as $group)
-                        <a href="{{asset('group/' . $group->id)}}">
-                            <div class="row">
-                                <p class="col">{{$group->name}}</p>
-                                <p class="col text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
-                                <p class="col text-muted">Участников: {{count($group->partitipantss)}}</p>
-                                <p class="col text-muted">Сообщений: {{count($group->messagee)}}</p>
-                                <p class="col text-muted">{{$group->created_at}}</p>
+                        <a class="group-link" href="{{asset('group/' . $group->id)}}">
+                            <div class="group">
+
+                                @if($group->avatar != '')
+                                    <img class="group-small-avatar" src="{{asset('public/uploads/group-avatars/' . $group->avatar)}}" alt="avatar" width="24" height="24">
+                                @else
+                                    <img class="group-small-avatar" src="{{asset('public/img/default-group.png')}}" alt="avatar" width="24" height="24">
+                                @endif
+
+                                <div class="group-info">
+                                    <div class="group-info1">
+                                        <p class="group-name">{{$group->name}}</p>
+                                        <p class="text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
+                                        <p class="text-muted">{{__('menu.Type')}}: {{$group->type}}</p>
+                                        <p class="text-muted">{{__('menu.Created')}}: {{$group->created_at}}</p>
+                                    </div>
+                                    <div class="group-info2">
+                                        <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
+                                        <p class="text-muted">{{__('menu.Messages')}}: {{count($group->messagee)}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     @endforeach
-                </div>
+                </div><!--groups list-->
                 
-            </div><!--Groups-->
+            </div><!--groups-->
 
             <div class="card">
                 <div class="card-header">{{__('menu.Messages')}}</div>
@@ -234,7 +248,7 @@
                         @endif
                     </form>
                 </div>
-            </div>
+            </div><!--post create-->
 
 
             <form id="table-form" method="post" action="{{asset('home/table')}}" enctype="multipart/form-data">
@@ -277,7 +291,7 @@
             @endforeach
             </table>
             <div>{!!$objs->links()!!}</div>
-            </form>
+            </form><!--table posts-->
 
         </div><!--div col md-14-->
     </div>

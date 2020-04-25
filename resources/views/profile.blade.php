@@ -72,6 +72,48 @@
 
 <div>{!!$objs->links()!!}</div>
 
+<div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
+    <h3>
+        {{__('menu.Groups')}}
+    </h3>
+</div>
+
+@if( count($groups) != 0 )
+
+<div class="card">
+<div class="card-body groups-list justify-content-start col">
+    @foreach($groups as $group)
+        <a class="group-link" href="{{asset('group/' . $group->id)}}">
+        <div class="group">
+
+            @if($group->avatar != '')
+                <img class="group-small-avatar" src="{{asset('public/uploads/group-avatars/' . $group->avatar)}}" alt="avatar" width="24" height="24">
+            @else
+                <img class="group-small-avatar" src="{{asset('public/img/default-group.png')}}" alt="avatar" width="24" height="24">
+            @endif
+
+                <div class="group-info">
+                    <div class="group-info1">
+                        <p class="group-name">{{$group->name}}</p>
+                        <p class="text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
+                        <p class="text-muted">{{__('menu.Type')}}: {{$group->type}}</p>
+                        <p class="text-muted">{{__('menu.Created')}}: {{$group->created_at}}</p>
+                    </div>
+                    <div class="group-info2">
+                        <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
+                        <p class="text-muted">{{__('menu.Messagess')}}: {{count($group->messagee)}}</p>
+                    </div>
+                </div>
+        </div>
+        </a>
+    @endforeach
+</div><!--groups list-->
+</div>
+
+@else
+<p>{{__('menu.User_no_groups')}}.</p>
+@endif
+
 </div>
 
 @endsection

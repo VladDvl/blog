@@ -58,6 +58,7 @@ return [
     'Loads' => 'Loads',
     'Registered' => 'Registered',
     'User_no_posts' => 'This user has no posts',
+    'User_no_groups' => 'This user has no groups',
     'Search' => 'Search',
     'Find' => 'Find',
     'Users' => 'Users',

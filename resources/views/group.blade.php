@@ -10,7 +10,7 @@
   @parent
   <script src="{{asset('public/js/chat.js')}}"></script>
   <script src="{{asset('public/js/group.js')}}"></script>
-  <!--<script src="{{asset('public/js/private-chat.js')}}"></script>-->
+  <script src="{{asset('public/js/group-chat.js')}}"></script>
 @endsection
 
 @section('content')

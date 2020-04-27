@@ -80,4 +80,6 @@ return [
     'GroupName' => 'Имя группы',
     'Type' => 'Тип',
     'Partitipants' => 'Участников',
+    'Partitipantss' => 'Участники',
+    'NoPartitipants' => 'Нет участников',
 ];

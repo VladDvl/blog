@@ -30,6 +30,8 @@ form {
 }
 
 .group-header {
+    margin-left: 0px;
+    margin-right: 0px;
     padding-left: 2px;
 }
 
@@ -41,4 +43,20 @@ form {
     border: 1px solid rgb(224, 222, 222);
     width: 56px;
     height: 56px;
+}
+
+.modal-link {
+    font-size: small;
+    text-decoration: underline;
+    padding: 2px;
+    margin-top: 0.7rem;
+}
+
+.partitipant {
+    display: flex;
+    flex-direction: row;
+}
+
+.partitipant:last-child {
+    border-bottom: none !important;
 }

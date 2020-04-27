@@ -80,4 +80,6 @@ return [
     'GroupName' => 'Group name',
     'Type' => 'Type',
     'Partitipants' => 'Partitipants',
+    'Partitipantss' => 'Partitipants',
+    'NoPartitipants' => 'No partitipants',
 ];

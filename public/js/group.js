@@ -22,3 +22,36 @@ ava2.onclick = function() {
         return false;
     }
 }
+
+$('.partitipants').hide();
+
+$(function(){
+    var fx = {
+        'initModal' : function() {
+            if($('.modal-window-group').length == 0) {
+                $('<div>').attr('id', 'jquery-overlay').fadeIn('slow').appendTo('body');
+                return $('<div>').addClass('modal-window-group').appendTo('body');
+            } else {
+                return $('.modal-window-group');
+            }
+        }
+    }
+
+    $('.modal-link').click(function() {
+        modal = fx.initModal();
+        $('.partitipants').toggle();
+        data = $('.partitipants');
+        modal.append(data);
+        $('<a>').attr('href','#').addClass('modal-window-close').html('&times').click(function(event) {
+            event.preventDefault();
+
+            main = $('.blog-main');
+            data = $('.partitipants');
+            main.append(data);
+            data.hide();
+
+            $(modal).remove();
+            $('#jquery-overlay').remove();
+        }).appendTo(modal);
+    });
+})

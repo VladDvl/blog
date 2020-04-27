@@ -4,6 +4,7 @@
   @parent
   <link href="{{asset('public/css/chat.css')}}" rel="stylesheet"/>
   <link href="{{asset('public/css/group.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('scripts')
@@ -78,15 +79,38 @@
     </div><!--avatar-->
   @endif
 
+  <div class="partitipants">
+        @if(count($partitipants) > 0)
+        @foreach($partitipants as $partitipant)
+          <div class="partitipant border-bottom">
+          @if( $partitipant->avatar != 'users/default.png' and $partitipant->avatar != '' )
+            <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $partitipant->avatar)}}" width="36" height="36" alt="avatar">
+          @else
+            <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+          @endif
+            <div class="partitipant-info">
+              <div class="partitipant-name"><a href="{{asset('user/' . $partitipant->id)}}">{{$partitipant->name}}</a></div>
+              <div class="partitipant-created">{{$partitipant->created_at}}</div>
+            </div>
+          </div>
+        @endforeach
+        @else
+          <p class="text-muted">{{__('menu.NoPartitipants')}}.</p>
+        @endif
+  </div><!--partitipants-list-->
+
   <div class="card bg-light rounded messages-block">
 
-    <div class="card-header group-header">
+    <div class="card-header group-header row justify-content-between">
+      <div>
       @if($obj->avatar != '')
         <img class="group-avatar" src="{{asset('public/uploads/group-avatars/' . $obj->avatar)}}" width="52" height="52" alt="avatar">
       @else
         <img class="group-avatar" src="{{asset('public/img/default-group.png')}}" width="52" height="52" alt="avatar">
       @endif
       <span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}
+      </div>
+      <a class="p-2 modal-link" href="{{asset('#')}}">{{__('menu.Partitipantss')}}: {{(isset($partitipants)) ? count($partitipants) : ''}}</a>
     </div>
 
     <div id="display-private" class="card-body justify-content-start col messages-field">

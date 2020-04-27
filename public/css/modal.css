@@ -1,4 +1,4 @@
-.modal-window {
+.modal-window, .modal-window-group {
     position: absolute; /*или fixed - фикс скролл, absolute, для вывода окна поверх основного окна*/
     top: 150px;
     left: 50%;
@@ -9,6 +9,11 @@
     box-shadow: 1px 1px 1px black; /*эффект наложения*/
     border-radius: 10px;
     background: white;
+}
+
+.modal-window-group {
+    margin-left: -150px;
+    width: 300px;
 }
 
 #jquery-overlay {

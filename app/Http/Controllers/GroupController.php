@@ -41,7 +41,11 @@ class GroupController extends Controller
 
             $users = User::where('id', '<>', Auth::user()->id)->get();
 
-            return view('group', compact('obj','messages','slug','users'));
+            $partitipants = User::where(function($query) use ($arr_partitipants) {
+                $query->whereIn('id', $arr_partitipants);
+            })->get();
+
+            return view('group', compact('obj','messages','slug','users','partitipants'));
 
         } else {
 

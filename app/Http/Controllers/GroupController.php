@@ -26,15 +26,16 @@ class GroupController extends Controller
                     ->orWhere(function($query) {
                         $query->where('type', 'private')
                             ->whereHas('partitipantss', function (Builder $query) {
-                                $query->where('user_id', '=', Auth::user()->id);
+                                $query->where('user_id', '=', Auth::user()->id)->where('status', 'active');
                             });
                     });
             })->first();
         //dd($obj);
         
         if(isset($obj)) {
-
-            $arr_partitipants = Arr::pluck( $obj->partitipantss->all(), 'user_id' );
+            $arr_partitipants_pending = Arr::pluck( $obj->partitipantss->where('status', 'pending')->all(), 'user_id' );
+            $arr_partitipants_all = Arr::pluck( $obj->partitipantss->all(), 'user_id' );
+            $arr_partitipants = Arr::pluck( $obj->partitipantss->where('status', 'active')->all(), 'user_id' );
             //dd($arr_partitipants);
 
             $messages = Messages::with('sender')->where('status', 'PUBLISHED')->where('resiver_id', null)->where('group_id', $slug)->whereIn('sender_id', $arr_partitipants)->get();
@@ -45,7 +46,12 @@ class GroupController extends Controller
                 $query->whereIn('id', $arr_partitipants);
             })->get();
 
-            return view('group', compact('obj','messages','slug','users','partitipants'));
+            $pending_users = User::where(function($query) use ($arr_partitipants_pending) {
+                $query->whereIn('id', $arr_partitipants_pending);
+            })->get();
+            //dd($pending_users);
+
+            return view('group', compact('obj','messages','slug','users','pending_users','partitipants','arr_partitipants','arr_partitipants_all'));
 
         } else {
 
@@ -60,7 +66,7 @@ class GroupController extends Controller
         $r['sender_id'] = Auth::user()->id;
         $r['resiver_id'] = null;
 
-        $partitipants = partitipants::where('group_id', $r->input('group_id'))->get();
+        $partitipants = partitipants::where('group_id', $r->input('group_id'))->where('status', 'active')->get();
         $arr_users = Arr::pluck( $partitipants->all(), 'user_id' );
 
         if( !in_array(Auth::user()->id, $arr_users)  ) {
@@ -96,6 +102,7 @@ class GroupController extends Controller
         partitipants::insert([
             'group_id' => $group->id,
             'user_id' => $r['user_id'],
+            'status' => 'active',
         ]);
 
         return redirect()->back();
@@ -103,6 +110,44 @@ class GroupController extends Controller
 
     public function addPartitipant(PartitipantRequest $r)
     {
+        if($r['action'] == 'add') {
+
+            $r['status'] = 'active';
+            //dd($r);
+            partitipants::create($r->all());
+    
+            return redirect()->back();
+
+        } elseif ($r['action'] == 'add-update') {
+
+            $status = 'active';
+            $user_id = $r['user_id'];
+            $group_id = $r['group_id'];
+
+            $partitipant = partitipants::where('group_id', $group_id)->where('user_id', $user_id)->first();
+
+            //dd($r);
+            $partitipant->update(['status' => $status]);
+
+            return redirect()->back();
+
+        } elseif ($r['action'] == 'delete') {
+
+            $user_id = $r['user_id'];
+            $group_id = $r['group_id'];
+
+            $partitipant = partitipants::where('group_id', $group_id)->where('user_id', $user_id)->first();
+
+            $partitipant->delete();
+
+            return redirect()->back();
+
+        }
+    }
+
+    public function enterPartitipant(PartitipantRequest $r)
+    {
+        $r['status'] = 'pending';
         //dd($r);
         partitipants::create($r->all());
 

@@ -86,8 +86,10 @@ class HomeController extends Controller
         //dd($friends);
 
         $groups = groups::with('group_creator')->with('partitipantss')->with('messagee')->whereHas('partitipantss', function (Builder $query) {
-            $query->where('user_id', '=', Auth::user()->id);
-        })->where('status', 'PUBLISHED')->get();
+            $query->where('user_id', '=', Auth::user()->id)->where('status', 'active');
+        })->where('status', 'PUBLISHED')->withCount(['partitipantss' => function(Builder $query) {
+            $query->where('status', 'active');
+        }])->get();
         //dd($groups);
 
         $objects = compact('objs','cats','msgs','friends','groups');

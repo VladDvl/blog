@@ -48,15 +48,44 @@ form {
 .modal-link {
     font-size: small;
     text-decoration: underline;
-    padding: 2px;
-    margin-top: 0.7rem;
+    padding: 2px !important;
+    padding-bottom: none !important;
 }
 
-.partitipant {
+.group-enter-form {
+    line-height: normal;
+    font-size: 16px;
+}
+
+.enter-btn {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    padding: 0px;
+}
+
+.partitipant, .pending-user {
     display: flex;
     flex-direction: row;
 }
 
-.partitipant:last-child {
+.partitipant:last-child, .pending-user:last-child {
     border-bottom: none !important;
+}
+
+.pending-list p {
+    margin-bottom: 2px;
+}
+
+.pending-user-name, .pending-user-created {
+    font-weight: normal;
+}
+
+.pending-user div.actions button {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
 }

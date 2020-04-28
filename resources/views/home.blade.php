@@ -63,7 +63,7 @@
                                         <p class="text-muted">{{__('menu.Created')}}: {{$group->created_at}}</p>
                                     </div>
                                     <div class="group-info2">
-                                        <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
+                                        <p class="text-muted">{{__('menu.Partitipants')}}: {{$group->partitipantss_count}}</p>
                                         <p class="text-muted">{{__('menu.Messagess')}}: {{count($group->messagee)}}</p>
                                     </div>
                                 </div>

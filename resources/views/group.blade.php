@@ -38,13 +38,43 @@
           </select>
 
           <input type="hidden" name="group_id" value="{{$slug}}">
-          <button type="submit" name="submit">{{__('menu.Add')}}</button>
+          <button type="submit" name="action" value="add">{{__('menu.Add')}}</button>
         </form>
       </div>
 
-      <div class="card-body justify-content-start col">
-        <p class="text-muted">Заявки на добавление:</p>
-
+      <div class="card-body justify-content-start col pending-list">
+        <p class="text-muted">{{__('menu.PendingUsers')}}:</p>
+        <form method="post" action="{{asset('group/add')}}" enctype="multipart/form-data">
+          {!!csrf_field()!!}
+          @if(count($errors)>0)
+            @foreach($errors->all() as $ers)
+              <div class="red">
+                {{$ers}}
+              </div>
+            @endforeach
+          @endif
+        @if(count($pending_users) > 0)
+          @foreach($pending_users as $user)
+            <div class="pending-user border-bottom">
+              @if( $user->avatar != 'users/default.png' and $user->avatar != '' )
+                <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $user->avatar)}}" width="36" height="36" alt="avatar">
+              @else
+                <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+              @endif
+              <div class="pending-user-info">
+                <div class="pending-user-name"><a href="{{asset('user/' . $user->id)}}">{{$user->name}}</a></div>
+                <div class="pending-user-created">{{$user->created_at}}</div>
+              </div>
+              <div class="actions">
+                <input type="hidden" name="group_id" value="{{$slug}}">
+                <input type="hidden" name="user_id" value="{{$user->id}}">
+                <button class="btn btn-primary" type="submit" name="action" value="add-update">{{__('menu.Add')}}</button>
+                <button  class="btn btn-primary" type="submit" name="action" value="delete">{{__('menu.Delete')}}</button>
+              </div>
+            </div>
+          @endforeach
+        @endif
+        </form>
       </div>
     </div><!--partitipants-->
 
@@ -110,7 +140,24 @@
       @endif
       <span class="text-muted">{{__('menu.Group')}}:</span> {{$obj->name}}
       </div>
-      <a class="p-2 modal-link" href="{{asset('#')}}">{{__('menu.Partitipantss')}}: {{(isset($partitipants)) ? count($partitipants) : ''}}</a>
+      <div class="group-links">
+        <a class="p-2 modal-link" href="{{asset('#')}}">{{__('menu.Partitipantss')}}: {{(isset($partitipants)) ? count($partitipants) : ''}}</a>
+        @if( !in_array(Auth::user()->id, $arr_partitipants_all) )
+          <form class="group-enter-form" method="post" action="{{asset('group/enter')}}" enctype="multipart/form-data">
+            {!!csrf_field()!!}
+            @if(count($errors)>0)
+              @foreach($errors->all() as $ers)
+                <div class="red">
+                  {{$ers}}
+                </div>
+              @endforeach
+            @endif
+            <input type="hidden" name="group_id" value="{{$slug}}">
+            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+            <button class="enter-btn" type="submit" name="submit" >{{__('menu.Enter')}}</button>
+          </form>
+        @endif
+      </div>
     </div>
 
     <div id="display-private" class="card-body justify-content-start col messages-field">

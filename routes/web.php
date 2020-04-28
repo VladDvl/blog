@@ -9,6 +9,7 @@ Route::post('chat/send', 'ChatController@postIndex')->middleware('auth');
 Route::post('group/create', 'GroupController@createGroup');
 Route::post('group/send', 'GroupController@postIndex');
 Route::post('group/add', 'GroupController@addPartitipant');
+Route::post('group/enter', 'GroupController@enterPartitipant');
 Route::post('group/group-avatar', 'GroupController@avatarChange');
 
 Route::group(['prefix' => 'admin'], function () {

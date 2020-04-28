@@ -22,7 +22,7 @@ class profileController extends Controller
 
             $groups = groups::with('group_creator')->with('partitipantss')->with('messagee')->where('status', 'PUBLISHED')->where('type', 'public')
                 ->whereHas('partitipantss', function (Builder $query) use ($slug) {
-                    $query->where('user_id', '=', $slug);
+                    $query->where('user_id', '=', $slug)->where('status', 'active');
                 })->get();
 
         } else {

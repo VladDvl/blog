@@ -58,3 +58,39 @@ $(function(){
         }).appendTo(modal);
     });
 })
+
+var users = document.querySelectorAll('.user-objs').forEach( (el) => el.style.display = "none" );
+
+var users_block = document.getElementById('users-block');
+users_block.style.border = "none";
+users_block.style.marginTop = "0px";
+
+var input = document.getElementById('input');
+
+input.oninput = function() {
+
+    document.querySelectorAll('.name-link').forEach( function(link) {
+
+        div_name = link.closest('.user-name');
+        div_info = div_name.closest('.user-info');
+        user = div_info.closest('.user-objs');
+
+        if( input.value == link.textContent ) {
+            
+            user.style.display = "flex";
+
+            users_block.style.border = "1px solid #dee2e6";
+            users_block.style.marginTop = "18px";
+
+        } else {
+
+            user.style.display = "none";
+
+            users_block.style.border = "none";
+            users_block.style.marginTop = "0px";
+
+        }
+
+    } );
+
+};

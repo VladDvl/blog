@@ -40,7 +40,7 @@ class GroupController extends Controller
 
             $messages = Messages::with('sender')->where('status', 'PUBLISHED')->where('resiver_id', null)->where('group_id', $slug)->whereIn('sender_id', $arr_partitipants)->get();
 
-            $users = User::where('id', '<>', Auth::user()->id)->get();
+            $users = User::where('id', '<>', Auth::user()->id)->whereNotIn('id', $arr_partitipants_all)->get();
 
             $partitipants = User::where(function($query) use ($arr_partitipants) {
                 $query->whereIn('id', $arr_partitipants);

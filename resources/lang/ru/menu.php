@@ -84,4 +84,5 @@ return [
     'NoPartitipants' => 'Нет участников',
     'Enter' => 'Войти',
     'PendingUsers' => 'Пользователи в ожидании',
+    'UserName' => 'Имя пользователя',
 ];

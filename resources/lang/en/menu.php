@@ -84,4 +84,5 @@ return [
     'NoPartitipants' => 'No partitipants',
     'Enter' => 'Enter',
     'PendingUsers' => 'Pending users',
+    'UserName' => 'Username',
 ];

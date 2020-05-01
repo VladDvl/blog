@@ -20,7 +20,8 @@
     <div class="card bg-light rounded">
       <div class="card-header text-muted">Добавить участников</div>
 
-      <div class="border-bottom">
+      <div class="card-body justify-content-start border-bottom col users-list">
+        <input id="input" class="search-user" type="text" placeholder="{{__('menu.UserName')}}">
         <form method="post" action="{{asset('group/add')}}" enctype="multipart/form-data">
           {!!csrf_field()!!}
           @if(count($errors)>0)
@@ -31,16 +32,31 @@
             @endforeach
           @endif
 
-          <select class="form-group" name="user_id">
-            @foreach($users as $user)
-              <option class="form-control" value="{{$user->id}}">{{$user->name}}</option>
-            @endforeach
-          </select>
+        @if(count($users) > 0)
+        <div id="users-block" class="users">
+          @foreach($users as $user)
+          <div class="user-objs border-bottom">
+            @if( $user->avatar != 'users/default.png' and $user->avatar != '' )
+              <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $user->avatar)}}" width="36" height="36" alt="avatar">
+            @else
+              <img class="message-avatar" src="{{asset('public/img/default-avatar.png')}}" width="36" height="36" alt="avatar">
+            @endif
+            <div class="user-info">
+                <div class="user-name"><a class="name-link" href="{{asset('user/' . $user->id)}}">{{$user->name}}</a></div>
+                <div class="user-created">{{$user->created_at}}</div>
+             </div>
+            <div class="actions">
+              <input type="hidden" name="group_id" value="{{$slug}}">
+              <input type="hidden" name="user_id" value="{{$user->id}}">
+              <button class="btn btn-primary" type="submit" name="action" value="add">{{__('menu.Add')}}</button>
+            </div>
+          </div>
+          @endforeach
+        </div>
+        @endif
 
-          <input type="hidden" name="group_id" value="{{$slug}}">
-          <button type="submit" name="action" value="add">{{__('menu.Add')}}</button>
         </form>
-      </div>
+      </div><!--users-->
 
       <div class="card-body justify-content-start col pending-list">
         <p class="text-muted">{{__('menu.PendingUsers')}}:</p>
@@ -53,6 +69,7 @@
               </div>
             @endforeach
           @endif
+          <div class="pending-users">
         @if(count($pending_users) > 0)
           @foreach($pending_users as $user)
             <div class="pending-user border-bottom">
@@ -74,8 +91,9 @@
             </div>
           @endforeach
         @endif
+          </div>
         </form>
-      </div>
+      </div><!--pending-users-->
     </div><!--partitipants-->
 
     <div class="card">

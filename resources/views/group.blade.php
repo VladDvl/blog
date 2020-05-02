@@ -35,7 +35,7 @@
         @if(count($users) > 0)
         <div id="users-block" class="users">
           @foreach($users as $user)
-          <div class="user-objs border-bottom">
+          <div class="user-objs">
             @if( $user->avatar != 'users/default.png' and $user->avatar != '' )
               <img class="message-avatar" src="{{asset('public/uploads/avatars/' . $user->avatar)}}" width="36" height="36" alt="avatar">
             @else

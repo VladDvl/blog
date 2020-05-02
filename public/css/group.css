@@ -82,8 +82,12 @@ form {
     flex-direction: row;
 }
 
-.partitipant:last-child, .pending-user:last-child, .user-objs:last-child {
+.partitipant:last-child, .pending-user:last-child {
     border-bottom: none !important;
+}
+
+.user-objs:hover {
+    background-color: #dce8f1;
 }
 
 .users {

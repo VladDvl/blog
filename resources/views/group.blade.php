@@ -32,6 +32,8 @@
             @endforeach
           @endif
 
+          <input type="hidden" name="group_id" value="{{$slug}}">
+          <input type="hidden" name="action" value="add">
         @if(count($users) > 0)
         <div id="users-block" class="users">
           @foreach($users as $user)
@@ -46,9 +48,7 @@
                 <div class="user-created">{{$user->created_at}}</div>
              </div>
             <div class="actions">
-              <input type="hidden" name="group_id" value="{{$slug}}">
-              <input type="hidden" name="user_id" value="{{$user->id}}">
-              <button class="btn btn-primary" type="submit" name="action" value="add">{{__('menu.Add')}}</button>
+              <button class="btn btn-primary" type="submit" name="user_id" value="{{$user->id}}">{{__('menu.Add')}}</button>
             </div>
           </div>
           @endforeach
@@ -69,6 +69,7 @@
               </div>
             @endforeach
           @endif
+          <input type="hidden" name="group_id" value="{{$slug}}">
           <div class="pending-users">
         @if(count($pending_users) > 0)
           @foreach($pending_users as $user)
@@ -83,10 +84,8 @@
                 <div class="pending-user-created">{{$user->created_at}}</div>
               </div>
               <div class="actions">
-                <input type="hidden" name="group_id" value="{{$slug}}">
-                <input type="hidden" name="user_id" value="{{$user->id}}">
-                <button class="btn btn-primary" type="submit" name="action" value="add-update">{{__('menu.Add')}}</button>
-                <button  class="btn btn-primary" type="submit" name="action" value="delete">{{__('menu.Delete')}}</button>
+                <button class="btn btn-primary" type="submit" name="add-update" value="{{$user->id}}">{{__('menu.Add')}}</button>
+                <button  class="btn btn-primary" type="submit" name="delete" value="{{$user->id}}">{{__('menu.Delete')}}</button>
               </div>
             </div>
           @endforeach

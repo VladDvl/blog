@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use App\Http\Requests\PartitipantRequest;
 use App\Http\Requests\AvatarRequest;
+use App\Mail\WelcomeMail;
+use App\Mail\EntranceMail;
 use App\User;
 use App\Messages;
 use App\groups;
@@ -115,13 +118,19 @@ class GroupController extends Controller
             $r['status'] = 'active';
             //dd($r);
             partitipants::create($r->all());
+
+            $user_id = $r['user_id'];
+            $user = User::where('id', $user_id)->first();
+            $group_id = $r['group_id'];
+            $group = groups::where('id', $group_id)->first();
+            Mail::to($user->email)->send(new WelcomeMail($group));
     
             return redirect()->back();
 
-        } elseif ($r['action'] == 'add-update') {
+        } elseif ( array_key_exists('add-update', $r->all()) ) {
 
             $status = 'active';
-            $user_id = $r['user_id'];
+            $user_id = $r['add-update'];
             $group_id = $r['group_id'];
 
             $partitipant = partitipants::where('group_id', $group_id)->where('user_id', $user_id)->first();
@@ -129,15 +138,20 @@ class GroupController extends Controller
             //dd($r);
             $partitipant->update(['status' => $status]);
 
+            $user = User::where('id', $user_id)->first();
+            $group = groups::where('id', $group_id)->first();
+            Mail::to($user->email)->send(new WelcomeMail($group));
+
             return redirect()->back();
 
-        } elseif ($r['action'] == 'delete') {
+        } elseif ( array_key_exists('delete', $r->all()) ) {
 
-            $user_id = $r['user_id'];
+            $user_id = $r['delete'];
             $group_id = $r['group_id'];
 
             $partitipant = partitipants::where('group_id', $group_id)->where('user_id', $user_id)->first();
 
+            //dd($r);
             $partitipant->delete();
 
             return redirect()->back();
@@ -150,6 +164,14 @@ class GroupController extends Controller
         $r['status'] = 'pending';
         //dd($r);
         partitipants::create($r->all());
+
+        $user_id = $r['user_id'];
+        $user = User::where('id', $user_id)->first();
+        $group_id = $r['group_id'];
+        $group = groups::where('id', $group_id)->first();
+        $id = $group->user_id;
+        $creator = User::where('id', $id)->first();
+        Mail::to($creator->email)->send(new EntranceMail($group, $user));
 
         return redirect()->back();
     }

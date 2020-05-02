@@ -24,7 +24,7 @@ class PartitipantRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required'
+            'group_id' => 'required'
         ];
     }
 }

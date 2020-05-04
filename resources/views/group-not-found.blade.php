@@ -10,6 +10,6 @@
 
 @section('content')
   <div class="card bg-light rounded container">
-    <p>Группа не найдена.</p>
+    <p>{{__('menu.NoGroups')}}.</p>
   </div>
 @endsection

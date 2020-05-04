@@ -63,6 +63,23 @@ class GroupController extends Controller
         }
     }
 
+    public function getPublic()
+    {
+        $all_groups = groups::with('group_creator')->with('partitipantss')->with('messagee')
+            ->where('status', 'PUBLISHED')->where('type', 'public')->paginate(20);
+
+        if( isset($all_groups) and count($all_groups) > 0 )
+        {
+
+            return view('all-groups', compact('all_groups'));
+
+        } else {
+
+            return view('group-not-found');
+            
+        }
+    }
+
     public function postIndex(ChatRequest $r)
     {
         $r['status'] = 'PUBLISHED';

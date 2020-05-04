@@ -162,7 +162,15 @@ tr td:nth-child(3), tr th:nth-child(3) {
     max-height: 24rem;
 }
 
-.groups-list a:hover {
+.all-groups-list {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    max-height: 24rem;
+}
+
+.groups-list a:hover, .all-groups-list a:hover {
     text-decoration: none;
 }
 

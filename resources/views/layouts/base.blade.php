@@ -132,7 +132,7 @@
       </div><!--chat-->
 
       <div class="p-4 mb-3 bg-light rounded">
-        <div class="groups-block-header border-bottom"><h4 class="font-italic">{{__('menu.Groups')}}</h4>  &bull;  <a href="{{asset('#')}}">{{__('menu.AllGroups')}}</a></div>
+        <div class="groups-block-header border-bottom"><h4 class="font-italic">{{__('menu.Groups')}}</h4>  &bull;  <a href="{{asset('all-groups')}}">{{__('menu.AllGroups')}}</a></div>
           @if(count($groups) > 0)
             @foreach($groups as $group)
               <div class="group border-bottom">

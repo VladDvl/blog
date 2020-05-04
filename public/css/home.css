@@ -212,6 +212,16 @@ div.group .group-small-avatar {
     justify-content: flex-start;
 }
 
+.group-info3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.group-info3 p {
+    margin-bottom: 0px;
+}
+
 .group-info1 p.group-name {
     font-weight: bold;
     letter-spacing: 1px;
@@ -223,6 +233,6 @@ div.group .group-small-avatar {
     margin-left: 1rem !important;
 }
 
-.group-info1 p:first-child, .group-info2 p:first-child {
+.group-info1 p:first-child, .group-info2 p:first-child{
     margin-left: 0px !important;
 }

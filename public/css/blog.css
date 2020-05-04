@@ -213,6 +213,22 @@ a.btn {
   color: rgb(43, 42, 42);
 }
 
+.groups-block-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-style: italic;
+  white-space: pre;
+}
+
+.groups-block-header h4 {
+  margin: 2px;
+}
+
+.groups-block-header a {
+  line-height: 2;
+}
+
 /*header back*/
 .design {
   background: bottom url("../img/categories/design.jpg");

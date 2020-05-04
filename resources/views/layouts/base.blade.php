@@ -12,6 +12,7 @@
 	  <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/fonts.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/blog.css')}}" rel="stylesheet">
+    <link href="{{asset('public/css/home.css')}}" rel="stylesheet">
     @section('styles')
     @show
   </head>
@@ -131,10 +132,32 @@
       </div><!--chat-->
 
       <div class="p-4 mb-3 bg-light rounded">
+        <div class="groups-block-header border-bottom"><h4 class="font-italic">{{__('menu.Groups')}}</h4>  &bull;  <a href="{{asset('#')}}">{{__('menu.AllGroups')}}</a></div>
+          @if(count($groups) > 0)
+            @foreach($groups as $group)
+              <div class="group border-bottom">
+                @if($group->avatar != '')
+                  <img class="group-small-avatar" src="{{asset('public/uploads/group-avatars/' . $group->avatar)}}" alt="avatar" width="52" height="52">
+                @else
+                  <img class="group-small-avatar" src="{{asset('public/img/default-group.png')}}" alt="avatar" width="52" height="52">
+                @endif
+
+                <div class="group-info3">
+                  <p class="group-name"><a href="{{asset('group/' . $group->id)}}">{{mb_substr($group->name, 0, 50)}}</a></p>
+                  <p class="text-muted">{{__('menu.Partitipants')}}: {{(isset($group->partitipantss)) ? count($group->partitipantss) : ''}}</p>
+                </div>
+              </div>
+            @endforeach
+          @else
+            {{__('menu.NoGroups')}}
+          @endif
+      </div><!--groups-->
+
+      <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">{{__('menu.NewUsers')}}</h4>
         <ol class="list-unstyled mb-0">
         @foreach($usrs as $user)
-          <li><a href="{{asset('user/' . $user->id)}}">{{$user->name}}</a></li>
+          <li><a href="{{asset('user/' . $user->id)}}">{{mb_substr($user->name, 0, 50)}}</a></li>
         @endforeach
         </ol>
       </div><!--top users-->

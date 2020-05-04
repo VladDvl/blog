@@ -9,6 +9,7 @@ use App\User;
 use App\Post;
 use App\Comments;
 use App\Messages;
+use App\groups;
 
 class BaseComposer
 {
@@ -58,6 +59,8 @@ class BaseComposer
                 }
             }
         }
+
+        $groups = groups::with('partitipantss')->where('status', 'PUBLISHED')->where('type', 'public')->limit(4)->inRandomOrder()->get();
         
         /*foreach($top_users as $one) {
             $one->user_posts->
@@ -66,6 +69,8 @@ class BaseComposer
         //dd($top_users->name);
 
         $test = Categories::orderBy('id')->limit(12)->get();
-        $view->with('test',$test)->with('usrs',$usrs)->with('posts',$posts)->with('comment',$comment)->with('all_userss',$all_userss)->with('all_postss',$all_postss)->with('all_commentss',$all_commentss)->with('common_msgs', $common_msgs);
+        $view->with('test',$test)->with('usrs',$usrs)->with('posts',$posts)->with('comment',$comment)
+            ->with('all_userss',$all_userss)->with('all_postss',$all_postss)->with('all_commentss',$all_commentss)
+            ->with('common_msgs', $common_msgs)->with('groups', $groups);
     }
 }

@@ -18,7 +18,7 @@
 
   @if( $obj->user_id == Auth::user()->id )
     <div class="card bg-light rounded">
-      <div class="card-header text-muted">Добавить участников</div>
+      <div class="card-header text-muted">{{__('menu.AddParticipants')}}</div>
 
       <div class="card-body justify-content-start border-bottom col users-list">
         <input id="input" class="search-user" type="text" placeholder="{{__('menu.UserName')}}">

@@ -84,6 +84,7 @@ return [
     'Partitipants' => 'Участников',
     'Partitipantss' => 'Участники',
     'NoPartitipants' => 'Нет участников',
+    'AddParticipants' => 'Добавить участников',
     'Enter' => 'Войти',
     'PendingUsers' => 'Пользователи в ожидании',
     'UserName' => 'Имя пользователя',

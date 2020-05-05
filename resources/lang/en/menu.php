@@ -84,6 +84,7 @@ return [
     'Partitipants' => 'Partitipants',
     'Partitipantss' => 'Partitipants',
     'NoPartitipants' => 'No partitipants',
+    'AddParticipants' => 'Add participants',
     'Enter' => 'Enter',
     'PendingUsers' => 'Pending users',
     'UserName' => 'Username',

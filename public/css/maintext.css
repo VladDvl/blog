@@ -41,3 +41,17 @@ img {
 .hidden-comment {
     background-color: #F7F7F7;
 }
+
+.input-tag {
+    width: 46%;
+    text-align: center;
+    border: 1px solid rgb(129, 126, 126);
+    border-radius: 5px;
+    font-size: 16px;
+    color: rgb(77, 75, 75);
+    margin-right: 1rem;
+}
+
+.tag-list p {
+    margin-bottom: 2px;
+}

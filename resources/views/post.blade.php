@@ -22,14 +22,39 @@
         <h1 class="col-md-6 font-italic">{{isset($one->category->name) ? $one->category->name : ''}}</h1>
         <p class="col-md-6 font-italic"><a href="{{asset('cat/' . $one->category->slug)}}">К другим постам в категории</a></p>
       @endif
-      <!--<p class="lead my-3">Это блог со статьями на различные тематики. Здесь пишут о программировании, играх и др. Статьи обсуждают в комментариях под ними. Для комментирования нужно зарегистрироваться.</p>-->
-      <!--<p class="lead mb-0"><a href="{{asset('#')}}" class="text-white font-weight-bold">Continue reading...</a></p>-->
     </div>
   </div>
 @endsection
 
 @section('content')
       
+      @if( $one->author_id == Auth::user()->id )
+        <div class="card bg-light rounded">
+          <div class="card-header text-muted">{{__('menu.AddTag')}}</div>
+
+          <div class="card-body justify-content-start border-bottom col">
+            <form method="post" action="{{asset('tag/create')}}" enctype="multipart/form-data">
+              {!!csrf_field()!!}
+              @if(count($errors)>0)
+                @foreach($errors->all() as $ers)
+                  <div class="red">
+                    {{$ers}}
+                  </div>
+                @endforeach
+              @endif
+              <input type="hidden" name="post_id" value="{{$one->id}}">
+              <input class="input-tag" type="text" name="name" placeholder="{{__('menu.TagName')}}">
+              <button class="btn btn-primary" type="submit" name="submit">{{__('menu.Add')}}</button>
+            </form>
+          </div>
+
+          <div class="card-body justify-content-start col tag-list">
+            <p class="text-muted">{{__('menu.TagsList')}}:</p>
+            
+          </div>
+        </div><!--add-tag-->
+      @endif
+
       <div class="blog-post container">
         <h2 class="blog-post-title">{{(isset($one->title)) ? $one->title : ''}}</h2>
         @include('templates.links')
@@ -133,7 +158,7 @@
           </form>
         @endguest
         </div>
-      </div>
+      </div><!--add-comment-->
 
 	  
 @endsection

@@ -88,4 +88,7 @@ return [
     'Enter' => 'Enter',
     'PendingUsers' => 'Pending users',
     'UserName' => 'Username',
+    'AddTag' => 'Add tag',
+    'TagName' => 'Tag name',
+    'TagsList' => 'Tags list',
 ];

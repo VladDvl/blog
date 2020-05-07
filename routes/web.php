@@ -11,6 +11,7 @@ Route::post('group/send', 'GroupController@postIndex');
 Route::post('group/add', 'GroupController@addPartitipant');
 Route::post('group/enter', 'GroupController@enterPartitipant');
 Route::post('group/group-avatar', 'GroupController@avatarChange');
+Route::post('tag/create', 'TagCreateController@createTag');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

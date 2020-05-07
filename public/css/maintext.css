@@ -52,6 +52,34 @@ img {
     margin-right: 1rem;
 }
 
+.tags {
+    overflow-y: scroll;
+    max-height: 25rem;
+}
+
+.tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tag:last-child {
+    border-bottom: none !important;
+}
+
+.tag:hover {
+    background-color: #dce8f1;
+}
+
+.tag-name, .tag-info {
+    font-weight: normal;
+}
+
+.tag button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 .tag-list p {
     margin-bottom: 2px;
 }

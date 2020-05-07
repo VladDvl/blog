@@ -91,4 +91,5 @@ return [
     'AddTag' => 'Добавить тег',
     'TagName' => 'Имя тега',
     'TagsList' => 'Список тегов',
+    'Subscriberss' => 'Подписчиков',
 ];

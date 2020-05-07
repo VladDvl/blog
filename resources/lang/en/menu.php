@@ -91,4 +91,5 @@ return [
     'AddTag' => 'Add tag',
     'TagName' => 'Tag name',
     'TagsList' => 'Tags list',
+    'Subscriberss' => 'Subscribers',
 ];

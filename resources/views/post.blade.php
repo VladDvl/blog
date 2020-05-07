@@ -50,7 +50,29 @@
 
           <div class="card-body justify-content-start col tag-list">
             <p class="text-muted">{{__('menu.TagsList')}}:</p>
-            
+            <form method="post" action="{{asset('tag/delete')}}" enctype="multipart/form-data">
+              {!!csrf_field()!!}
+              @if(count($errors)>0)
+                @foreach($errors->all() as $ers)
+                  <div class="red">
+                    {{$ers}}
+                  </div>
+                @endforeach
+              @endif
+              <input type="hidden" name="post_id" value="{{$one->id}}">
+              <div class="tags border">
+              @if( count($tags) > 0 )
+                @foreach($tags as $tag)
+                  <div class="tag border-bottom">
+                    <p class="tag-name"><a href="{{asset('#')}}">{{(isset($tag->name)) ? mb_substr($tag->name, 0 , 50) : ''}}</a></p>
+                    <p class="tag-info text-muted">{{__('menu.AllArticles')}}: {{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</p>
+                    <p class="tag-info text-muted">{{__('menu.Subscriberss')}}: </p>
+                    <button  class="btn btn-primary" type="submit" name="delete" value="{{$tag->id}}">{{__('menu.Delete')}}</button>
+                  </div>
+                @endforeach
+              @endif
+              </div>
+            </form>
           </div>
         </div><!--add-tag-->
       @endif

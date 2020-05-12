@@ -1,4 +1,4 @@
-.modal-window, .modal-window-group {
+.modal-window, .modal-window-group, .modal-window-post {
     position: absolute; /*или fixed - фикс скролл, absolute, для вывода окна поверх основного окна*/
     top: 150px;
     left: 50%;
@@ -11,7 +11,7 @@
     background: white;
 }
 
-.modal-window-group {
+.modal-window-group, .modal-window-post {
     margin-left: -150px;
     width: 300px;
 }

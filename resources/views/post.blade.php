@@ -3,6 +3,7 @@
 @section('styles')
   @parent
   <link href="{{asset('public/css/maintext.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('scripts')
@@ -77,8 +78,19 @@
         </div><!--add-tag-->
       @endif
 
+      <div class="tagss">
+        @if( count($tags) > 0 )
+          @foreach($tags as $tag)
+            <a href="{{asset('#')}}">{{(isset($tag->name)) ? mb_substr($tag->name, 0 , 50) : ''}}</a>
+          @endforeach
+        @endif
+      </div>
+
       <div class="blog-post container">
-        <h2 class="blog-post-title">{{(isset($one->title)) ? $one->title : ''}}</h2>
+        <div class="post-header">
+          <h2 class="blog-post-title">{{(isset($one->title)) ? $one->title : ''}}</h2>
+          <a class="p-2 modal-link" href="{{asset('#')}}">{{__('menu.Tags')}}: {{(isset($tags)) ? count($tags) : ''}}</a>
+        </div>
         @include('templates.links')
         @if($one->image)
           <img src="{{asset('public/uploads/posts/'.$one->image)}}"/>

@@ -42,6 +42,20 @@ img {
     background-color: #F7F7F7;
 }
 
+.tagss {
+    display: flex;
+    flex-direction: column;
+}
+
+div.post-header a.modal-link {
+    font-size: small;
+    text-decoration: underline;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 0 !important;
+}
+
 .input-tag {
     width: 46%;
     text-align: center;

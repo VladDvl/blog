@@ -36,18 +36,8 @@ class PostController extends Controller
         $status2 = 'PENDING';
         $objs = Comments::with('postss','usersss')->where('slug',$slug)->whereIn('status', [$status1,$status2])->orderBy('id','DESC')->paginate(20);
 
-        $all_tags = Tags::where('status', 'PUBLISHED')->get();
-        $tags_id_arr = [];
-        foreach( $all_tags as $tag )
-        {
-            $arr_post_id = explode(',', $tag->post_id);
-            if( in_array($one->id, $arr_post_id) ) {
-                
-                array_push($tags_id_arr, $tag->id);
-
-            }
-        }
-        $tags = $all_tags->whereIn('id', $tags_id_arr);
+        $tags_id_arr = explode(',', $one->tag_id);
+        $tags = Tags::whereIn('id', $tags_id_arr)->get();
         //dd($tags);
 
         $id = $one->id;

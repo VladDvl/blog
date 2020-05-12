@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TagRequest;
 use App\Tags;
+use App\Post;
 
 class TagCreateController extends Controller
 {
     public function createTag(TagRequest $r)
     {
         $tags = Tags::get();
+        $post = Post::where('id', $r["post_id"])->first();
         
         if( isset($tags) ) {
 
@@ -34,6 +36,16 @@ class TagCreateController extends Controller
 
                 $tag->save();
 
+                $tag_id = $tag->id;
+
+                if($post->tag_id == null) {
+                    $post->tag_id = $tag_id;
+                } else {
+                    $post->tag_id .= ',' . $tag_id;
+                }
+    
+                $post->save();
+
             } else {
 
                 return redirect()->back();
@@ -45,11 +57,17 @@ class TagCreateController extends Controller
             $r['status'] = 'PUBLISHED';
 
             //dd($r);
-            Tags::insert([
-                'name' => $r['name'],
-                'post_id' => $r['post_id'],
-                'status' => $r['status'],
-            ]);
+            $tag = Tags::create($r->all());
+
+            $tag_id = $tag->id;
+
+            if($post->tag_id == null) {
+                $post->tag_id = $tag_id;
+            } else {
+                $post->tag_id .= ',' . $tag_id;
+            }
+
+            $post->save();
 
         }
 

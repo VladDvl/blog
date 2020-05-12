@@ -112,7 +112,6 @@
   @endif
 </div><!--comments-->
 
-
 <div>
   @if(count($objs['objs_groups'])>0)
     <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic align-items-center col">
@@ -139,7 +138,27 @@
   @endif
 </div><!--groups-->
 
-  @if(count($objs['objs_posts'])==0 and count($objs['objs_users'])==0 and count($objs['objs_comments'])==0 and count($objs['objs_categories'])==0)
+<div>
+  @if(count($objs['objs_tags'])>0)
+    <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic align-items-center col">
+      <h3>
+        {{__('menu.Tags')}}: {{count($objs['objs_tags'])}}.
+      </h3>
+      @foreach($objs['objs_tags'] as $tag)
+        <div class="blog-post body-maintext col">
+          <div class="row justify-content-between container">
+            <a href="{{asset('#')}}">{!!mb_substr($tag->name, 0, 95)!!}</a>
+            <p class="blog-post-meta">
+              {{__('menu.AllArticles')}}: {{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}
+            </p>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  @endif
+</div><!--tags-->
+
+  @if(count($objs['objs_posts'])==0 and count($objs['objs_users'])==0 and count($objs['objs_comments'])==0 and count($objs['objs_categories'])==0 and count($objs['objs_groups'])==0 and count($objs['objs_tags'])==0)
   <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic align-items-center col">
     <p>
       {{__('menu.NothingFind')}}.

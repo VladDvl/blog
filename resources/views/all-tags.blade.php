@@ -24,7 +24,7 @@
 <div class="card">
 <div class="card-body all-tags-list justify-content-start col">
     @foreach($all_tags as $tag)
-        <a class="tag-link" href="{{asset('#')}}">
+        <a class="tag-link" href="{{asset('tag/' . $tag->id)}}">
             <div class="tag">
                 <p class="tag-name">{{mb_substr($tag->name, 0, 30)}}</p>
                 <p class="tag-info">{{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</p>

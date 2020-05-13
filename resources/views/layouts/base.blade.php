@@ -135,7 +135,7 @@
         <div class="tags-block-header border-bottom"><h4 class="font-italic">{{__('menu.Tags')}}</h4>  &bull;  <a href="{{asset('all-tags')}}">{{__('menu.AllTags')}}</a></div>
         @if(count($tags) > 0)
           @foreach($tags as $tag)
-            <a class="aside-tag" href="{{asset('#')}}">
+            <a class="aside-tag" href="{{asset('tag/' . $tag->id)}}">
               <div class="aside-tag">
                 <p class="aside-tag-name">{{mb_substr($tag->name, 0, 30)}}</p>
                 <p class="aside-tag-info">{{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</p>

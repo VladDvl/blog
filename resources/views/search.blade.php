@@ -147,7 +147,7 @@
       @foreach($objs['objs_tags'] as $tag)
         <div class="blog-post body-maintext col">
           <div class="row justify-content-between container">
-            <a href="{{asset('#')}}">{!!mb_substr($tag->name, 0, 95)!!}</a>
+            <a href="{{asset('tag/' . $tag->id)}}">{!!mb_substr($tag->name, 0, 95)!!}</a>
             <p class="blog-post-meta">
               {{__('menu.AllArticles')}}: {{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}
             </p>

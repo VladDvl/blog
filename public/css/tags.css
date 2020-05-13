@@ -1,0 +1,30 @@
+.all-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a.tag-link:hover {
+    text-decoration: none;
+}
+
+a.tag-link:hover > div p {
+    color: black;
+}
+
+div.tag p {
+    margin-bottom: 10px;
+    color: gray;
+    font-size: 18px;
+}
+
+div.tag {
+    display: flex;
+    flex-direction: row;
+    justify-self: start;
+}
+
+div.tag p.tag-info {
+    margin-left: 0.3rem;
+    font-weight: bold;
+    margin-right: 1rem;
+}

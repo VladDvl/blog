@@ -35,5 +35,6 @@ route::group(['middleware' => ['lang']], function(){
     Route::get('group/{slug}', 'GroupController@getIndex')->middleware('auth');
     Route::get('group-not-found', 'GroupController@getIndex')->middleware('auth');
     Route::get('all-groups', 'GroupController@getPublic')->middleware('auth');
+    Route::get('all-tags', 'TagsShowController@getIndex');
     Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце
 });

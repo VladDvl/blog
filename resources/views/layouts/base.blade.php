@@ -132,7 +132,7 @@
       </div><!--chat-->
 
       <div class="p-4 mb-3 bg-light rounded aside-tags-block">
-        <div class="tags-block-header border-bottom"><h4 class="font-italic">{{__('menu.Tags')}}</h4>  &bull;  <a href="{{asset('#')}}">{{__('menu.AllTags')}}</a></div>
+        <div class="tags-block-header border-bottom"><h4 class="font-italic">{{__('menu.Tags')}}</h4>  &bull;  <a href="{{asset('all-tags')}}">{{__('menu.AllTags')}}</a></div>
         @if(count($tags) > 0)
           @foreach($tags as $tag)
             <a class="aside-tag" href="{{asset('#')}}">

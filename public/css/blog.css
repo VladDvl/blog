@@ -213,7 +213,7 @@ a.btn {
   color: rgb(43, 42, 42);
 }
 
-.groups-block-header {
+.groups-block-header, .tags-block-header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -221,12 +221,42 @@ a.btn {
   white-space: pre;
 }
 
-.groups-block-header h4 {
+.groups-block-header h4, .tags-block-header h4 {
   margin: 2px;
 }
 
-.groups-block-header a {
+.groups-block-header a, .tags-block-header a {
   line-height: 2;
+}
+
+.tags-block-header {
+  margin-bottom: 10px;
+}
+
+a.aside-tag:hover {
+  text-decoration: none;
+}
+
+a.aside-tag:hover > div p {
+  color: black;
+}
+
+div.aside-tag {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-self: start;
+}
+
+div.aside-tag p {
+  margin-bottom: 10px;
+  color: gray;
+  font-size: 18px;
+}
+
+div.aside-tag p.aside-tag-info {
+  margin-left: 1rem;
+  font-weight: bold;
 }
 
 /*header back*/

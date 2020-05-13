@@ -92,5 +92,7 @@ return [
     'TagName' => 'Имя тега',
     'TagsList' => 'Список тегов',
     'Tags' => 'Теги',
+    'AllTags' => 'Все теги',
+    'NoTags' => 'Теги не найдены',
     'Subscriberss' => 'Подписчиков',
 ];

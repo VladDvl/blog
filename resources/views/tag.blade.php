@@ -2,22 +2,53 @@
 
 @section('scripts')
   @parent
+  <script src="{{asset('public/js/modal.js')}}"></script>
 @endsection
 
 @section('styles')
   @parent
+  <link href="{{asset('public/css/tag.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 
 @section('content')
 
 @if(count($objs) > 0)
-    <p>{{$tag->name}}</p>
-    @foreach($objs as $obj)
-    <p>{{$obj->title}}</p>
-    @endforeach
-    <div>{!! $objs->links() !!}</div>
+  <div class="card bg-light rounded">
+    <div class="card-header tag-header">
+      <p><span class="text-muted">{{__('menu.Tag')}}:</span> {{mb_substr($tag->name, 0, 50)}}</p>
+      @guest
+        @else
+        <button class="btn btn-primary">
+          {{__('menu.Subscribe')}}
+        </button>
+      @endguest
+    </div>
+  </div>
+
+  <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
+    <h3>
+      {{__('menu.AllArticles')}}: <span id="articles-count">{{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</span>
+    </h3>
+  </div>
+
+  @foreach($objs as $one)
+    <div class="blog-post body-maintext">
+      <div class="row justify-content-between container">
+        <h2 class="blog-post-title col-md-7">{{(isset($one->title)) ? mb_substr($one->title, 0, 100) : ''}}</h2>
+        <div class="post-actions col-md-5">
+          <a class="p-2 text-muted" href="{{asset('post/' . $one->slug)}}">{{__('menu.Open')}}</a>
+          <a class="p-2 text-muted my-link" data-id="{{$one->id}}" href="{{asset('#')}}">{{__('menu.Show')}}</a>
+        </div>
+      </div>
+      @include('templates.links')
+    </div><!-- /.blog-post -->
+  @endforeach
+
+  <div>{!! $objs->links() !!}</div>
+
 @else
-    <p>{{__('menu.NothingFind')}}.</p>
+  <p>{{__('menu.NothingFind')}}.</p>
 @endif
 
 @endsection

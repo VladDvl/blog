@@ -92,7 +92,9 @@ return [
     'TagName' => 'Tag name',
     'TagsList' => 'Tags list',
     'Tags' => 'Tags',
+    'Tag' => 'Tag',
     'AllTags' => 'All tags',
     'NoTags' => 'No tags found',
     'Subscriberss' => 'Subscribers',
+    'Subscribe' => 'Subscribe',
 ];

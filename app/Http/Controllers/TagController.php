@@ -19,6 +19,13 @@ class TagController extends Controller
             ->orWhere('tag_id', 'LIKE', $slug)
             ->orderBy('id','DESC')->paginate(20);
 
+        foreach($objs as $one)
+        {
+            $howmany = count( $one->comms );
+            $comments = 'comments';
+            $one->$comments = $howmany;
+        }
+
         return view('tag', compact('objs','tag'));
     }
 }

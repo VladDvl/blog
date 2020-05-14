@@ -13,6 +13,8 @@ Route::post('group/enter', 'GroupController@enterPartitipant');
 Route::post('group/group-avatar', 'GroupController@avatarChange');
 Route::post('tag/create', 'TagCreateController@createTag');
 Route::post('tag/delete', 'TagDeleteController@deleteTag');
+Route::post('tag/subscribe', 'SubscriptionController@tagSubscribe');
+Route::post('user/subscribe', 'SubscriptionController@userSubscribe');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

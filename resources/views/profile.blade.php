@@ -9,6 +9,7 @@
   @parent
   <link href="{{asset('public/css/home.css')}}" rel="stylesheet"/>
   <link href="{{asset('public/css/category.css')}}" rel="stylesheet"/>
+  <link href="{{asset('public/css/profile.css')}}" rel="stylesheet"/>
   <link href="{{asset('public/css/modal.css')}}" rel="stylesheet"/>
 @endsection
 
@@ -31,7 +32,26 @@
     @endguest
 
 <div class="card">
-    <div class="card-header">{{(isset($thing->name)) ? $thing->name : ''}}</div>
+    <div class="card-header profile-header">
+        <p>{{(isset($thing->name)) ? mb_substr($thing->name, 0, 50) : ''}}</p>
+        @guest
+            @else
+            <form method="post" action="{{asset('user/subscribe')}}">
+                {!!csrf_field()!!}
+                @if(count($errors)>0)
+                    @foreach($errors->all() as $ers)
+                        <div class="red">
+                            {{$ers}}
+                        </div>
+                    @endforeach
+                @endif
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <button class="btn btn-primary" type="submit" name="author_id" value="{{$thing->id}}">
+                    {{__('menu.Subscribe')}}
+                </button>
+            </form>
+        @endguest
+    </div>
     <div class="card-body justify-content-start row">
         @if( $thing->avatar != '' and $thing->avatar != 'users/default.png' )
             <img src="{{asset('public/uploads/avatars/' . $thing->avatar)}}" alt="avatar">

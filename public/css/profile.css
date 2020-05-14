@@ -1,0 +1,9 @@
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-header p {
+    margin-bottom: 0;
+}

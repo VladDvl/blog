@@ -19,9 +19,20 @@
       <p><span class="text-muted">{{__('menu.Tag')}}:</span> {{mb_substr($tag->name, 0, 50)}}</p>
       @guest
         @else
-        <button class="btn btn-primary">
-          {{__('menu.Subscribe')}}
-        </button>
+        <form method="post" action="{{asset('tag/subscribe')}}">
+          {!!csrf_field()!!}
+          @if(count($errors)>0)
+            @foreach($errors->all() as $ers)
+              <div class="red">
+                {{$ers}}
+              </div>
+            @endforeach
+          @endif
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <button class="btn btn-primary" type="submit" name="tag_id" value="{{$tag->id}}">
+            {{__('menu.Subscribe')}}
+          </button>
+        </form>
       @endguest
     </div>
   </div>

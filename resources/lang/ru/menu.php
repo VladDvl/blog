@@ -97,4 +97,5 @@ return [
     'NoTags' => 'Теги не найдены',
     'Subscriberss' => 'Подписчиков',
     'Subscribe' => 'Подписаться',
+    'UnSubscribe' => 'Отписаться',
 ];

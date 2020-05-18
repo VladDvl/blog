@@ -8,13 +8,16 @@ use App\User;
 use App\Post;
 use App\Comments;
 use App\groups;
+use App\Subscriptions;
 use Auth;
 
 class profileController extends Controller
 {
-    public function getIndex($slug = null)
+    public function getIndex( $slug = null )
     {
-        $thing = User::with('user_posts', 'commss')->where('id',$slug)->first();
+        ( is_numeric($slug) ) ? $slug : $slug = null;
+        
+        $thing = User::with('user_posts', 'commss')->where('id', $slug)->first();
 
         if( $thing != null ) {
 
@@ -25,13 +28,46 @@ class profileController extends Controller
                     $query->where('user_id', '=', $slug)->where('status', 'active');
                 })->get();
 
+
+            if( Auth::check() and Auth::user()->id != $slug ) {
+
+                $subscription = Subscriptions::where('user_id', Auth::user()->id)->first();
+                
+                if( isset($subscription) ) {
+
+                    $tags_arr = explode(',', $subscription->author_id);
+
+                } else {
+
+                    $tags_arr = [];
+
+                }
+
+                if( in_array($slug, $tags_arr) ) {
+
+                    $sub_bool = true;
+    
+                } else {
+    
+                    $sub_bool = false;
+    
+                }
+
+            } else {
+
+                $sub_bool = false;
+
+            }
+
+
+            //dd($objs);
+            return view('profile',compact('thing','objs','groups','sub_bool'));
+
         } else {
 
-            return view('maintext');
+            return view('profile',compact('thing'));
 
         }
         
-        //dd($objs);
-        return view('profile',compact('thing','objs','groups'));
     }
 }

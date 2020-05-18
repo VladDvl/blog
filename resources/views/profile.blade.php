@@ -15,6 +15,8 @@
 
 @section('content')
 
+@if( $thing != null )
+
 <div class="col-md-14">
 
     @guest
@@ -36,20 +38,39 @@
         <p>{{(isset($thing->name)) ? mb_substr($thing->name, 0, 50) : ''}}</p>
         @guest
             @else
-            <form method="post" action="{{asset('user/subscribe')}}">
-                {!!csrf_field()!!}
-                @if(count($errors)>0)
-                    @foreach($errors->all() as $ers)
-                        <div class="red">
-                            {{$ers}}
-                        </div>
-                    @endforeach
+                @if(Auth::user()->id != $thing->id)
+                    @if( $sub_bool == false )
+                        <form method="post" action="{{asset('user/subscribe')}}">
+                            {!!csrf_field()!!}
+                            @if(count($errors)>0)
+                                @foreach($errors->all() as $ers)
+                                    <div class="red">
+                                        {{$ers}}
+                                    </div>
+                                @endforeach
+                            @endif
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <button class="btn btn-primary" type="submit" name="author_id" value="{{$thing->id}}">
+                                {{__('menu.Subscribe')}}
+                            </button>
+                        </form><!--subscribe-->
+                    @else
+                        <form method="post" action="{{asset('user/unsubscribe')}}">
+                            {!!csrf_field()!!}
+                            @if(count($errors)>0)
+                                @foreach($errors->all() as $ers)
+                                    <div class="red">
+                                        {{$ers}}
+                                    </div>
+                                @endforeach
+                            @endif
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <button class="btn btn-primary" type="submit" name="author_id" value="{{$thing->id}}">
+                                {{__('menu.UnSubscribe')}}
+                            </button>
+                        </form><!--unsubscribe-->
+                    @endif
                 @endif
-                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                <button class="btn btn-primary" type="submit" name="author_id" value="{{$thing->id}}">
-                    {{__('menu.Subscribe')}}
-                </button>
-            </form>
         @endguest
     </div>
     <div class="card-body justify-content-start row">
@@ -135,5 +156,9 @@
 @endif
 
 </div>
+
+@else
+  <p>{{__('menu.NothingFind')}}.</p>
+@endif
 
 @endsection

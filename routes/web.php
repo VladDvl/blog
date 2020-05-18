@@ -15,6 +15,8 @@ Route::post('tag/create', 'TagCreateController@createTag');
 Route::post('tag/delete', 'TagDeleteController@deleteTag');
 Route::post('tag/subscribe', 'SubscriptionController@tagSubscribe');
 Route::post('user/subscribe', 'SubscriptionController@userSubscribe');
+Route::post('tag/unsubscribe', 'UnSubscriptionController@tagUnSubscribe');
+Route::post('user/unsubscribe', 'UnSubscriptionController@userUnSubscribe');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

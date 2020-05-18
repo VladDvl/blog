@@ -97,4 +97,5 @@ return [
     'NoTags' => 'No tags found',
     'Subscriberss' => 'Subscribers',
     'Subscribe' => 'Subscribe',
+    'UnSubscribe' => 'Unsubscribe',
 ];

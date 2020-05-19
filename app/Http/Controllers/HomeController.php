@@ -14,6 +14,8 @@ use App\Categories;
 use App\User;
 use App\Messages;
 use App\groups;
+use App\Tags;
+use App\Subscriptions;
 use Auth;
 
 class HomeController extends Controller
@@ -92,7 +94,40 @@ class HomeController extends Controller
         }])->get();
         //dd($groups);
 
-        $objects = compact('objs','cats','msgs','friends','groups');
+        $subscription = Subscriptions::where('user_id', Auth::user()->id)->where('status', 'PUBLISHED')->first();
+        if( isset($subscription) ) {
+
+            $arr_tags_id = explode(',', $subscription->tag_id);
+            $arr_authors_id = explode(',', $subscription->author_id);
+
+            if( $subscription->tag_id != null ) {
+
+                $sub_tags = Tags::where('status', 'PUBLISHED')->whereIn('id', $arr_tags_id)->get();
+
+            } else {
+
+                $sub_tags = null;
+
+            }
+
+            if( $subscription->author_id != null ) {
+
+                $sub_authors = User::whereIn('id', $arr_authors_id)->get();
+
+            } else {
+
+                $sub_authors = null;
+
+            }
+
+        } else {
+
+            $sub_tags = null;
+            $sub_authors = null;
+
+        }
+
+        $objects = compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors');
         return $objects;
     }
 
@@ -104,8 +139,10 @@ class HomeController extends Controller
         $msgs = $objects['msgs'];
         $friends = $objects['friends'];
         $groups = $objects['groups'];
+        $sub_tags = $objects['sub_tags'];
+        $sub_authors = $objects['sub_authors'];
 
-        return view('home', compact('objs','cats','msgs','friends','groups'));
+        return view('home', compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors'));
     }
 
     public function postIndex(PostRequest $r)
@@ -189,11 +226,13 @@ class HomeController extends Controller
         $msgs = $objects['msgs'];
         $friends = $objects['friends'];
         $groups = $objects['groups'];
+        $sub_tags = $objects['sub_tags'];
+        $sub_authors = $objects['sub_authors'];
 
         $edit_post = Post::where('slug', $slug)->first();
         $post_id = $edit_post->id;
 
-        return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post'));
+        return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post','sub_tags','sub_authors'));
     }
 
     public function avatarChange(AvatarRequest $r)

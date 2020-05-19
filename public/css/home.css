@@ -244,3 +244,47 @@ div.group .group-small-avatar {
 .group-info1 p:first-child, .group-info2 p:first-child{
     margin-left: 0px !important;
 }
+
+.subscriptions-list .card-body {
+    padding-top: 0.5rem;
+}
+
+.subs-title {
+    font-weight: bold;
+}
+
+.subs {
+    overflow-y: scroll;
+    max-height: 12.6rem;
+}
+
+.sub-tag, .sub-author {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+}
+
+.sub-tag:hover, .sub-author:hover {
+    background-color: #F3FAFF;
+}
+
+.sub-tag:last-child, .sub-author:last-child {
+    border-bottom: none !important;
+}
+
+.sub-tag p, .sub-author p {
+    margin: 0;
+}
+
+.sub-tag a, .sub-author a {
+    color: #6c757d;
+}
+
+.sub-tag a:hover, .sub-author a:hover {
+    color: black;
+}
+
+.unsub-button {
+    padding: 1px;
+}

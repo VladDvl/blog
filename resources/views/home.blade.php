@@ -141,6 +141,75 @@
                 </div>
             </div><!--chats-->
 
+            <div class="card subscriptions-list">
+                <div class="card-header">{{__('menu.Subscriptions')}}</div>
+                <div class="card-body justify-content-start col border-bottom">
+                    <p class="subs-title">{{__('menu.Tags')}}:</p>
+                    @if( $sub_tags != null and count($sub_tags) > 0 )
+                        <div class="subs border">
+                        <form method="post" action="{{asset('tag/unsubscribe')}}">
+                            {!!csrf_field()!!}
+                            @if(count($errors)>0)
+                                @foreach($errors->all() as $ers)
+                                    <div class="red">
+                                        {{$ers}}
+                                    </div>
+                                @endforeach
+                            @endif
+                            @foreach( $sub_tags as $tag )
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                <div class="sub-tag border-bottom">
+                                    <p>
+                                        <a href="{{asset('tag/' . $tag->id)}}">
+                                        {{(isset($tag->name)) ? mb_substr($tag->name, 0, 50) : ''}}
+                                        </a>
+                                    </p>
+                                    <button class="unsub-button btn btn-primary" type="submit" name="tag_id" value="{{$tag->id}}">
+                                        {{__('menu.UnSubscribe')}}
+                                    </button>
+                                </div>
+                            @endforeach
+                        </form>
+                        </div>
+                    @else
+                        {{__('menu.NoSubscriptions')}}.
+                    @endif
+                </div><!--tags-->
+
+                <div class="card-body justify-content-start col">
+                    <p class="subs-title">{{__('menu.Authors')}}:</p>
+                    @if( $sub_authors != null and count($sub_authors) > 0 )
+                        <div class="subs border">
+                        <form method="post" action="{{asset('user/unsubscribe')}}">
+                            {!!csrf_field()!!}
+                            @if(count($errors)>0)
+                                @foreach($errors->all() as $ers)
+                                    <div class="red">
+                                        {{$ers}}
+                                    </div>
+                                @endforeach
+                            @endif
+                            @foreach( $sub_authors as $author )
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                <div class="sub-author border-bottom">
+                                    <p>
+                                        <a href="{{asset('user/' . $author->id)}}">
+                                        {{(isset($author->name)) ? mb_substr($author->name, 0, 50) : ''}}
+                                        </a>
+                                    </p>
+                                    <button class="unsub-button btn btn-primary" type="submit" name="author_id" value="{{$author->id}}">
+                                        {{__('menu.UnSubscribe')}}
+                                    </button>
+                                </div>
+                            @endforeach
+                        </form>
+                        </div>
+                    @else
+                        {{__('menu.NoSubscriptions')}}.
+                    @endif
+                </div><!--authors-->
+            </div><!--suscriptions-->
+
             <div class="card">
                 <div class="card-header">{{__('menu.Avatar')}}</div>
                 <div class="card-body justify-content-start row">

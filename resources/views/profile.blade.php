@@ -155,7 +155,48 @@
 <p>{{__('menu.User_no_groups')}}.</p>
 @endif
 
-</div>
+<div class="card subscriptions-list">
+    <div class="card-header">{{__('menu.Subscriptions')}}</div>
+    <div class="card-body justify-content-start col border-bottom">
+        <p class="subs-title">{{__('menu.Tags')}}:</p>
+        @if( $sub_tags != null and count($sub_tags) > 0 )
+            <div class="subs border">
+                @foreach( $sub_tags as $tag )
+                <div class="sub-tag border-bottom">
+                    <p>
+                        <a href="{{asset('tag/' . $tag->id)}}">
+                        {{(isset($tag->name)) ? mb_substr($tag->name, 0, 50) : ''}}
+                        </a>
+                    </p>
+                </div>
+                @endforeach
+            </div>
+        @else
+            {{__('menu.NoSubscriptions')}}.
+        @endif
+    </div><!--tags-->
+
+    <div class="card-body justify-content-start col">
+        <p class="subs-title">{{__('menu.Authors')}}:</p>
+        @if( $sub_authors != null and count($sub_authors) > 0 )
+            <div class="subs border">
+                @foreach( $sub_authors as $author )
+                <div class="sub-author border-bottom">
+                    <p>
+                        <a href="{{asset('user/' . $author->id)}}">
+                        {{(isset($author->name)) ? mb_substr($author->name, 0, 50) : ''}}
+                        </a>
+                    </p>
+                </div>
+                @endforeach
+            </div>
+        @else
+            {{__('menu.NoSubscriptions')}}.
+        @endif
+    </div><!--authors-->
+</div><!--suscriptions-->
+
+</div><!--col-md-4-->
 
 @else
   <p>{{__('menu.NothingFind')}}.</p>

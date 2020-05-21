@@ -41,5 +41,6 @@ route::group(['middleware' => ['lang']], function(){
     Route::get('all-groups', 'GroupController@getPublic')->middleware('auth');
     Route::get('all-tags', 'TagsShowController@getIndex');
     Route::get('tag/{slug}', 'TagController@getIndex');
+    Route::get('feed', 'FeedController@getIndex')->middleware('auth');
     Route::get('{url}', 'MaintextController@getIndex'); //этот запрос должен быть в конце
 });

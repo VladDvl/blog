@@ -101,4 +101,5 @@ return [
     'Subscriberss' => 'Subscribers',
     'Subscribe' => 'Subscribe',
     'UnSubscribe' => 'Unsubscribe',
+    'Feed' => 'Feed',
 ];

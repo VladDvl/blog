@@ -142,7 +142,10 @@
             </div><!--chats-->
 
             <div class="card subscriptions-list">
-                <div class="card-header">{{__('menu.Subscriptions')}}</div>
+                <div class="card-header subs-list-header">
+                    <p>{{__('menu.Subscriptions')}}</p>
+                    <p><a href="{{asset('feed')}}">{{__('menu.Feed')}}</a></p>
+                </div>
                 <div class="card-body justify-content-start col border-bottom">
                     <p class="subs-title">{{__('menu.Tags')}}:</p>
                     @if( $sub_tags != null and count($sub_tags) > 0 )

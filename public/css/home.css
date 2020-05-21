@@ -245,6 +245,16 @@ div.group .group-small-avatar {
     margin-left: 0px !important;
 }
 
+.subs-list-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subs-list-header p {
+    margin: 0;
+}
+
 .subscriptions-list .card-body {
     padding-top: 0.5rem;
 }

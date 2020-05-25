@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Requests\HomeTableRequest;
+use App\Notifications\InvoicePaid;
 use App\Post;// или App\Libs\Img и \App::make('Img')
 use App\Comments;
 use App\Categories;
@@ -165,7 +166,33 @@ class HomeController extends Controller
 
             $r['author_id']=Auth::user()->id;
 
-            Post::create($r->all());
+            $post = Post::create($r->all());
+
+            $subscriptions = Subscriptions::where('status', 'PUBLISHED')->where('user_id', '<>', Auth::user()->id)->get();
+            $subscribers_id =[];
+            foreach($subscriptions as $sub)
+            {
+                $arr_authors_id = explode(',', $sub->author_id);
+                if( in_array(Auth::user()->id, $arr_authors_id) ) {
+                    $subscribers_id[] = $sub->user_id;
+                }
+            }
+            $subscribers_id = array_unique( $subscribers_id );
+            if( !empty($subscribers_id) ) {
+
+                $subscribers = User::whereIn('id', $subscribers_id)->get();
+
+                $author_id = Auth::user()->id;
+                $author_name = Auth::user()->name;
+                $post_id = $post->id;
+                $post_title = $post->title;
+
+                foreach($subscribers as $subscriber)
+                {
+                    $subscriber->notify(new InvoicePaid($author_id, $author_name, $post_id, $post_title));
+                }
+
+            }
 
         } else if( (array_key_exists('update', $input) == true) ) {
 

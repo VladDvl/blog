@@ -9,6 +9,12 @@ class HideController extends Controller
 {
     public function hideComment()
     {
+        if( !isset($_GET['comment-id']) or !isset($_GET['submit']) ) {
+
+            return view('maintext');
+
+        }
+
         //dd($_GET);
         $comment_id = $_GET['comment-id'];
         $type_of_action = $_GET['submit'];

@@ -13,6 +13,12 @@ class CategoryController extends Controller
         $cat = Categories::with('posts')->where('slug', $slug)->first();
         //$objs = $cat->posts()->orderBy('id','DESC')->paginate(15);
 
+        if( !isset($cat) ) {
+
+            return view('maintext');
+
+        }
+
         $objs = Post::with('userss','comms')->where('category_id', $cat->id)->orderBy('id','DESC')->paginate(15);
 
         foreach($objs as $one)

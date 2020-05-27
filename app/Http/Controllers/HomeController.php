@@ -264,6 +264,13 @@ class HomeController extends Controller
         $notifications = $objects['notifications'];
 
         $edit_post = Post::where('slug', $slug)->first();
+
+        if( !isset($edit_post) ) {
+
+            return view('maintext');
+
+        }
+
         $post_id = $edit_post->id;
 
         return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post','sub_tags','sub_authors','notifications'));

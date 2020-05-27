@@ -28,6 +28,12 @@ class PostController extends Controller
     {
         $one = $this->showPost($slug);
 
+        if( !isset($one) ) {
+
+            return view('maintext');
+
+        }
+
         $howmany = count( $one->comms );
         $comments = 'comments';
         $one->$comments = $howmany;

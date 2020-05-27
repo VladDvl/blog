@@ -17,6 +17,9 @@ Route::post('tag/subscribe', 'SubscriptionController@tagSubscribe');
 Route::post('user/subscribe', 'SubscriptionController@userSubscribe');
 Route::post('tag/unsubscribe', 'UnSubscriptionController@tagUnSubscribe');
 Route::post('user/unsubscribe', 'UnSubscriptionController@userUnSubscribe');
+Route::post('notifications-delete', 'NotificationController@deleteAllNotifications');
+Route::post('notification-delete', 'NotificationController@deleteNotification');
+Route::post('notification-read', 'NotificationController@readNotification');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

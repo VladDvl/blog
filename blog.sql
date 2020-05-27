@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 26 2020 г., 01:29
+-- Время создания: Май 27 2020 г., 13:26
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.2
 
@@ -490,8 +490,8 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
-('aa71995c-5931-4793-bf87-8797135cc275', 'App\\Notifications\\InvoicePaid', 'App\\User', 1, '{\"message\":\"A new article was created.\",\"author_id\":4,\"author_name\":\"Vlad\",\"post_id\":39,\"post_title\":\"custom\"}', NULL, '2020-05-25 19:01:03', '2020-05-25 19:01:03'),
-('bef25d51-6180-4d5a-8faf-d26393e7bb7b', 'App\\Notifications\\InvoicePaid', 'App\\User', 1, '{\"message\":\"A new article was created.\"}', NULL, '2020-05-25 18:29:42', '2020-05-25 18:29:42');
+('558f7b7b-1791-4a8c-a38d-9a6bd2073476', 'App\\Notifications\\InvoicePaid', 'App\\User', 1, '{\"message\":\"A new article was created.\",\"author_id\":4,\"author_name\":\"Vlad\",\"post_slug\":\"20_05_27_10_22_04\",\"post_title\":\"notify2 eiorjtoeirjtoie eroti oeitjoeirtjo eritmoeirtmeoir tmnoeirtoei nrotineorit neorto iertoienrto\"}', NULL, '2020-05-27 07:22:04', '2020-05-27 07:22:04'),
+('f95108e8-4412-4f4f-b5aa-b58a1c8c9dfc', 'App\\Notifications\\InvoicePaid', 'App\\User', 1, '{\"message\":\"A new article was created.\",\"author_id\":4,\"author_name\":\"Vlad\",\"post_slug\":\"20_05_27_08_46_20\",\"post_title\":\"notify\"}', NULL, '2020-05-27 05:46:20', '2020-05-27 05:46:20');
 
 -- --------------------------------------------------------
 
@@ -735,9 +735,9 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 (19, 1, 1, 'chel', NULL, NULL, '<p>egshdgnfhgchdfgdf</p>', '19_10_31_05_13_30.jpg', '19_12_09_11_22_20', NULL, NULL, '20', 'PUBLISHED', 0, '2019-12-09 20:22:20', '2020-05-13 18:48:25', 38, 0),
 (22, 4, 10, 'other post', NULL, NULL, '<p>edghfjghk./.</p>', '', '19_12_13_12_38_41', NULL, NULL, NULL, 'PUBLISHED', 0, '2019-12-13 09:38:41', '2020-05-13 18:48:58', 9, 0),
 (23, 1, 6, 'test', NULL, NULL, '<p>test picture post</p>', '19_12_18_09_38_16.jpg', '19_12_18_09_38_16', NULL, NULL, '38', 'PUBLISHED', 0, '2019-12-18 18:38:16', '2020-05-18 20:03:44', 29, 0),
-(34, 1, 6, 'may', NULL, NULL, '<p>test post</p>', '', '20_05_12_06_54_02', NULL, NULL, '14,17,37,18,38', 'PUBLISHED', 0, '2020-05-12 15:54:02', '2020-05-13 20:28:29', 50, 0),
-(37, 4, 6, 'notify', NULL, NULL, '<p>new post</p>', '', '20_05_25_09_29_42', NULL, NULL, NULL, 'PUBLISHED', 0, '2020-05-25 18:29:42', '2020-05-25 18:29:42', 0, 0),
-(39, 4, 6, 'custom', NULL, NULL, '<p>notify</p>', '', '20_05_25_10_01_03', NULL, NULL, NULL, 'PUBLISHED', 0, '2020-05-25 19:01:03', '2020-05-25 19:01:03', 0, 0);
+(34, 1, 6, 'may', NULL, NULL, '<p>test post</p>', '', '20_05_12_06_54_02', NULL, NULL, '14,17,37,18,38', 'PUBLISHED', 0, '2020-05-12 15:54:02', '2020-05-27 05:42:46', 51, 0),
+(41, 4, 6, 'notify', NULL, NULL, '<p>test</p>', '', '20_05_27_08_46_20', NULL, NULL, NULL, 'PUBLISHED', 0, '2020-05-27 05:46:20', '2020-05-27 05:46:55', 1, 0),
+(42, 4, 6, 'notify2 eiorjtoeirjtoie eroti oeitjoeirtjo eritmoeirtmeoir tmnoeirtoei nrotineorit neorto iertoienrto', NULL, NULL, '<p>jtgtgergeri jrioergero oerneortnoe ortneortn oerntoeritn oeritno erntoiernto eirnto noertneoritnoertn oertnoertn oeirntoeri noeritnoe ntoertno enrton</p>', '', '20_05_27_10_22_04', NULL, NULL, NULL, 'PUBLISHED', 0, '2020-05-27 07:22:04', '2020-05-27 07:22:04', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -940,8 +940,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Тестер', 'tester@gmail.com', '19_12_18_10_14_49.jpg', NULL, '$2y$10$gMoJVzFNSKq/YNT2JJAf8eLI3DxBW1Ibv0XjX.ewYzU1nX4t.t/86', 'D634xtH37QEtrewr29I0PawA6LXNGtRWvsRWfeY8j9iWDLauJ3Gg4MlCNG65', '{\"locale\":\"en\"}', '2019-10-17 13:40:26', '2019-12-18 19:14:49'),
-(4, 2, 'Vlad', 'blablabla@yandex.ru', '20_01_03_01_22_03.jpg', NULL, '$2y$10$OgeINy19Ai/ORsvtGkLHmuhHljlnw9BqaLynRY6NsTurp8XMosSjS', 'OhEpZv3MPwpGAe7mx4GM7awwq94GRTTvLcif0KeRCePjers54AUxj3GuUZkn', '{\"locale\":\"en\"}', '2019-10-24 13:24:36', '2020-01-03 10:22:03'),
+(1, 1, 'Тестер', 'tester@gmail.com', '19_12_18_10_14_49.jpg', NULL, '$2y$10$gMoJVzFNSKq/YNT2JJAf8eLI3DxBW1Ibv0XjX.ewYzU1nX4t.t/86', 'SYiunqNz3WbOLJTiPT3OD9wX3lk51hatBSdLyiMqkzNONGuooMeZ4DCsJNWx', '{\"locale\":\"en\"}', '2019-10-17 13:40:26', '2019-12-18 19:14:49'),
+(4, 2, 'Vlad', 'blablabla@yandex.ru', '20_01_03_01_22_03.jpg', NULL, '$2y$10$OgeINy19Ai/ORsvtGkLHmuhHljlnw9BqaLynRY6NsTurp8XMosSjS', 'L3eMxRPH884olJiX6jwKtDTETTvLdX2ieVRTBx96dfRKTEVEIrEI8ChXPtMg', '{\"locale\":\"en\"}', '2019-10-24 13:24:36', '2020-01-03 10:22:03'),
 (5, 2, 'Leonid', 'khal_leonid@yandex.ru', 'users/default.png', NULL, '$2y$10$BsQbNp00mK1QjToxnDXlseLRw.0uWbT3QrclAWarKyOfS8IOlZE2a', '93x72zUdC8NIG573GLgViRr7ThYSUDu1zeymB6RdkMyB77RHvpQX17Y1fKkE', NULL, '2019-12-12 18:10:04', '2019-12-12 18:10:04'),
 (6, 2, 'khal', 'drogo@mail.ru', 'users/default.png', NULL, '$2y$10$xiKyGdgQm1b4TShQ2YgXR.nsPdRO3QmhbeuNEHqMw2IX0EbwgcSyi', NULL, NULL, '2019-12-12 18:21:12', '2019-12-12 18:21:12'),
 (7, 2, 'dark', 'dark@tut.by', 'users/default.png', NULL, '$2y$10$JYoj9LUUnbkrD5DsaEaSi.NyzidxsbM7N4ask89GeLNkdfbnpC426', NULL, NULL, '2019-12-12 18:44:46', '2019-12-12 18:44:46'),
@@ -1226,7 +1226,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT для таблицы `roles`

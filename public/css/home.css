@@ -245,6 +245,66 @@ div.group .group-small-avatar {
     margin-left: 0px !important;
 }
 
+div.notifications .card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.notifications .card-header p {
+    margin: 0;
+}
+
+div.notifications .card-body {
+    padding: 4px;
+    overflow-y: auto;
+    max-height: 30rem;
+}
+
+.notification {
+    padding: 4px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+}
+
+.notification:last-child {
+    margin-bottom: 0;
+}
+
+.notification-unread {
+    background-color: #dce8f1;
+}
+
+.notification-read {
+    background-color: #E9EAE1;
+}
+
+.notification-msg, .notification-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.notification-info p.author-name {
+    width: 26%;
+}
+
+.notification-info p.post-title {
+    width: 74%
+}
+
+.notification-msg p, .notification-info p {
+    margin: 0;
+}
+
+.notification-btn {
+    margin-right: 4px;
+    padding: 2px;
+}
+
 .subs-list-header {
     display: flex;
     flex-direction: row;

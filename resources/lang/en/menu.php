@@ -36,6 +36,7 @@ return [
     'GroupAvatar' => 'Group\'s avatar',
     'Change' => 'Change',
     'Delete' => 'Delete',
+    'DeleteAll' => 'Delete all',
     'Title' => 'Title',
     'WriteTitle' => 'Write a title',
     'Category' => 'Category',
@@ -102,4 +103,7 @@ return [
     'Subscribe' => 'Subscribe',
     'UnSubscribe' => 'Unsubscribe',
     'Feed' => 'Feed',
+    'Notifications' => 'Notifications',
+    'NoNotifications' => 'No notifications found',
+    'MarkAsRead' => 'Read',
 ];

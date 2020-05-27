@@ -36,6 +36,7 @@ return [
     'GroupAvatar' => 'Аватар группы',
     'Change' => 'Изменить',
     'Delete' => 'Удалить',
+    'DeleteAll' => 'Удалить все',
     'Title' => 'Название',
     'WriteTitle' => 'Введите название',
     'Category' => 'Категория',
@@ -102,4 +103,7 @@ return [
     'Subscribe' => 'Подписаться',
     'UnSubscribe' => 'Отписаться',
     'Feed' => 'Лента',
+    'Notifications' => 'Уведомления',
+    'NoNotifications' => 'Уведомлений не найдено',
+    'MarkAsRead' => 'Прочитано',
 ];

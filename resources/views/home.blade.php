@@ -141,6 +141,106 @@
                 </div>
             </div><!--chats-->
 
+            <div class="card notifications">
+                <div class="card-header">
+                    <p>{{__('menu.Notifications')}}</p>
+                    @if( count($notifications) > 0 )
+                    <div>
+                        <form method="post" action="{{asset('notifications-delete')}}">
+                        {!!csrf_field()!!}
+                        @if(count($errors)>0)
+                            @foreach($errors->all() as $ers)
+                                <div class="red">
+                                    {{$ers}}
+                                </div>
+                            @endforeach
+                        @endif
+                            <button class="btn btn-primary" type="submit" name="user_id" value="{{Auth::user()->id}}">
+                                {{__('menu.DeleteAll')}}
+                            </button>
+                        </form>
+                    </div>
+                    @endif
+                </div>
+                <div class="card-body justify-content-start col">
+                    @if( count($notifications) > 0 )
+                        @foreach( $notifications as $notification )
+                            @if( $notification->read_at == null )
+                            <div class="notification notification-unread">
+                                <div class="notification-msg">
+                                    <p>{{$notification->data['message']}} <span class="text-muted">({{$notification->created_at}})</span></p>
+                                    <form method="post" action="{{asset('notification-read')}}">
+                                    {!!csrf_field()!!}
+                                    @if(count($errors)>0)
+                                        @foreach($errors->all() as $ers)
+                                            <div class="red">
+                                                {{$ers}}
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                        <button class="btn notification-btn btn-primary" type="submit" name="notification_id" value="{{$notification->id}}">
+                                            {{__('menu.MarkAsRead')}}
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="notification-info">
+                                    <p class="text-muted author-name">
+                                        {{__('menu.Author')}}: 
+                                        <a href="{{asset('user/' . $notification->data['author_id'])}}">
+                                        {{mb_substr($notification->data['author_name'], 0, 20)}}
+                                        </a>
+                                    </p>
+                                    <p class="text-muted post-title">
+                                        {{__('menu.Title')}}: 
+                                        <a href="{{asset('post/' . $notification->data['post_slug'])}}">
+                                        {{mb_substr($notification->data['post_title'], 0, 50)}}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div><!--notification-unread-->
+                            @else
+                            <div class="notification notification-read">
+                                <div class="notification-msg">
+                                    <p>{{$notification->data['message']}} <span class="text-muted">{{$notification->created_at}}</span></p>
+                                    <form method="post" action="{{asset('notification-delete')}}">
+                                    {!!csrf_field()!!}
+                                    @if(count($errors)>0)
+                                        @foreach($errors->all() as $ers)
+                                            <div class="red">
+                                                {{$ers}}
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                        <button class="btn notification-btn btn-primary" type="submit" name="notification_id" value="{{$notification->id}}">
+                                            {{__('menu.Delete')}}
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="notification-info">
+                                    <p class="text-muted author-name">
+                                        {{__('menu.Author')}}: 
+                                        <a href="{{asset('user/' . $notification->data['author_id'])}}">
+                                        {{mb_substr($notification->data['author_name'], 0, 20)}}
+                                        </a>
+                                    </p>
+                                    <p class="text-muted post-title">
+                                        {{__('menu.Title')}}: 
+                                        <a href="{{asset('post/' . $notification->data['post_slug'])}}">
+                                        {{mb_substr($notification->data['post_title'], 0, 50)}}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div><!--read-notification-->
+                            @endif
+                        @endforeach
+                    @else
+                        {{__('menu.NoNotifications')}}.
+                    @endif
+                </div>
+            </div><!--notifications-->
+
             <div class="card subscriptions-list">
                 <div class="card-header subs-list-header">
                     <p>{{__('menu.Subscriptions')}}</p>

@@ -128,7 +128,12 @@ class HomeController extends Controller
 
         }
 
-        $objects = compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors');
+        $notifications = Auth::user()->notifications;
+        if( !isset($notifications) ) {
+            $notifications = null;
+        }
+
+        $objects = compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors','notifications');
         return $objects;
     }
 
@@ -142,8 +147,9 @@ class HomeController extends Controller
         $groups = $objects['groups'];
         $sub_tags = $objects['sub_tags'];
         $sub_authors = $objects['sub_authors'];
+        $notifications = $objects['notifications'];
 
-        return view('home', compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors'));
+        return view('home', compact('objs','cats','msgs','friends','groups','sub_tags','sub_authors','notifications'));
     }
 
     public function postIndex(PostRequest $r)
@@ -184,12 +190,12 @@ class HomeController extends Controller
 
                 $author_id = Auth::user()->id;
                 $author_name = Auth::user()->name;
-                $post_id = $post->id;
+                $post_slug = $post->slug;
                 $post_title = $post->title;
 
                 foreach($subscribers as $subscriber)
                 {
-                    $subscriber->notify(new InvoicePaid($author_id, $author_name, $post_id, $post_title));
+                    $subscriber->notify(new InvoicePaid($author_id, $author_name, $post_slug, $post_title));
                 }
 
             }
@@ -255,11 +261,12 @@ class HomeController extends Controller
         $groups = $objects['groups'];
         $sub_tags = $objects['sub_tags'];
         $sub_authors = $objects['sub_authors'];
+        $notifications = $objects['notifications'];
 
         $edit_post = Post::where('slug', $slug)->first();
         $post_id = $edit_post->id;
 
-        return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post','sub_tags','sub_authors'));
+        return view('home', compact('objs','cats','msgs','friends','groups','post_id','edit_post','sub_tags','sub_authors','notifications'));
     }
 
     public function avatarChange(AvatarRequest $r)

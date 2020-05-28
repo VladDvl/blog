@@ -19,7 +19,7 @@
     </h3>
 </div>
 
-@if( count($all_tags) != 0 )
+@if( isset($all_tags) )
 
 <div class="card">
 <div class="card-body all-tags-list justify-content-start col">

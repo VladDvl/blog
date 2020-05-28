@@ -12,16 +12,24 @@ class TagsShowController extends Controller
     {
         $tags = Tags::where('status', 'PUBLISHED')->get();
 
-        foreach( $tags as $tag )
-        {
-            $howmany = "posts";
-            $num_posts = count( explode(',', $tag->post_id) );
-            $tag->$howmany = $num_posts;
+        if( count($tags) != 0 ) {
+
+            foreach( $tags as $tag )
+            {
+                $howmany = "posts";
+                $num_posts = count( explode(',', $tag->post_id) );
+                $tag->$howmany = $num_posts;
+            }
+    
+            $tags_ids = $tags->sortByDesc('posts')->pluck('id')->all();
+    
+            $all_tags = Tags::orderByRaw( "FIELD(id, " . implode(',', $tags_ids) . " )" )->paginate(100);
+
+        } else {
+
+            $all_tags = null;
+
         }
-
-        $tags_ids = $tags->sortByDesc('posts')->pluck('id')->all();
-
-        $all_tags = Tags::orderByRaw( "FIELD(id, " . implode(',', $tags_ids) . " )" )->paginate(100);
 
         return view('all-tags', compact('all_tags'));
     }

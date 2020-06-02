@@ -5,6 +5,12 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
+#site-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
@@ -102,9 +108,9 @@ h1, h2, h3, h4, h5, h6 {
  */
 .blog-post {
   margin-bottom: 1.5rem;
-  background-color: #f3faff;
-  border: 1px solid #7fc1ff;
-  border-radius: 8px;
+  background-color: #f5f9fc;
+  border: 1px solid #aec1d3;
+  border-radius: 4px;
   padding-left: 4px;
 }
 .blog-post-title {
@@ -143,11 +149,6 @@ aside .p-4 {
 #nav-category {
   background-color: #EDEEE5;
   font-weight: 500;
-}
-
-#tuda, #suda {
-  width: 100px;
-  font-weight: 700;
 }
 
 #header {
@@ -190,11 +191,17 @@ a.btn {
 }
 
 #site_search_form {
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
 }
 
 #search_input {
-  width: 80%;
+  width: 90%;
   text-align: center;
   border: 1px solid rgb(80, 79, 79);
   border-radius: 5px;
@@ -203,9 +210,8 @@ a.btn {
 }
 
 #search_button {
-  width: 16%;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
+  margin-left: 0.3;
+  width: 8%;
   border: 1px solid rgb(80, 79, 79);
   border-radius: 5px;
   font-size: 14px;
@@ -268,12 +274,26 @@ div.aside-tag p.aside-tag-info {
   text-shadow: white 1px 1px 0;
 }
 
+.design div p a {
+  color: #343a40 !important;
+  text-shadow: white 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .games {
   background: bottom url("../img/categories/games.jpg");
   background-repeat: repeat-x;
   background-size: contain;
   color: white !important;
   text-shadow: black 1px 1px 0;
+}
+
+.games div p a {
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .music {
@@ -284,12 +304,26 @@ div.aside-tag p.aside-tag-info {
   text-shadow: palevioletred 1px 1px 0;
 }
 
+.music div p a {
+  color: rgb(16, 16, 114) !important;
+  text-shadow: palevioletred 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .programming {
   background: bottom url("../img/categories/programming.jpg");
   background-repeat: repeat-x;
   background-size: contain;
   color: rgb(7, 7, 43) !important;
-  text-shadow: rgb(146, 214, 180) 2px 2px 0;
+  text-shadow: rgb(146, 214, 180) 1px 1px 0;
+}
+
+.programming div p a {
+  color: rgb(7, 7, 43) !important;
+  text-shadow: rgb(146, 214, 180) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .web {
@@ -300,12 +334,26 @@ div.aside-tag p.aside-tag-info {
   text-shadow: rgb(231, 231, 231) 2px 2px 0;
 }
 
+.web div p a {
+  color: rgb(7, 7, 43) !important;
+  text-shadow: rgb(231, 231, 231) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .security {
   background: bottom url("../img/categories/security.jpg");
   background-repeat: repeat-x;
   background-size: contain;
   color: white !important;
   text-shadow: rgb(20, 94, 63) 1px 1px 0;
+}
+
+.security div p a {
+  color: white !important;
+  text-shadow: rgb(20, 94, 63) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .science {
@@ -316,6 +364,13 @@ div.aside-tag p.aside-tag-info {
   text-shadow: black 1px 1px 0;
 }
 
+.science div p a {
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .sport {
   background: right url("../img/categories/sport.jpg");
   background-repeat: repeat-x;
@@ -324,12 +379,26 @@ div.aside-tag p.aside-tag-info {
   text-shadow: rgb(213, 245, 99) 2px 2px 0;
 }
 
+.sport div p a {
+  color: #343a40 !important;
+  text-shadow: rgb(213, 245, 99) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .world {
   background: right 50% url("../img/categories/world.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  color: yellow !important;
+  color: gold !important;
   text-shadow: rgb(58, 52, 52) 2px 2px 0;
+}
+
+.world div p a {
+  color: gold !important;
+  text-shadow: rgb(58, 52, 52) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .self {
@@ -337,7 +406,14 @@ div.aside-tag p.aside-tag-info {
   background-repeat: repeat-x;
   background-size: contain;
   color: white !important;
-  text-shadow: black 3px 1px 0;
+  text-shadow: rgb(32, 15, 15) 2px 1px 0;
+}
+
+.self div p a {
+  color: white !important;
+  text-shadow: rgb(32, 15, 15) 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .reviews {
@@ -348,10 +424,24 @@ div.aside-tag p.aside-tag-info {
   text-shadow: black 1px 1px 0;
 }
 
+.reviews div p a {
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .guides {
   background: bottom url("../img/categories/guides.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   color: white !important;
   text-shadow: black 2px 1px 0;
+}
+
+.guides div p a {
+  color: white !important;
+  text-shadow: black 1px 1px 0;
+  font-size: 18px;
+  font-weight: bold;
 }

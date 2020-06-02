@@ -7,8 +7,6 @@
 
 @section('content')
 
-<div class="col-md-14">
-
 <div id="block-head" class="container pb-4 mb-4 border-bottom font-italic">
     <h3>
         {{__('menu.Feed')}}
@@ -24,7 +22,12 @@
       @if($one->image)
         <img widtg="200" height="250" src="{{asset('public/uploads/posts/'.$one->image)}}"/>
       @endif
-      <p class="postBody">{!!mb_substr($one -> body,0,1500)!!}...</p>
+      <p class="postBody">
+        {!!mb_substr($one -> body,0,1500)!!}
+        @if( iconv_strlen($one->body) > 1500 )
+          ...
+        @endif
+      </p>
       <a class="readWhole" href="{{asset('post/' . $one -> slug)}}">{{__('menu.Continue')}}</a>
     </div><!-- /.blog-post -->
   @endforeach
@@ -33,7 +36,5 @@
 @else
   <p>{{__('menu.NothingFind')}}.</p>
 @endif
-	  
-</div>
 
 @endsection

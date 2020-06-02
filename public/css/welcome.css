@@ -1,7 +1,11 @@
 #block-header {
     background-image: url("../img/bg-partnership.svg");
     text-shadow: black 1px 1px 0;
-  }
+}
+
+.head-article-body {
+  margin-bottom: 0;
+}
 
 .postBody {
   margin-bottom: 0.1rem !important;
@@ -20,6 +24,10 @@
   color: #333333 !important;
   font-family: 'Colibri';
   font-weight: bolder;
+}
+
+.blog-post p {
+  margin-bottom: 2px;
 }
 
 .header-img img {

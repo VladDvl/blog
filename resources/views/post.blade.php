@@ -66,15 +66,16 @@
                 @foreach($tags as $tag)
                   <div class="tag border-bottom">
                     <p class="tag-name"><a href="{{asset('tag/' . $tag->id)}}">{{(isset($tag->name)) ? mb_substr($tag->name, 0 , 50) : ''}}</a></p>
-                    <p class="tag-info text-muted">{{__('menu.AllArticles')}}: {{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</p>
-                    <p class="tag-info text-muted">{{__('menu.Subscriberss')}}: </p>
-                    <button  class="btn btn-primary" type="submit" name="delete" value="{{$tag->id}}">{{__('menu.Delete')}}</button>
+                    <div>
+                      <p class="tag-info text-muted">{{__('menu.AllArticles')}}: {{(isset($tag->post_id)) ? count( explode(',', $tag->post_id) ) : ''}}</p>
+                      <button  class="btn btn-primary" type="submit" name="delete" value="{{$tag->id}}">{{__('menu.Delete')}}</button>
+                    </div>
                   </div>
                 @endforeach
               @endif
               </div>
             </form>
-          </div>
+          </div><!--tag-list-->
         </div><!--add-tag-->
       @endif
 

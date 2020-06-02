@@ -60,7 +60,7 @@
           <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
           <input id="sender" type="hidden" name="sender_id" value="{{(isset(Auth::user()->id)) ? Auth::user()->id : ''}}">
           <input id="resiver" type="hidden" name="resiver_id" value="{{(isset($slug)) ? $slug : ''}}">
-          <button type="submit" name="submit">{{__('menu.Send')}}</button>
+          <button class="btn btn-primary" type="submit" name="submit">{{__('menu.Send')}}</button>
         </div>
       </form>
     </div><!--chat-form-->

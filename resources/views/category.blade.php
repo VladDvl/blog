@@ -29,7 +29,6 @@
     <h3>
       {{__('menu.Articles')}}
     </h3>
-    <!--<b><a id="artdate" href="{{asset('#')}}">Выбрать дату</a></b>-->
   </div>
       @foreach($objs as $one)
       <div class="blog-post body-maintext">

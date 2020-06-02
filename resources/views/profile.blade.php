@@ -17,8 +17,6 @@
 
 @if( $thing != null )
 
-<div class="col-md-14">
-
     @guest
         @if(Route::has('register'))
             <div class="card-header">
@@ -91,7 +89,6 @@
     <h3>
         {{__('menu.Articles')}}
     </h3>
-    <!--<b><a id="artdate" href="{{asset('#')}}">Выбрать дату</a></b>-->
 </div>
 
 @if( count($objs) != 0 )
@@ -133,18 +130,18 @@
                 <img class="group-small-avatar" src="{{asset('public/img/default-group.png')}}" alt="avatar" width="24" height="24">
             @endif
 
-                <div class="group-info">
-                    <div class="group-info1">
-                        <p class="group-name">{{$group->name}}</p>
-                        <p class="text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
-                        <p class="text-muted">{{__('menu.Type')}}: {{$group->type}}</p>
-                        <p class="text-muted">{{__('menu.Created')}}: {{$group->created_at}}</p>
-                    </div>
-                    <div class="group-info2">
-                        <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
-                        <p class="text-muted">{{__('menu.Messagess')}}: {{count($group->messagee)}}</p>
-                    </div>
+            <div class="group-info">
+                <div class="group-info1">
+                    <p class="group-name">{{$group->name}}</p>
+                    <p class="text-muted">{{__('menu.Author')}}: {{$group->group_creator->name}}</p>
+                    <p class="text-muted">{{__('menu.Type')}}: {{$group->type}}</p>
+                    <p class="text-muted">{{__('menu.Created')}}: {{$group->created_at}}</p>
                 </div>
+                <div class="group-info2">
+                    <p class="text-muted">{{__('menu.Partitipants')}}: {{count($group->partitipantss)}}</p>
+                    <p class="text-muted">{{__('menu.Messagess')}}: {{count($group->messagee)}}</p>
+                </div>
+            </div>
         </div>
         </a>
     @endforeach
@@ -195,8 +192,6 @@
         @endif
     </div><!--authors-->
 </div><!--suscriptions-->
-
-</div><!--col-md-4-->
 
 @else
   <p>{{__('menu.NothingFind')}}.</p>

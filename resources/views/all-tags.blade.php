@@ -11,8 +11,6 @@
 
 @section('content')
 
-<div class="col-md-14">
-
 <div id="block-article-head" class="container pb-4 mb-4 border-bottom font-italic justify-content-between align-items-center row">
     <h3>
         {{__('menu.Tags')}}
@@ -39,7 +37,5 @@
 @else
 <p>{{__('menu.NoTags')}}.</p>
 @endif
-
-</div>
 
 @endsection

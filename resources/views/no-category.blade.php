@@ -22,7 +22,6 @@
     <h3>
       {{__('menu.Articles')}}
     </h3>
-    <!--<b><a id="artdate" href="{{asset('#')}}">Выбрать дату</a></b>-->
   </div>
 
       <div class="blog-post body-maintext">

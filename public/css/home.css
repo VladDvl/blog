@@ -41,6 +41,7 @@ form {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 1px solid gray;
+    width: 100%;
 }
 
 .home-table td, .home-table th {
@@ -54,6 +55,15 @@ tr td:nth-child(3), tr th:nth-child(3) {
 
 #table-form {
     font-weight: 400;
+}
+
+.edit-post-button {
+    margin-top: 1px;
+}
+
+.edit-post-button, .delete-post-button {
+    margin-bottom: 1px;
+    padding: 2px;
 }
 
 .friend-list {
@@ -301,7 +311,7 @@ div.notifications .card-body {
 }
 
 .notification-btn {
-    margin-right: 4px;
+    margin-right: 12px;
     padding: 2px;
 }
 

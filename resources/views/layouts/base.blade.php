@@ -35,8 +35,8 @@
         <a class="blog-header-logo text-dark" href="{{asset('/')}}">{{__('menu.Blog')}}</a>
 
         <form id="site_search_form" class="row" method="GET" action="{{asset('search')}}">
-          <input id="search_input" name="search" type="text" placeholder="&#128269;{{__('menu.Search')}}">
-          <button id="search_button" name="submit" type="submit">{{__('menu.Find')}}</button>
+          <input id="search_input" name="search" type="text" placeholder="{{__('menu.Search')}}">
+          <button id="search_button" name="submit" type="submit">&#128269;</button>
         </form>
 
       </div>
@@ -125,7 +125,7 @@
             @endif
             <div>
               <textarea name="body" placeholder="{{__('menu.WriteMessage')}}"></textarea>
-              <button type="submit" name="submit">{{__('menu.Send')}}</button>
+              <button class="btn btn-primary" type="submit" name="submit">{{__('menu.Send')}}</button>
             </div>
           </form>
         </div>

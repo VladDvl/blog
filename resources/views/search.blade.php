@@ -13,8 +13,6 @@
 
 @section('content')
 
-<div class="col-md-14">
-
 @if($objs)
 
 <div>
@@ -173,7 +171,5 @@
   </p>
 </div>
 @endif
-
-</div>
 
 @endsection

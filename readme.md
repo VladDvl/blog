@@ -2,6 +2,7 @@
 ## About Blog
 
 I am learning PHP. This is a blog about programming. It created with the help of laravel framework and uses MVC pattern.
+http://blog.erud.by
 
 Advantages of using laravel:
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

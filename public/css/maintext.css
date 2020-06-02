@@ -77,6 +77,11 @@ div.post-header a.modal-link {
     justify-content: space-between;
 }
 
+.tag div {
+    display: flex;
+    flex-direction: row;
+}
+
 .tag:last-child {
     border-bottom: none !important;
 }
